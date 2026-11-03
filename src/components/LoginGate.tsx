@@ -26,7 +26,7 @@ export function LoginGate({ onLogin }: { onLogin: (session: Session) => void }) 
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(16,185,129,0.12),transparent_45%),radial-gradient(circle_at_80%_80%,rgba(56,189,248,0.10),transparent_45%)]" />
       <div className="relative w-full max-w-md animate-fade-up">
         <div className="mb-6 flex flex-col items-center gap-3 text-center">
-          <div className="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-600 shadow-glow">
+          <div className="grid h-16 w-16 place-items-center rounded-2xl bg-white shadow-glow">
             <img src={`${import.meta.env.BASE_URL}assets/denr-logo.png`} alt="DENR" className="h-12 w-12 object-contain" />
           </div>
           <div>
