@@ -1,4 +1,4 @@
-import { getSession, login, canExport, canDownloadGeoJson, type Session } from './auth';
+import { login, canExport, canDownloadGeoJson } from './auth';
 
 export type GateKind = 'export' | 'geojson';
 
@@ -6,21 +6,19 @@ type Pending = { kind: GateKind; action: () => void } | null;
 let pending: Pending = null;
 const listeners = new Set<(state: { open: boolean; kind: GateKind | null }) => void>();
 
-function requestGate(kind: GateKind, action: () => void, check: (s: Session | null) => boolean): void {
-  if (check(getSession())) {
-    action();
-    return;
-  }
+function requestGate(kind: GateKind, action: () => void): void {
+  // Always prompt for credentials, even for already-authorised sessions, so
+  // exports/downloads are never one-click from a logged-in browser.
   pending = { kind, action };
   listeners.forEach((l) => l({ open: true, kind }));
 }
 
 export function requestExport(action: () => void): void {
-  requestGate('export', action, canExport);
+  requestGate('export', action);
 }
 
 export function requestGeoJson(action: () => void): void {
-  requestGate('geojson', action, canDownloadGeoJson);
+  requestGate('geojson', action);
 }
 
 export function resolveGate(): void {
