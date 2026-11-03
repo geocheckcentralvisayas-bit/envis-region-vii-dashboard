@@ -27,7 +27,7 @@ export function LoginGate({ onLogin }: { onLogin: (session: Session) => void }) 
       <div className="relative w-full max-w-md animate-fade-up">
         <div className="mb-6 flex flex-col items-center gap-3 text-center">
           <div className="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-600 shadow-glow">
-            <img src="/assets/denr-logo.png" alt="DENR" className="h-12 w-12 object-contain" />
+            <img src={`${import.meta.env.BASE_URL}assets/denr-logo.png`} alt="DENR" className="h-12 w-12 object-contain" />
           </div>
           <div>
             <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-emerald-300">DENR-EMB Region VII</div>
