@@ -1,37 +1,54 @@
-import { getSession, login, canExport, type Session } from './auth';
+import { getSession, login, canExport, canDownloadGeoJson, type Session } from './auth';
 
-type Pending = (() => void) | null;
+export type GateKind = 'export' | 'geojson';
+
+type Pending = { kind: GateKind; action: () => void } | null;
 let pending: Pending = null;
-const listeners = new Set<(open: boolean) => void>();
+const listeners = new Set<(state: { open: boolean; kind: GateKind | null }) => void>();
 
-export function requestExport(action: () => void): void {
-  if (canExport(getSession())) {
+function requestGate(kind: GateKind, action: () => void, check: (s: Session | null) => boolean): void {
+  if (check(getSession())) {
     action();
     return;
   }
-  pending = action;
-  listeners.forEach((l) => l(true));
+  pending = { kind, action };
+  listeners.forEach((l) => l({ open: true, kind }));
 }
 
-export function resolveExport(): void {
-  const action = pending;
+export function requestExport(action: () => void): void {
+  requestGate('export', action, canExport);
+}
+
+export function requestGeoJson(action: () => void): void {
+  requestGate('geojson', action, canDownloadGeoJson);
+}
+
+export function resolveGate(): void {
+  const current = pending;
   pending = null;
-  listeners.forEach((l) => l(false));
-  if (action) action();
+  listeners.forEach((l) => l({ open: false, kind: null }));
+  if (current) current.action();
 }
 
-export function cancelExport(): void {
+export function cancelGate(): void {
   pending = null;
-  listeners.forEach((l) => l(false));
+  listeners.forEach((l) => l({ open: false, kind: null }));
 }
 
-export function subscribeExport(listener: (open: boolean) => void): () => void {
+export function subscribeGate(listener: (state: { open: boolean; kind: GateKind | null }) => void): () => void {
   listeners.add(listener);
   return () => listeners.delete(listener);
 }
 
-export async function tryExporterLogin(username: string, password: string): Promise<boolean> {
+export function getPendingKind(): GateKind | null {
+  return pending?.kind ?? null;
+}
+
+export async function tryGateLogin(username: string, password: string): Promise<boolean> {
   const session = await login(username, password);
-  if (!session || !canExport(session)) return false;
+  if (!session) return false;
+  const kind = getPendingKind();
+  if (kind === 'export' && !canExport(session)) return false;
+  if (kind === 'geojson' && !canDownloadGeoJson(session)) return false;
   return true;
 }

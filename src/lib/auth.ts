@@ -1,4 +1,4 @@
-export type Role = '[redacted]' | 'rd' | 'emed' | 'cpd' | 'mis' | 'viewer';
+export type Role = '[redacted]' | 'rd' | 'emed' | 'cpd' | 'mis' | 'viewer' | 'gis';
 
 export interface Account {
   username: string;
@@ -25,6 +25,7 @@ export const ACCOUNTS: Account[] = [
   { username: '[redacted]', role: 'emed', displayName: 'Environmental Monitoring & Enforcement Division', division: 'EMED', passwordHash: '[redacted-hash]' },
   { username: '[redacted]', role: 'cpd', displayName: 'Clearance and Permitting Division', division: 'CPD', passwordHash: '[redacted-hash]' },
   { username: '[redacted]', role: 'mis', displayName: 'Management and Information System', division: 'MIS', passwordHash: '[redacted-hash]' },
+  { username: '[redacted]', role: 'gis', displayName: 'GIS Unit', division: 'GIS / Spatial Data', passwordHash: '[redacted-hash]' },
 ];
 
 export async function sha256(text: string): Promise<string> {
@@ -71,4 +72,8 @@ export function logout(): void {
 
 export function canExport(session: Session | null): boolean {
   return session?.role === '[redacted]' || session?.role === 'mis';
+}
+
+export function canDownloadGeoJson(session: Session | null): boolean {
+  return session?.role === 'gis';
 }

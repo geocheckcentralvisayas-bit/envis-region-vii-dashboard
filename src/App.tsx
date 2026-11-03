@@ -5,7 +5,7 @@ import { Layout } from './components/Layout';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { SiteDrawer } from './components/SiteDrawer';
 import { LoginGate } from './components/LoginGate';
-import { subscribeExport, resolveExport, cancelExport, tryExporterLogin } from './lib/exportGate';
+import { subscribeGate, resolveGate, cancelGate, tryGateLogin, getPendingKind } from './lib/exportGate';
 import { getSession, logout, type Session } from './lib/auth';
 import { OverviewPage } from './pages/Overview';
 import { SitesPage } from './pages/Sites';
@@ -58,30 +58,30 @@ export default function App() {
   const error = useDashboard((state) => state.error);
   const page = useDashboard((state) => state.page);
   const [session, setSession] = useState<Session | null>(() => getSession());
-  const [exportModalOpen, setExportModalOpen] = useState(false);
+  const [gateOpen, setGateOpen] = useState(false);
   const [exportUser, setExportUser] = useState('');
   const [exportPass, setExportPass] = useState('');
   const [exportError, setExportError] = useState('');
   const [exportBusy, setExportBusy] = useState(false);
 
   useEffect(() => {
-    return subscribeExport((open) => setExportModalOpen(open));
+    return subscribeGate((state) => setGateOpen(state.open));
   }, []);
 
   const handleExportLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setExportBusy(true);
     setExportError('');
-    const ok = await tryExporterLogin(exportUser, exportPass);
+    const ok = await tryGateLogin(exportUser, exportPass);
     setExportBusy(false);
     if (!ok) {
-      setExportError('[redacted] account required.');
+      setExportError('Authorised account required.');
       return;
     }
-    setExportModalOpen(false);
+    setGateOpen(false);
     setExportUser('');
     setExportPass('');
-    resolveExport();
+    resolveGate();
   };
 
   useEffect(() => {
@@ -182,17 +182,17 @@ export default function App() {
         <ErrorBoundary resetKey={page}>{renderPage(page)}</ErrorBoundary>
       </Layout>
       <SiteDrawer />
-      {exportModalOpen && (
+      {gateOpen && (
         <div className="fixed inset-0 z-[1000] grid place-items-center bg-black/60 backdrop-blur-sm">
           <div className="card w-full max-w-sm p-6">
-            <h2 className="text-[15px] font-bold text-slate-50">Exporter login required</h2>
-            <p className="mt-1 text-[11px] text-slate-500">Only the [redacted] account can export data.</p>
+            <h2 className="text-[15px] font-bold text-slate-50">{gateOpen && getPendingKind() === "geojson" ? "GIS login required" : "Exporter login required"}</h2>
+            <p className="mt-1 text-[11px] text-slate-500">{gateOpen && getPendingKind() === "geojson" ? "Only the GIS account can download GeoJSON layers." : "Only the [redacted] account can export data."}</p>
             <form onSubmit={handleExportLogin} className="mt-4 space-y-3">
               <input type="text" value={exportUser} onChange={(e) => setExportUser(e.target.value)} placeholder="Username" autoComplete="username" required className="input h-9 w-full" />
               <input type="password" value={exportPass} onChange={(e) => setExportPass(e.target.value)} placeholder="Password" autoComplete="current-password" required className="input h-9 w-full" />
               {exportError && <div className="rounded-lg border border-rose-400/30 bg-rose-400/10 px-3 py-2 text-[11px] text-rose-200">{exportError}</div>}
               <div className="flex gap-2">
-                <button type="button" onClick={() => { cancelExport(); setExportModalOpen(false); setExportUser(''); setExportPass(''); setExportError(''); }} className="btn h-9 flex-1 justify-center">Cancel</button>
+                <button type="button" onClick={() => { cancelGate(); setGateOpen(false); setExportUser(''); setExportPass(''); setExportError(''); }} className="btn h-9 flex-1 justify-center">Cancel</button>
                 <button type="submit" disabled={exportBusy} className="btn btn-primary h-9 flex-1 justify-center">{exportBusy ? 'Signing in…' : 'Sign in'}</button>
               </div>
             </form>
