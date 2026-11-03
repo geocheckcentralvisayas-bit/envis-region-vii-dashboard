@@ -281,7 +281,7 @@ export function ReportsPage() {
               <button type="button" className="btn w-full justify-start" onClick={() => requestExport(exportLayers)}>
                 <Layers3 size={13} /> Spatial layer manifest
               </button>
-              <button type="button" className="btn w-full justify-start" onClick={exportSummary}>
+              <button type="button" className="btn w-full justify-start" onClick={() => requestExport(exportSummary)}>
                 <FileJson size={13} /> Summary JSON
               </button>
             </div>
