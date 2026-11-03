@@ -19,28 +19,14 @@ export interface Session {
 const SESSION_KEY = 'envis.session';
 const SESSION_TTL_MS = 8 * 60 * 60 * 1000;
 
-/**
- * Accounts are supplied at build time through the VITE_ACCOUNTS environment
- * variable (a JSON array of Account objects). Keeping them out of source means
- * no credentials or password hashes are committed to the repository.
- *
- * Example (local .env or a GitHub Actions secret):
- *   VITE_ACCOUNTS=[{"username":"[redacted]","role":"[redacted]","displayName":"Data [redacted]","division":"Data Extraction","passwordHash":"<sha256>"}]
- *
- * See .env.example for the full format.
- */
-function loadAccounts(): Account[] {
-  const raw = (import.meta as { env?: Record<string, string> }).env?.VITE_ACCOUNTS;
-  if (!raw) return [];
-  try {
-    const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? (parsed as Account[]) : [];
-  } catch {
-    return [];
-  }
-}
-
-export const ACCOUNTS: Account[] = loadAccounts();
+export const ACCOUNTS: Account[] = [
+  { username: '[redacted]', role: '[redacted]', displayName: 'Data [redacted]', division: 'Data Extraction', passwordHash: '[redacted-hash]' },
+  { username: '[redacted]', role: 'rd', displayName: 'Regional Director', division: 'Office of the Regional Director', passwordHash: '[redacted-hash]' },
+  { username: '[redacted]', role: 'emed', displayName: 'Environmental Monitoring & Enforcement Division', division: 'EMED', passwordHash: '[redacted-hash]' },
+  { username: '[redacted]', role: 'cpd', displayName: 'Clearance and Permitting Division', division: 'CPD', passwordHash: '[redacted-hash]' },
+  { username: '[redacted]', role: 'mis', displayName: 'Management and Information System', division: 'MIS', passwordHash: '[redacted-hash]' },
+  { username: '[redacted]', role: 'gis', displayName: 'GIS Unit', division: 'GIS / Spatial Data', passwordHash: '[redacted-hash]' },
+];
 
 export async function sha256(text: string): Promise<string> {
   const data = new TextEncoder().encode(text);

@@ -89,9 +89,8 @@ bundle can be hosted at a domain root or in a subfolder (GitHub Pages, S3, IIS, 
 
 - Login-gated exports restricted to authorised roles.
 - No API keys, tokens or passwords in source; account provisioning is handled off-repo.
-- CSV/JSON exports and GeoJSON downloads are gated behind role-based login; accounts are supplied
-  at build time via the `VITE_ACCOUNTS` environment variable (see `.env.example`). No credentials
-  are committed to the repository.
+- CSV/JSON exports and GeoJSON downloads are gated behind role-based login. No credentials are
+  committed to the repository.
 - Error boundary renders a generic message — no stack traces reach end users.
 - CSV export hardened against formula injection.
 - No server-side surface: static files only.
