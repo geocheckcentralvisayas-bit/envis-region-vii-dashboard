@@ -112,7 +112,7 @@ export function Layout({ children, session, onLogout }: { children: React.ReactN
       >
         <div className={clsx('flex h-[60px] shrink-0 items-center gap-2.5 border-b border-white/[0.06] px-4', collapsed && 'md:justify-center md:px-2')}>
           <div className="relative grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white/5 ring-1 ring-white/10 overflow-hidden">
-            <img src="/assets/denr-logo.png" alt="DENR" className="h-8 w-8 object-contain animate-logo" />
+            <img src={`${import.meta.env.BASE_URL}assets/denr-logo.png`} alt="DENR" className="h-8 w-8 object-contain animate-logo" />
           </div>
           <div className={clsx('min-w-0', collapsed && 'md:hidden')}>
             <div className="flex items-center gap-1.5">
