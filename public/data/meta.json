@@ -1,0 +1,2905 @@
+{
+  "generatedAt": "2026-11-03T00:22:35.070Z",
+  "referenceDate": "2026-11-03",
+  "sources": {
+    "fetchedAt": "2026-11-03T00:21:34.883Z",
+    "workbooks": {
+      "A": {
+        "label": "PTO Register"
+      },
+      "B": {
+        "label": "DP / Unified Register"
+      },
+      "C": {
+        "label": "Hazardous Waste Register"
+      }
+    },
+    "tabs": [
+      {
+        "key": "DP_2019_2020",
+        "workbook": "B",
+        "sheet": "2019-2020",
+        "type": "DP",
+        "rows": 590,
+        "columns": 38,
+        "file": "data/raw/DP_2019_2020.csv"
+      },
+      {
+        "key": "DP_2021",
+        "workbook": "B",
+        "sheet": "2021",
+        "type": "DP",
+        "rows": 383,
+        "columns": 39,
+        "file": "data/raw/DP_2021.csv"
+      },
+      {
+        "key": "DP_2022",
+        "workbook": "B",
+        "sheet": "2022",
+        "type": "DP",
+        "rows": 507,
+        "columns": 33,
+        "file": "data/raw/DP_2022.csv"
+      },
+      {
+        "key": "DP_2023",
+        "workbook": "B",
+        "sheet": "2023",
+        "type": "DP",
+        "rows": 533,
+        "columns": 34,
+        "file": "data/raw/DP_2023.csv"
+      },
+      {
+        "key": "DP_2024",
+        "workbook": "B",
+        "sheet": "2024",
+        "type": "DP",
+        "rows": 730,
+        "columns": 32,
+        "file": "data/raw/DP_2024.csv"
+      },
+      {
+        "key": "DP_2025",
+        "workbook": "B",
+        "sheet": "2025",
+        "type": "DP",
+        "rows": 828,
+        "columns": 32,
+        "file": "data/raw/DP_2025.csv"
+      },
+      {
+        "key": "DP_2026",
+        "workbook": "B",
+        "sheet": "2026",
+        "type": "DP",
+        "rows": 545,
+        "columns": 32,
+        "file": "data/raw/DP_2026.csv"
+      },
+      {
+        "key": "PTO_2020",
+        "workbook": "A",
+        "sheet": "PO 2020",
+        "type": "PTO",
+        "rows": 139,
+        "columns": 30,
+        "file": "data/raw/PTO_2020.csv"
+      },
+      {
+        "key": "PTO_2021",
+        "workbook": "A",
+        "sheet": "PO 2021",
+        "type": "PTO",
+        "rows": 507,
+        "columns": 30,
+        "file": "data/raw/PTO_2021.csv"
+      },
+      {
+        "key": "PTO_2022",
+        "workbook": "A",
+        "sheet": "PO 2022",
+        "type": "PTO",
+        "rows": 627,
+        "columns": 27,
+        "file": "data/raw/PTO_2022.csv"
+      },
+      {
+        "key": "PTO_2023",
+        "workbook": "A",
+        "sheet": "PO 2023",
+        "type": "PTO",
+        "rows": 916,
+        "columns": 19,
+        "file": "data/raw/PTO_2023.csv"
+      },
+      {
+        "key": "PTO_2024",
+        "workbook": "A",
+        "sheet": "PO 2024",
+        "type": "PTO",
+        "rows": 681,
+        "columns": 22,
+        "file": "data/raw/PTO_2024.csv"
+      },
+      {
+        "key": "PTO_2025",
+        "workbook": "A",
+        "sheet": "PO 2025",
+        "type": "PTO",
+        "rows": 530,
+        "columns": 28,
+        "file": "data/raw/PTO_2025.csv"
+      },
+      {
+        "key": "PTO_2026",
+        "workbook": "A",
+        "sheet": "PO 2026",
+        "type": "PTO",
+        "rows": 343,
+        "columns": 24,
+        "file": "data/raw/PTO_2026.csv"
+      },
+      {
+        "key": "CLEANSE_AUDIT",
+        "workbook": "B",
+        "sheet": "CLEANSE_AUDIT",
+        "type": null,
+        "rows": 238,
+        "columns": 13,
+        "file": "data/raw/CLEANSE_AUDIT.csv"
+      },
+      {
+        "key": "ISSUES_V26",
+        "workbook": "B",
+        "sheet": "UNIFIED_PERMIT_MASTER_ISSUES_V26",
+        "type": null,
+        "rows": 1095,
+        "columns": 10,
+        "file": "data/raw/ISSUES_V26.csv"
+      },
+      {
+        "key": "REVIEW_QUEUE",
+        "workbook": "B",
+        "sheet": "REVIEW_QUEUE",
+        "type": null,
+        "rows": 153,
+        "columns": 14,
+        "file": "data/raw/REVIEW_QUEUE.csv"
+      },
+      {
+        "key": "CROSSMATCH",
+        "workbook": "B",
+        "sheet": "DP_PTO_CROSSMATCH",
+        "type": null,
+        "rows": 755,
+        "columns": 32,
+        "file": "data/raw/CROSSMATCH.csv"
+      },
+      {
+        "key": "SITE_MASTER",
+        "workbook": "B",
+        "sheet": "DP_PTO_SITE_MASTER_2020_2021",
+        "type": null,
+        "rows": 1301,
+        "columns": 21,
+        "file": "data/raw/SITE_MASTER.csv"
+      },
+      {
+        "key": "UNIFIED_LOCATION",
+        "workbook": "B",
+        "sheet": "UNIFIED_LOCATION_2020_2021",
+        "type": null,
+        "rows": 1172,
+        "columns": 18,
+        "file": "data/raw/UNIFIED_LOCATION.csv"
+      },
+      {
+        "key": "PTO_SUMMARY",
+        "workbook": "A",
+        "sheet": "SUMMARY",
+        "type": null,
+        "rows": 24,
+        "columns": 14,
+        "file": "data/raw/PTO_SUMMARY.csv"
+      },
+      {
+        "key": "HW_ALL_DATA",
+        "workbook": "C",
+        "sheet": "ALL DATA",
+        "type": null,
+        "rows": 17925,
+        "columns": 37,
+        "file": "data/raw/HW_ALL_DATA.csv"
+      },
+      {
+        "key": "HW_SUMMARY",
+        "workbook": "C",
+        "sheet": "SUMMARY",
+        "type": null,
+        "rows": 8,
+        "columns": 8,
+        "file": "data/raw/HW_SUMMARY.csv"
+      }
+    ]
+  },
+  "totals": {
+    "permits": 6699,
+    "dp": 3624,
+    "pto": 3075,
+    "sites": 4738,
+    "bothSites": 827,
+    "dpOnlySites": 1014,
+    "ptoOnlySites": 1715,
+    "hwOnlySites": 1182,
+    "hwSites": 2366,
+    "hwRegistrations": 2638,
+    "hwWasteRows": 16305,
+    "hwGenerators": 2395,
+    "hwActive": 0,
+    "hwExpiring": 0,
+    "hwExpired": 68,
+    "hwUnknown": 2570,
+    "matchedHw": 1456,
+    "clearanceSites": 2931,
+    "clearances": 3727,
+    "facilities": 4721,
+    "multiRegisterFacilities": 2918,
+    "eccClearances": 1732,
+    "cncClearances": 1464,
+    "ambiguousClearances": 531,
+    "inScope": 6699,
+    "outOfScope": 0,
+    "unknownScope": 0,
+    "plotted": 6699,
+    "coordinatesKept": 8340,
+    "coordinatesCorrected": 698,
+    "coordinatesApproximate": 299,
+    "coordinatesUnresolved": 0,
+    "screened": 8915,
+    "active": 2583,
+    "expiring": 281,
+    "expired": 3382,
+    "unknownExpiry": 453,
+    "crossMatchedSites": 827,
+    "riskSites": 799,
+    "sourceRows": 23430,
+    "duplicates": 195,
+    "skippedRows": 36
+  },
+  "years": [
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025,
+    2026
+  ],
+  "provinces": [
+    {
+      "name": "Cebu",
+      "count": 5764
+    },
+    {
+      "name": "Bohol",
+      "count": 935
+    }
+  ],
+  "lgus": [
+    {
+      "municipality": "Mandaue City",
+      "province": "Cebu",
+      "count": 1442
+    },
+    {
+      "municipality": "Cebu City",
+      "province": "Cebu",
+      "count": 1247
+    },
+    {
+      "municipality": "Lapu-Lapu City",
+      "province": "Cebu",
+      "count": 788
+    },
+    {
+      "municipality": "Panglao",
+      "province": "Bohol",
+      "count": 259
+    },
+    {
+      "municipality": "Naga City",
+      "province": "Cebu",
+      "count": 223
+    },
+    {
+      "municipality": "Consolacion",
+      "province": "Cebu",
+      "count": 205
+    },
+    {
+      "municipality": "Tagbilaran City",
+      "province": "Bohol",
+      "count": 193
+    },
+    {
+      "municipality": "Toledo City",
+      "province": "Cebu",
+      "count": 173
+    },
+    {
+      "municipality": "Talisay City",
+      "province": "Cebu",
+      "count": 151
+    },
+    {
+      "municipality": "Liloan",
+      "province": "Cebu",
+      "count": 145
+    },
+    {
+      "municipality": "Minglanilla",
+      "province": "Cebu",
+      "count": 121
+    },
+    {
+      "municipality": "Danao City",
+      "province": "Cebu",
+      "count": 102
+    },
+    {
+      "municipality": "Balamban",
+      "province": "Cebu",
+      "count": 87
+    },
+    {
+      "municipality": "Compostela",
+      "province": "Cebu",
+      "count": 86
+    },
+    {
+      "municipality": "Carcar City",
+      "province": "Cebu",
+      "count": 75
+    },
+    {
+      "municipality": "San Fernando",
+      "province": "Cebu",
+      "count": 75
+    },
+    {
+      "municipality": "Alcoy",
+      "province": "Cebu",
+      "count": 61
+    },
+    {
+      "municipality": "Bogo City",
+      "province": "Cebu",
+      "count": 59
+    },
+    {
+      "municipality": "Dauis",
+      "province": "Bohol",
+      "count": 52
+    },
+    {
+      "municipality": "Daanbantayan",
+      "province": "Cebu",
+      "count": 46
+    },
+    {
+      "municipality": "Ubay",
+      "province": "Bohol",
+      "count": 46
+    },
+    {
+      "municipality": "Cordova",
+      "province": "Cebu",
+      "count": 44
+    },
+    {
+      "municipality": "Argao",
+      "province": "Cebu",
+      "count": 42
+    },
+    {
+      "municipality": "Carmen",
+      "province": "Cebu",
+      "count": 40
+    },
+    {
+      "municipality": "Bantayan",
+      "province": "Cebu",
+      "count": 39
+    },
+    {
+      "municipality": "San Remigio",
+      "province": "Cebu",
+      "count": 39
+    },
+    {
+      "municipality": "Asturias",
+      "province": "Cebu",
+      "count": 36
+    },
+    {
+      "municipality": "Santa Fe",
+      "province": "Cebu",
+      "count": 36
+    },
+    {
+      "municipality": "Oslob",
+      "province": "Cebu",
+      "count": 35
+    },
+    {
+      "municipality": "Tubigon",
+      "province": "Bohol",
+      "count": 35
+    },
+    {
+      "municipality": "Dumanjug",
+      "province": "Cebu",
+      "count": 33
+    },
+    {
+      "municipality": "Garcia Hernandez",
+      "province": "Bohol",
+      "count": 32
+    },
+    {
+      "municipality": "Bien Unido",
+      "province": "Bohol",
+      "count": 30
+    },
+    {
+      "municipality": "Medellin",
+      "province": "Cebu",
+      "count": 27
+    },
+    {
+      "municipality": "San Francisco",
+      "province": "Cebu",
+      "count": 23
+    },
+    {
+      "municipality": "Sogod",
+      "province": "Cebu",
+      "count": 22
+    },
+    {
+      "municipality": "Barili",
+      "province": "Cebu",
+      "count": 21
+    },
+    {
+      "municipality": "Dalaguete",
+      "province": "Cebu",
+      "count": 21
+    },
+    {
+      "municipality": "Inabanga",
+      "province": "Bohol",
+      "count": 20
+    },
+    {
+      "municipality": "Moalboal",
+      "province": "Cebu",
+      "count": 20
+    },
+    {
+      "municipality": "Buenavista",
+      "province": "Bohol",
+      "count": 19
+    },
+    {
+      "municipality": "Jagna",
+      "province": "Bohol",
+      "count": 19
+    },
+    {
+      "municipality": "Anda",
+      "province": "Bohol",
+      "count": 16
+    },
+    {
+      "municipality": "Calape",
+      "province": "Bohol",
+      "count": 15
+    },
+    {
+      "municipality": "Sibonga",
+      "province": "Cebu",
+      "count": 15
+    },
+    {
+      "municipality": "Talibon",
+      "province": "Bohol",
+      "count": 15
+    },
+    {
+      "municipality": "Loon",
+      "province": "Bohol",
+      "count": 14
+    },
+    {
+      "municipality": "Madridejos",
+      "province": "Cebu",
+      "count": 14
+    },
+    {
+      "municipality": "Aloguinsan",
+      "province": "Cebu",
+      "count": 13
+    },
+    {
+      "municipality": "Baclayon",
+      "province": "Bohol",
+      "count": 13
+    },
+    {
+      "municipality": "Samboan",
+      "province": "Cebu",
+      "count": 12
+    },
+    {
+      "municipality": "Borbon",
+      "province": "Cebu",
+      "count": 11
+    },
+    {
+      "municipality": "Alegria",
+      "province": "Cebu",
+      "count": 10
+    },
+    {
+      "municipality": "Badian",
+      "province": "Cebu",
+      "count": 10
+    },
+    {
+      "municipality": "Malabuyoc",
+      "province": "Cebu",
+      "count": 10
+    },
+    {
+      "municipality": "Poro",
+      "province": "Cebu",
+      "count": 10
+    },
+    {
+      "municipality": "Boljoon",
+      "province": "Cebu",
+      "count": 8
+    },
+    {
+      "municipality": "Carmen",
+      "province": "Bohol",
+      "count": 8
+    },
+    {
+      "municipality": "Cortes",
+      "province": "Bohol",
+      "count": 8
+    },
+    {
+      "municipality": "Pinamungahan",
+      "province": "Cebu",
+      "count": 8
+    },
+    {
+      "municipality": "Sevilla",
+      "province": "Bohol",
+      "count": 8
+    },
+    {
+      "municipality": "Tabogon",
+      "province": "Cebu",
+      "count": 8
+    },
+    {
+      "municipality": "Tuburan",
+      "province": "Cebu",
+      "count": 8
+    },
+    {
+      "municipality": "Alcantara",
+      "province": "Cebu",
+      "count": 7
+    },
+    {
+      "municipality": "Loboc",
+      "province": "Bohol",
+      "count": 7
+    },
+    {
+      "municipality": "Santander",
+      "province": "Cebu",
+      "count": 7
+    },
+    {
+      "municipality": "Tabuelan",
+      "province": "Cebu",
+      "count": 7
+    },
+    {
+      "municipality": "Alicia",
+      "province": "Bohol",
+      "count": 6
+    },
+    {
+      "municipality": "Catigbian",
+      "province": "Bohol",
+      "count": 6
+    },
+    {
+      "municipality": "Catmon",
+      "province": "Cebu",
+      "count": 6
+    },
+    {
+      "municipality": "Cebu City",
+      "province": "Bohol",
+      "count": 6
+    },
+    {
+      "municipality": "Dagohoy",
+      "province": "Bohol",
+      "count": 6
+    },
+    {
+      "municipality": "Lila",
+      "province": "Bohol",
+      "count": 6
+    },
+    {
+      "municipality": "Pilar",
+      "province": "Bohol",
+      "count": 6
+    },
+    {
+      "municipality": "Valencia",
+      "province": "Bohol",
+      "count": 6
+    },
+    {
+      "municipality": "Alburquerque",
+      "province": "Bohol",
+      "count": 5
+    },
+    {
+      "municipality": "Balilihan",
+      "province": "Bohol",
+      "count": 5
+    },
+    {
+      "municipality": "Bilar",
+      "province": "Bohol",
+      "count": 5
+    },
+    {
+      "municipality": "Candijay",
+      "province": "Bohol",
+      "count": 5
+    },
+    {
+      "municipality": "Clarin",
+      "province": "Bohol",
+      "count": 5
+    },
+    {
+      "municipality": "Corella",
+      "province": "Bohol",
+      "count": 5
+    },
+    {
+      "municipality": "Mabini",
+      "province": "Bohol",
+      "count": 4
+    },
+    {
+      "municipality": "Maribojoc",
+      "province": "Bohol",
+      "count": 4
+    },
+    {
+      "municipality": "Pilar",
+      "province": "Cebu",
+      "count": 4
+    },
+    {
+      "municipality": "Pres. Carlos P. Garcia (pitogo)",
+      "province": "Bohol",
+      "count": 4
+    },
+    {
+      "municipality": "San Miguel",
+      "province": "Bohol",
+      "count": 4
+    },
+    {
+      "municipality": "Sierra Bullones",
+      "province": "Bohol",
+      "count": 4
+    },
+    {
+      "municipality": "Danao",
+      "province": "Bohol",
+      "count": 3
+    },
+    {
+      "municipality": "Duero",
+      "province": "Bohol",
+      "count": 3
+    },
+    {
+      "municipality": "Ginatilan",
+      "province": "Cebu",
+      "count": 3
+    },
+    {
+      "municipality": "Panglao",
+      "province": "Cebu",
+      "count": 3
+    },
+    {
+      "municipality": "Pres. Carlos P. Garcia",
+      "province": "Bohol",
+      "count": 3
+    },
+    {
+      "municipality": "San Isidro",
+      "province": "Bohol",
+      "count": 3
+    },
+    {
+      "municipality": "Sikatuna",
+      "province": "Bohol",
+      "count": 3
+    },
+    {
+      "municipality": "Trinidad",
+      "province": "Bohol",
+      "count": 3
+    },
+    {
+      "municipality": "Tudela",
+      "province": "Cebu",
+      "count": 3
+    },
+    {
+      "municipality": "Antequera",
+      "province": "Bohol",
+      "count": 2
+    },
+    {
+      "municipality": "Dumaguete City",
+      "province": "Cebu",
+      "count": 2
+    },
+    {
+      "municipality": "Loay",
+      "province": "Bohol",
+      "count": 2
+    },
+    {
+      "municipality": "Pinamungajan",
+      "province": "Cebu",
+      "count": 2
+    },
+    {
+      "municipality": "Ronda",
+      "province": "Cebu",
+      "count": 2
+    },
+    {
+      "municipality": "Sagbayan",
+      "province": "Bohol",
+      "count": 2
+    },
+    {
+      "municipality": "Alang Alang",
+      "province": "Cebu",
+      "count": 1
+    },
+    {
+      "municipality": "Alburqueque",
+      "province": "Bohol",
+      "count": 1
+    },
+    {
+      "municipality": "Basak",
+      "province": "Cebu",
+      "count": 1
+    },
+    {
+      "municipality": "Batuan",
+      "province": "Bohol",
+      "count": 1
+    },
+    {
+      "municipality": "Binongkalan, Catmon",
+      "province": "Cebu",
+      "count": 1
+    },
+    {
+      "municipality": "Camputhaw, Cebu City",
+      "province": "Cebu",
+      "count": 1
+    },
+    {
+      "municipality": "Canduman",
+      "province": "Cebu",
+      "count": 1
+    },
+    {
+      "municipality": "Carlos P. Garcia",
+      "province": "Bohol",
+      "count": 1
+    },
+    {
+      "municipality": "Carreta, Cebu City",
+      "province": "Cebu",
+      "count": 1
+    },
+    {
+      "municipality": "Cebu Cuty",
+      "province": "Cebu",
+      "count": 1
+    },
+    {
+      "municipality": "Cecbu City",
+      "province": "Cebu",
+      "count": 1
+    },
+    {
+      "municipality": "Cortes",
+      "province": "Cebu",
+      "count": 1
+    },
+    {
+      "municipality": "Dauin",
+      "province": "Cebu",
+      "count": 1
+    },
+    {
+      "municipality": "Dauis",
+      "province": "Cebu",
+      "count": 1
+    },
+    {
+      "municipality": "Dimiao",
+      "province": "Bohol",
+      "count": 1
+    },
+    {
+      "municipality": "Garcia (pitogo)",
+      "province": "Bohol",
+      "count": 1
+    },
+    {
+      "municipality": "Guindulman",
+      "province": "Bohol",
+      "count": 1
+    },
+    {
+      "municipality": "Jagna",
+      "province": "Cebu",
+      "count": 1
+    },
+    {
+      "municipality": "Jetafe",
+      "province": "Bohol",
+      "count": 1
+    },
+    {
+      "municipality": "L",
+      "province": "Cebu",
+      "count": 1
+    },
+    {
+      "municipality": "Lahug",
+      "province": "Cebu",
+      "count": 1
+    },
+    {
+      "municipality": "Naga City",
+      "province": "Bohol",
+      "count": 1
+    },
+    {
+      "municipality": "Negros Oriental",
+      "province": "Cebu",
+      "count": 1
+    },
+    {
+      "municipality": "Pres. Carlos P. Garcia (pitogo) Bohol",
+      "province": "Bohol",
+      "count": 1
+    },
+    {
+      "municipality": "Subangdaku",
+      "province": "Cebu",
+      "count": 1
+    },
+    {
+      "municipality": "Tagbilaran City",
+      "province": "Cebu",
+      "count": 1
+    },
+    {
+      "municipality": "Talamban",
+      "province": "Bohol",
+      "count": 1
+    }
+  ],
+  "industries": [
+    {
+      "name": "Unspecified",
+      "count": 623
+    },
+    {
+      "name": "Hotels, motels, resorts, dormitories and other accommodation services",
+      "count": 391
+    },
+    {
+      "name": "Telecommunication Projects",
+      "count": 359
+    },
+    {
+      "name": "Sewerage (operation of sewer system or sewage treatment facilities that collect, treat, and dispose of sewage)",
+      "count": 290
+    },
+    {
+      "name": "Real estate activities with own or leased property",
+      "count": 275
+    },
+    {
+      "name": "Oil (Petroleum)",
+      "count": 141
+    },
+    {
+      "name": "Manufacture of ceramics, clay products, construction aggregates, asphalt, asbestos and other non-metallic minerals (except cement)",
+      "count": 114
+    },
+    {
+      "name": "Wholesale and retail sale of automotive fuels",
+      "count": 104
+    },
+    {
+      "name": "Animal production",
+      "count": 100
+    },
+    {
+      "name": "55102",
+      "count": 99
+    },
+    {
+      "name": "Hospitals, clinics, nursing homes and other human health and residential care activities",
+      "count": 96
+    },
+    {
+      "name": "Manufacture of other food products (except sugar)",
+      "count": 82
+    },
+    {
+      "name": "Telecommunications",
+      "count": 66
+    },
+    {
+      "name": "68110",
+      "count": 65
+    },
+    {
+      "name": "Effluent from oil water separators of auxiliary facilities",
+      "count": 64
+    },
+    {
+      "name": "Telecommunication",
+      "count": 61
+    },
+    {
+      "name": "Treatment, coating, and machining of metals",
+      "count": 61
+    },
+    {
+      "name": "Restaurants, food chains, bars and other food/beverage services",
+      "count": 51
+    },
+    {
+      "name": "Coal",
+      "count": 50
+    },
+    {
+      "name": "Wireless telecommunications activities",
+      "count": 50
+    },
+    {
+      "name": "Manufacturing of plastics and synthetic rubber in forms",
+      "count": 48
+    },
+    {
+      "name": "Production processing and preserving of meat and meat products",
+      "count": 48
+    },
+    {
+      "name": "Funeral and related activities",
+      "count": 47
+    },
+    {
+      "name": "Cold storage",
+      "count": 46
+    },
+    {
+      "name": "Manufacture of veneer sheets; manufacture of plywood, laminated board, particle board and other panels and board; wooden window and screens",
+      "count": 46
+    }
+  ],
+  "statuses": [
+    {
+      "name": "Renewal",
+      "count": 3628
+    },
+    {
+      "name": "New",
+      "count": 2995
+    },
+    {
+      "name": "TPO",
+      "count": 72
+    },
+    {
+      "name": "Amendment",
+      "count": 3
+    },
+    {
+      "name": "Unspecified",
+      "count": 1
+    }
+  ],
+  "lifecycles": [
+    {
+      "name": "Expired",
+      "count": 3382
+    },
+    {
+      "name": "Active",
+      "count": 2583
+    },
+    {
+      "name": "Unknown",
+      "count": 453
+    },
+    {
+      "name": "Expiring",
+      "count": 281
+    }
+  ],
+  "qa": [
+    {
+      "name": "no_barangay",
+      "count": 4017
+    },
+    {
+      "name": "no_industry",
+      "count": 623
+    },
+    {
+      "name": "no_issued_date",
+      "count": 579
+    },
+    {
+      "name": "coordinates_corrected",
+      "count": 553
+    },
+    {
+      "name": "no_expiry_date",
+      "count": 453
+    },
+    {
+      "name": "coordinates_approximate",
+      "count": 256
+    },
+    {
+      "name": "duplicate_source",
+      "count": 181
+    },
+    {
+      "name": "lgu_unmatched",
+      "count": 36
+    },
+    {
+      "name": "coordinates_swapped",
+      "count": 19
+    },
+    {
+      "name": "nonstandard_permit_no",
+      "count": 10
+    },
+    {
+      "name": "possible_water",
+      "count": 10
+    },
+    {
+      "name": "expiry_before_issue",
+      "count": 7
+    },
+    {
+      "name": "no_address",
+      "count": 7
+    }
+  ],
+  "hwWasteCodes": [
+    {
+      "name": "D407 · Mercury and mercury compounds",
+      "count": 2139
+    },
+    {
+      "name": "I101 · Used industrial oil including sludge",
+      "count": 1906
+    },
+    {
+      "name": "D402 · Arsenic and its compounds",
+      "count": 1792
+    },
+    {
+      "name": "M506 · Waste electrical and electronic equipment (WEEE)",
+      "count": 1775
+    },
+    {
+      "name": "D406 · Lead compounds",
+      "count": 1520
+    },
+    {
+      "name": "I104 · Oil-contaminated Materials",
+      "count": 1442
+    },
+    {
+      "name": "J201 · Containers previously containing toxic chemical substances",
+      "count": 1438
+    },
+    {
+      "name": "I102 · Vegetable oil including sludge",
+      "count": 710
+    },
+    {
+      "name": "M501 · Pathological or infectious wastes",
+      "count": 690
+    },
+    {
+      "name": "H802 · Grease wastes",
+      "count": 670
+    },
+    {
+      "name": "M503 · Pharmaceuticals and drugs",
+      "count": 285
+    },
+    {
+      "name": "F601 · Solvent based",
+      "count": 245
+    },
+    {
+      "name": "G704 · Non-halogenated organic solvents",
+      "count": 199
+    },
+    {
+      "name": "D499 · Other wastes with inorganic chemicals",
+      "count": 148
+    },
+    {
+      "name": "F602 · Inorganic pigments",
+      "count": 148
+    }
+  ],
+  "hwIndustries": [
+    {
+      "name": "Manufacturing",
+      "count": 131
+    },
+    {
+      "name": "FAST FOOD RESTAURANT",
+      "count": 98
+    },
+    {
+      "name": "MANUFACTURING",
+      "count": 43
+    },
+    {
+      "name": "Resort",
+      "count": 36
+    },
+    {
+      "name": "Real Estate",
+      "count": 35
+    },
+    {
+      "name": "Telecommunication",
+      "count": 31
+    },
+    {
+      "name": "Hotel",
+      "count": 29
+    },
+    {
+      "name": "TELECOMMUNICATION",
+      "count": 25
+    },
+    {
+      "name": "Fast Food Restaurant",
+      "count": 24
+    },
+    {
+      "name": "GASOLINE STATION",
+      "count": 23
+    },
+    {
+      "name": "Power Transmission",
+      "count": 23
+    },
+    {
+      "name": "Gasoline Station",
+      "count": 21
+    },
+    {
+      "name": "Financial Service",
+      "count": 20
+    },
+    {
+      "name": "Poultry Farm",
+      "count": 20
+    },
+    {
+      "name": "Garment Manufacturing",
+      "count": 19
+    }
+  ],
+  "clearanceSources": [
+    {
+      "name": "PTO register",
+      "count": 1423
+    },
+    {
+      "name": "DP register",
+      "count": 947
+    },
+    {
+      "name": "DP register+PTO register",
+      "count": 474
+    },
+    {
+      "name": "HW register",
+      "count": 359
+    },
+    {
+      "name": "HW register+DP register+PTO register",
+      "count": 199
+    },
+    {
+      "name": "HW register+PTO register",
+      "count": 175
+    },
+    {
+      "name": "HW register+DP register",
+      "count": 150
+    }
+  ],
+  "audit": {
+    "rows": 238,
+    "byAction": [
+      {
+        "name": "DERIVE",
+        "count": 201
+      },
+      {
+        "name": "CROSS-CHECK",
+        "count": 16
+      },
+      {
+        "name": "REVIEW",
+        "count": 10
+      },
+      {
+        "name": "AUTO-FIX",
+        "count": 8
+      },
+      {
+        "name": "EXCLUDED",
+        "count": 3
+      }
+    ],
+    "byField": [
+      {
+        "name": "Barangay",
+        "count": 148
+      },
+      {
+        "name": "Province",
+        "count": 75
+      },
+      {
+        "name": "Latitude/Longitude",
+        "count": 7
+      },
+      {
+        "name": "Permit Record",
+        "count": 3
+      },
+      {
+        "name": "Latitude",
+        "count": 2
+      },
+      {
+        "name": "Longitude",
+        "count": 2
+      },
+      {
+        "name": "Status",
+        "count": 1
+      }
+    ]
+  },
+  "issues": {
+    "total": 1095,
+    "byType": [
+      {
+        "name": "BARANGAY_UNRESOLVED_PSGC",
+        "count": 922
+      },
+      {
+        "name": "OUT_OF_SCOPE_PROVINCE",
+        "count": 173
+      }
+    ],
+    "byAction": [
+      {
+        "name": "REVIEW / NO SAFE BARANGAY GUESS",
+        "count": 1095
+      }
+    ]
+  },
+  "reviewQueue": [
+    {
+      "type": "DP",
+      "year": "2019",
+      "permitNo": "DP-R07-19-01969",
+      "company": "Carmen Copper Corporation",
+      "municipality": "Toledo City",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2019",
+      "permitNo": "DP-R07-19-01042",
+      "company": "Plaza Maria Luisa Suites Inn",
+      "municipality": "Dumaguete City",
+      "province": "Negros Oriental",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "DP",
+      "year": "2019",
+      "permitNo": "DP-R07-19-01318",
+      "company": "ENVIROKONSULT EQUIPMENT & SERVICES, INC",
+      "municipality": "Cordova",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "DP",
+      "year": "2019",
+      "permitNo": "DP-R07-19-03515",
+      "company": "CHEVRON PHILIPPINES INC. (Lapu-Lapu Terminal)",
+      "municipality": "Lapu-Lapu City",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "DP",
+      "year": "2019",
+      "permitNo": "DP-R07-19-03904",
+      "company": "CHEVRON PHILIPPINES INC. (Lapu-Lapu Terminal)",
+      "municipality": "Lapu-Lapu City",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "DP",
+      "year": "2019",
+      "permitNo": "DP-R07-19-03884",
+      "company": "MEPZ Mixed Gases Corporation",
+      "municipality": "Lapu-Lapu City",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "DP",
+      "year": "2019",
+      "permitNo": "DP-R07-19-03883",
+      "company": "OBRA CEBUANA FURNITURE DESIGNS INC.",
+      "municipality": "Mandaue City",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "DP",
+      "year": "2019",
+      "permitNo": "DP-R07-19-03877",
+      "company": "JUMBO PACIFIC INC",
+      "municipality": "Lapu-Lapu City",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "DP",
+      "year": "2019",
+      "permitNo": "DP-R07-19-04251",
+      "company": "SI Power Corporation",
+      "municipality": "Danao City",
+      "province": "Cebu",
+      "issue": "PROVINCE_CONFLICT",
+      "action": "Compare structured Province, Address, Municipality/City, and coordinates. Choose the verified project province before final publication."
+    },
+    {
+      "type": "DP",
+      "year": "2020",
+      "permitNo": "DP-R07-20-00040",
+      "company": "TALISAY BEACH RESORT INC. /LUBI RESORT",
+      "municipality": "Santander",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "DP",
+      "year": "2020",
+      "permitNo": "DP-R07-20-00668",
+      "company": "Cebu Canning Corp",
+      "municipality": "Mandaue City",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "DP",
+      "year": "2020",
+      "permitNo": "DP-R07-20-01475",
+      "company": "Mactan Wood Carving & Gilding Corp.",
+      "municipality": "Lapu-Lapu City",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "DP",
+      "year": "2020",
+      "permitNo": "DP-R07-20-01764",
+      "company": "Cebu Golden Restaurant, Inc - Commissary",
+      "municipality": "Cebu City",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "DP",
+      "year": "2020",
+      "permitNo": "DP-R07-20-01920",
+      "company": "Mets Logistics Inc.",
+      "municipality": "Mandaue City",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "DP",
+      "year": "2020",
+      "permitNo": "DP-R07-20-01953",
+      "company": "Toledo Power Company-sangi Power Station",
+      "municipality": "Toledo City",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "DP",
+      "year": "2020",
+      "permitNo": "DP-R07-20-02897",
+      "company": "Cebu Canning Corp.",
+      "municipality": "Mandaue City",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "DP",
+      "year": "2020",
+      "permitNo": "DP-R07-20-04104",
+      "company": "Oftana Suites",
+      "municipality": "Mandaue City",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "DP",
+      "year": "2020",
+      "permitNo": "DP-R07-20-04231",
+      "company": "Puravida Beach Resort",
+      "municipality": "Dauin",
+      "province": "Negros Oriental",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "DP",
+      "year": "2020",
+      "permitNo": "DP-R07-20-04545",
+      "company": "Choobi Choobi Flavors Corporation",
+      "municipality": "Talisay City",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "DP",
+      "year": "2020",
+      "permitNo": "DP-R07-20-04600",
+      "company": "General Milling Corporation",
+      "municipality": "Lapu-Lapu City",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "DP",
+      "year": "2020",
+      "permitNo": "DP-R07-20-05063",
+      "company": "Orica Philippines Inc. - Carmen Copper Project",
+      "municipality": "Toledo City",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2020",
+      "permitNo": "DP-R07-20-05447",
+      "company": "Renelyn's Dressed Chicken",
+      "municipality": "Mandaue City",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-01006",
+      "company": "Reyna's The Haven & Gardens",
+      "municipality": "Tagbilaran City",
+      "province": "Cebu",
+      "issue": "PROVINCE_CONFLICT",
+      "action": "Compare structured Province, Address, Municipality/City, and coordinates. Choose the verified project province before final publication."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-01819",
+      "company": "Brumini Resorts",
+      "municipality": "Oslob",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-01946",
+      "company": "Cebu Golden Restaurant, Inc - Commissary",
+      "municipality": "Cebu City",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-03479",
+      "company": "Brumini Resorts Tank 3",
+      "municipality": "Oslob",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-04497",
+      "company": "Philippines Light Leather",
+      "municipality": "Lapu-Lapu City",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06155",
+      "company": "Universal Robina Corporation",
+      "municipality": "Mandaue City",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06156",
+      "company": "Profood International Corp.",
+      "municipality": "Mandaue City",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06150",
+      "company": "Ogtong Cave Resort - Non-aircon Room",
+      "municipality": "Santa Fe",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06311",
+      "company": "Toledo Power Company- Carmen Power Station",
+      "municipality": "Toledo City",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06312",
+      "company": "San Lucas Commercial Center",
+      "municipality": "Minglanilla",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06310",
+      "company": "Polar Bear Freezing & Storage Corp",
+      "municipality": "Sibulan",
+      "province": "Negros Oriental",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06335",
+      "company": "Virginia Food, Inc.",
+      "municipality": "Compostela",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2019",
+      "permitNo": "DP-R07-19-01605",
+      "company": "The Mactan Newtown",
+      "municipality": "Lapu-Lapu City",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06389",
+      "company": "Citrineland Corporation - Serenis North",
+      "municipality": "",
+      "province": "",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06416",
+      "company": "125 Food Concepts",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06417",
+      "company": "Uy Construction And Development",
+      "municipality": "",
+      "province": "Negros Oriental",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06518",
+      "company": "Vitro Cebu Data Center",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06564",
+      "company": "Pueblo De Oro Development Corporation",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06601",
+      "company": "Philippine Mining Service Corporation - Bohol Plant (crusher Area)",
+      "municipality": "",
+      "province": "Bohol",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06604",
+      "company": "Amarela Resort",
+      "municipality": "",
+      "province": "Bohol",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06600",
+      "company": "Empire Crown Trading And Development Inc.",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06605",
+      "company": "Dr. Ildefonso Alcantara Memorial Hospital",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06602",
+      "company": "Pryce Gases Inc. Ayungon Plant",
+      "municipality": "",
+      "province": "Negros Oriental",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06603",
+      "company": "Treasure Island Industrial Corporation - Tin Products Division",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06599",
+      "company": "Philippine Mining Service Corporation - (sealed Septic Tank#1 - Back Of Admin Office)",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06606",
+      "company": "Tancor 3",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06685",
+      "company": "Maritrans Recycler, Inc.",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06686",
+      "company": "Adelfa Hotel",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06682",
+      "company": "Pacita Farms",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06683",
+      "company": "Coco Mangos Place Rooms For Rent",
+      "municipality": "",
+      "province": "",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06687",
+      "company": "Coco Grove Beach Resort",
+      "municipality": "",
+      "province": "Siquijor",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06684",
+      "company": "Plastics Division",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06709",
+      "company": "Cebu Lavana Land Corp. (cebu Exchange)",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06710",
+      "company": "Tsuneishi Heavy Industries Cebu, Inc.- Motor Pool Area",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06740",
+      "company": "Toyota Cebu City",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06874",
+      "company": "Brutus Food Systems, Inc., Commissary",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06864",
+      "company": "Camotes Island Power Generation Corporation",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06878",
+      "company": "Philippine Trigon Shipyard Corporation -Shipyard Facility Slipway No. 1",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06149",
+      "company": "Ogtong Cave Resort - Rowhouse",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06995",
+      "company": "J Park Island Resort",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06994",
+      "company": "Tytans Properties Development Inc.",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06996",
+      "company": "Shell Tagbilaran Terminal",
+      "municipality": "",
+      "province": "Bohol",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-06993",
+      "company": "Therma Power - Visayas, Inc.",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07059",
+      "company": "J Park Island Resort",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07058",
+      "company": "Medclean Management Solutions,inc.",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07063",
+      "company": "Central Lumber Corporation",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07122",
+      "company": "Kandugyap House By The Sea",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07121",
+      "company": "Angel Fuel Up Gas Station",
+      "municipality": "",
+      "province": "Negros Oriental",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07162",
+      "company": "Pldt Cebu Jones",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07158",
+      "company": "Joly Food Industries Corp",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07140",
+      "company": "Camotes Island Power Generation Corporation",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07161",
+      "company": "Toledo Power Company Expansion Project 1-a",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07275",
+      "company": "San Miguel Brewery Inc",
+      "municipality": "",
+      "province": "Bohol",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07276",
+      "company": "Suprea Philippines Development Corporation - Ready-mix Concrete Batching Plant",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07316",
+      "company": "Tanjay Serenity Garden Memorial Park, Inc. - Chapel",
+      "municipality": "",
+      "province": "Negros Oriental",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07315",
+      "company": "Maxima Machineries: Office Building With Display Center",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07350",
+      "company": "Galvaphil Inc.",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07429",
+      "company": "New Ventures Shell Station",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07425",
+      "company": "Emil's Fresh Chicken Dressing Plant",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07427",
+      "company": "New Ventures Shell Station",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07422",
+      "company": "Trigger Company Philippines, Inc.",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07419",
+      "company": "Kai Gas / Car Service Station",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07420",
+      "company": "Santa Fe Beach Club - Utility Bldg And Maintenance Quarter",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07415",
+      "company": "New Ventures Shell Station",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07416",
+      "company": "New Ventures Shell Station",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07488",
+      "company": "Pueblo De Oro Development Corporation - Wwtf 3",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07489",
+      "company": "Jlt Dressing Plant",
+      "municipality": "",
+      "province": "Negros Oriental",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07486",
+      "company": "Daily Fresh Foods Corporation",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07487",
+      "company": "Pueblo De Oro Development Corporation- Phase 2",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07480",
+      "company": "North Zen Villas",
+      "municipality": "",
+      "province": "",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07485",
+      "company": "Plantation Bay Resort And Spa",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07481",
+      "company": "New Ventures Shell Station",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07484",
+      "company": "New Ventures Shell Station",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07483",
+      "company": "New Ventures Shell Station",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07482",
+      "company": "New Ventures Shell Station",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07490",
+      "company": "New Ventures Shell Station",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07594",
+      "company": "Easygas Convenience Station",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07593",
+      "company": "Hagnaya Ice Plant Corp.",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07663",
+      "company": "Edward Shell Station",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07666",
+      "company": "M Lhuillier Food Products, Inc.",
+      "municipality": "",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07667",
+      "company": "Lysander Diaz Piggery Farm",
+      "municipality": "San Fernando",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07669",
+      "company": "Upland Oil, Incorporated",
+      "municipality": "Carcar City",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07670",
+      "company": "Ney Shell Station",
+      "municipality": "Mandaue City",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07796",
+      "company": "Roman Empire Panglao",
+      "municipality": "Panglao",
+      "province": "Bohol",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07798",
+      "company": "Citymall Danao",
+      "municipality": "Danao City",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07799",
+      "company": "Mandaue Foam Industries Incorporated",
+      "municipality": "Mandaue City",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07792",
+      "company": "J And R Residence And Beach Resort",
+      "municipality": "Anda",
+      "province": "Bohol",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-07794",
+      "company": "Amlan Paradise Beach Resort",
+      "municipality": "Amlan",
+      "province": "Negros Oriental",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "DP",
+      "year": "2021",
+      "permitNo": "DP-R07-21-08084",
+      "company": "General Milling Corporation - Outlet 2",
+      "municipality": "Lapu-Lapu City",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "PTO",
+      "year": "2020",
+      "permitNo": "PTO-OL-R07-2020-01957",
+      "company": "National Power Corporation (NPC-Mocaboc Diesel Power Plant)",
+      "municipality": "Tubigon",
+      "province": "Bohol",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "PTO",
+      "year": "2020",
+      "permitNo": "PTO-OL-R07-2020-03250-R",
+      "company": "AMARE SERVICE STATION (SHELL UN AVENUE)",
+      "municipality": "Mandaue City",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "PTO",
+      "year": "2020",
+      "permitNo": "PTO-OL-R07-2020-03251-R",
+      "company": "Don Emilio Del Valle Memorial Hospital (NA)",
+      "municipality": "Ubay",
+      "province": "Bohol",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-Region VII-2021-00636",
+      "company": "SAVOY HOTEL MACTAN",
+      "municipality": "Lapu-Lapu City",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-Region VII-2021-00849",
+      "company": "SAN MIGUEL FOODS INCORPORATED (BMEG CEBU MANDAUE FEEDMILL)",
+      "municipality": "Mandaue City",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-01690-R",
+      "company": "Jollibee Tagbilaran CP Garcia Uptown",
+      "municipality": "Tagbilaran City",
+      "province": "Cebu",
+      "issue": "PROVINCE_CONFLICT",
+      "action": "Compare structured Province, Address, Municipality/City, and coordinates. Choose the verified project province before final publication."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-01692",
+      "company": "Cold Link Asia Logistics Corporation - Bohol",
+      "municipality": "Tagbilaran City",
+      "province": "Cebu",
+      "issue": "PROVINCE_CONFLICT",
+      "action": "Compare structured Province, Address, Municipality/City, and coordinates. Choose the verified project province before final publication."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-01956",
+      "company": "St. Phocas Organic Farm Co",
+      "municipality": "Naga City",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-02031",
+      "company": "Land Bank of the Philippines - Tagbilaran City Hall Branch (formerly LBP - ICM Extension Office) (Land Bank of the Philippines - Tagbilaran City Hall Branch (formerly LBP - ICM Extension Office))",
+      "municipality": "Tagbilaran City",
+      "province": "Cebu",
+      "issue": "PROVINCE_CONFLICT",
+      "action": "Compare structured Province, Address, Municipality/City, and coordinates. Choose the verified project province before final publication."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-02027-R",
+      "company": "AMARE SERVICE STATION (Shell JA Clarin)",
+      "municipality": "Tagbilaran City",
+      "province": "Cebu",
+      "issue": "PROVINCE_CONFLICT",
+      "action": "Compare structured Province, Address, Municipality/City, and coordinates. Choose the verified project province before final publication."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-02026-R",
+      "company": "AMARE SERVICE STATION (AMARE SERVICE STATION-SHELL CPG CALCETA)",
+      "municipality": "Tagbilaran City",
+      "province": "Cebu",
+      "issue": "PROVINCE_CONFLICT",
+      "action": "Compare structured Province, Address, Municipality/City, and coordinates. Choose the verified project province before final publication."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-02256-R",
+      "company": "Roman Empire Panglao Inc",
+      "municipality": "Panglao",
+      "province": "Cebu",
+      "issue": "PROVINCE_CONFLICT",
+      "action": "Compare structured Province, Address, Municipality/City, and coordinates. Choose the verified project province before final publication."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-02257-R",
+      "company": "ALLIED CARE EXPERTS MEDICAL CENTER BOHOL",
+      "municipality": "Tagbilaran City",
+      "province": "Cebu",
+      "issue": "PROVINCE_CONFLICT",
+      "action": "Compare structured Province, Address, Municipality/City, and coordinates. Choose the verified project province before final publication."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-03543-T",
+      "company": "Abiathar Commercial Complex",
+      "municipality": "Cebu City",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-04099-R",
+      "company": "SMART COMMUNICATIONS, INC. (BOHOL-VALENCIA CELLSITE TOWER)",
+      "municipality": "Valencia",
+      "province": "Negros Oriental",
+      "issue": "PROVINCE_CONFLICT",
+      "action": "Compare structured Province, Address, Municipality/City, and coordinates. Choose the verified project province before final publication."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-04385",
+      "company": "Bounty Agro Venture Inc. -Hatchery",
+      "municipality": "Carmen",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-04812",
+      "company": "HM TOWER (PREMIER DIAMOND DEVELOPERS AND MANAGEMENT INC.)",
+      "municipality": "Cebu City",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-06811",
+      "company": "Ostrea Mineral Laboratories Inc.",
+      "municipality": "Mandaue City",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-07956-R",
+      "company": "ST. VINCENT GENERAL HOSPITAL",
+      "municipality": "Cebu City",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-08481",
+      "company": "Smart Communications, Inc.",
+      "municipality": "Dauin",
+      "province": "Negros Oriental",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-08506-R",
+      "company": "Pura Vida Beach Resort",
+      "municipality": "Dauin",
+      "province": "Negros Oriental",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-08507",
+      "company": "FAST AUTOWORLD PHILIPPINES CORPORATION (MITSUBISHI MOTORS - TAGBILARAN BRANCH)",
+      "municipality": "Tagbilaran City",
+      "province": "Bohol",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-08550-R",
+      "company": "Upland Oil Incorporated",
+      "municipality": "Lapu-Lapu City",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-08687-R",
+      "company": "AIR LIQUIDE PIPELINE UTILITES SERVICES INC.,",
+      "municipality": "Balamban",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-08647-R",
+      "company": "CEBU ENERGY DEVELOPMENT CORPORATION",
+      "municipality": "Toledo City",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-08648-R",
+      "company": "SHEMBERG BIOTECH CORPORATION",
+      "municipality": "Carmen",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-08695-R",
+      "company": "Arie Cebu Cosmetic Corporation",
+      "municipality": "Lapu-Lapu City",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-09240-R",
+      "company": "JLT DRESSING PLANT",
+      "municipality": "Sibulan",
+      "province": "Negros Oriental",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-09834",
+      "company": "JACYNTH PRO FARMS INC.",
+      "municipality": "Asturias",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-09824",
+      "company": "PAGES HOLDINGS INC. BUILDING COMPOUND",
+      "municipality": "Banilad",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-09825-R",
+      "company": "TSUNEISHI ACCOMMODATION CEBU, INC",
+      "municipality": "Balamban",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-09828-R",
+      "company": "BANTAYAN ISLAND NATURE PARK AND RESORT",
+      "municipality": "Tamiao, Bantayan",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-09832",
+      "company": "Selucia Development Corporation (Prince Hypermart Minglanilla)",
+      "municipality": "Minglanilla",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-09829",
+      "company": "NPC-Cabul-an Diesel Power Plant",
+      "municipality": "Buenavista",
+      "province": "Bohol",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-09831-T",
+      "company": "Baseline Center Cebu",
+      "municipality": "Camputhaw",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-09833",
+      "company": "The Newtown School of Excellence, Inc.",
+      "municipality": "Lapu-Lapu City",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-10132-R",
+      "company": "Metro Gaisano - Ayala",
+      "municipality": "Cebu City",
+      "province": "Cebu",
+      "issue": "COORDINATE_LOCATION_CONFLICT",
+      "action": "Coordinate is outside the broad Region VII bounds. Verify against Municipality/City, Province, and full project address."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-10465",
+      "company": "Energy Development Corporation - Negros Island Geothermal Business Unit (EDC-NIGBU)",
+      "municipality": "Valencia",
+      "province": "Negros Oriental",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-10467",
+      "company": "PHILIPPINE PORTS AUTHORITY, PMO-BOHOL, TERMINAL MANAGEMENT OFFICE OF UBAY",
+      "municipality": "Ubay",
+      "province": "Bohol",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-10485-T",
+      "company": "ePLDT, Inc.",
+      "municipality": "Mandaue City",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-10486-R",
+      "company": "LAND BANK OF THE PHILIPINES - BALAMBAN BRANCH",
+      "municipality": "Balamban",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    },
+    {
+      "type": "PTO",
+      "year": "2021",
+      "permitNo": "PTO-OL-R07-2021-10487-R",
+      "company": "BISYOU INDUSTRY CEBU INC.",
+      "municipality": "Balamban",
+      "province": "Cebu",
+      "issue": "COORDINATE_INVALID",
+      "action": "Coordinate is missing or not numeric. Locate only from the project address or another verified source; do not invent a point."
+    }
+  ],
+  "notes": [
+    "Permit records are normalised from the DENR-EMB Region VII Google Sheets registers (DP 2019–2026, PTO 2020–2026).",
+    "Hazardous-waste generator registrations come from the DENR-EMB Region VII hazardous-waste register (workbook C, ALL DATA), normalised to one registration per application number with de-duplicated waste codes.",
+    "ECC and CNC references are extracted from both the DP/PTO register (ECC/CNC no. column) and the hazardous-waste register (Permit / Permit No. columns), de-duplicated by clearance number.",
+    "Sites are cross-matched on normalised establishment name + municipality/city; fuzzy matches require ≥88% token similarity within the same LGU, with branch-marker, parenthetical and location guards.",
+    "Lifecycle status is derived from the expiry date against the reference date; source status (New/Renewal/TPO/Amendment) is preserved separately.",
+    "In-scope provinces follow the 2026 PSGC Region VII definition: Cebu and Bohol. Negros Oriental and Siquijor records are excluded from in-scope and from the map.",
+    "Spatial results are point-in-polygon screens against the supplied DENR hazard, protected-area, watershed and land-cover layers.",
+    "Register coordinates are validated against the DENR Region VII provincial land polygons. Points in the sea, on another island or more than 40 km from their declared city/municipality are re-homed to the barangay / city / municipality centroid derived from the company address and flagged as corrected or approximate."
+  ]
+}

@@ -1,0 +1,1230 @@
+{
+  "source": "Philippine Statistics Authority — Philippine Standard Geographic Code",
+  "reference_date": "2026-06-30",
+  "region_code": "0700000000",
+  "region_name": "REGION VII (CENTRAL VISAYAS)",
+  "provinces": [
+    {
+      "name": "Bohol",
+      "code": "0701200000"
+    },
+    {
+      "name": "Cebu",
+      "code": "0702200000"
+    }
+  ],
+  "localities": [
+    {
+      "name": "City of Tagbilaran",
+      "code": "0701242000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "city",
+      "display": "Tagbilaran City",
+      "aliases": [
+        "City of Tagbilaran",
+        "Tagbilaran"
+      ]
+    },
+    {
+      "name": "Alburquerque",
+      "code": "0701201000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Alburquerque",
+      "aliases": [
+        "Alburquerque",
+        "Alburquerque"
+      ]
+    },
+    {
+      "name": "Alicia",
+      "code": "0701202000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Alicia",
+      "aliases": [
+        "Alicia",
+        "Alicia"
+      ]
+    },
+    {
+      "name": "Anda",
+      "code": "0701203000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Anda",
+      "aliases": [
+        "Anda",
+        "Anda"
+      ]
+    },
+    {
+      "name": "Antequera",
+      "code": "0701204000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Antequera",
+      "aliases": [
+        "Antequera",
+        "Antequera"
+      ]
+    },
+    {
+      "name": "Baclayon",
+      "code": "0701205000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Baclayon",
+      "aliases": [
+        "Baclayon",
+        "Baclayon"
+      ]
+    },
+    {
+      "name": "Balilihan",
+      "code": "0701206000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Balilihan",
+      "aliases": [
+        "Balilihan",
+        "Balilihan"
+      ]
+    },
+    {
+      "name": "Batuan",
+      "code": "0701207000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Batuan",
+      "aliases": [
+        "Batuan",
+        "Batuan"
+      ]
+    },
+    {
+      "name": "Bilar",
+      "code": "0701208000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Bilar",
+      "aliases": [
+        "Bilar",
+        "Bilar"
+      ]
+    },
+    {
+      "name": "Buenavista",
+      "code": "0701209000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Buenavista",
+      "aliases": [
+        "Buenavista",
+        "Buenavista"
+      ]
+    },
+    {
+      "name": "Calape",
+      "code": "0701210000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Calape",
+      "aliases": [
+        "Calape",
+        "Calape"
+      ]
+    },
+    {
+      "name": "Candijay",
+      "code": "0701211000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Candijay",
+      "aliases": [
+        "Candijay",
+        "Candijay"
+      ]
+    },
+    {
+      "name": "Carmen",
+      "code": "0701212000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Carmen",
+      "aliases": [
+        "Carmen",
+        "Carmen"
+      ]
+    },
+    {
+      "name": "Catigbian",
+      "code": "0701213000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Catigbian",
+      "aliases": [
+        "Catigbian",
+        "Catigbian"
+      ]
+    },
+    {
+      "name": "Clarin",
+      "code": "0701214000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Clarin",
+      "aliases": [
+        "Clarin",
+        "Clarin"
+      ]
+    },
+    {
+      "name": "Corella",
+      "code": "0701215000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Corella",
+      "aliases": [
+        "Corella",
+        "Corella"
+      ]
+    },
+    {
+      "name": "Cortes",
+      "code": "0701216000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Cortes",
+      "aliases": [
+        "Cortes",
+        "Cortes"
+      ]
+    },
+    {
+      "name": "Dagohoy",
+      "code": "0701217000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Dagohoy",
+      "aliases": [
+        "Dagohoy",
+        "Dagohoy"
+      ]
+    },
+    {
+      "name": "Danao",
+      "code": "0701218000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Danao",
+      "aliases": [
+        "Danao",
+        "Danao"
+      ]
+    },
+    {
+      "name": "Dauis",
+      "code": "0701219000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Dauis",
+      "aliases": [
+        "Dauis",
+        "Dauis"
+      ]
+    },
+    {
+      "name": "Dimiao",
+      "code": "0701220000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Dimiao",
+      "aliases": [
+        "Dimiao",
+        "Dimiao"
+      ]
+    },
+    {
+      "name": "Duero",
+      "code": "0701221000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Duero",
+      "aliases": [
+        "Duero",
+        "Duero"
+      ]
+    },
+    {
+      "name": "Garcia Hernandez",
+      "code": "0701222000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Garcia Hernandez",
+      "aliases": [
+        "Garcia Hernandez",
+        "Garcia Hernandez"
+      ]
+    },
+    {
+      "name": "Guindulman",
+      "code": "0701223000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Guindulman",
+      "aliases": [
+        "Guindulman",
+        "Guindulman"
+      ]
+    },
+    {
+      "name": "Inabanga",
+      "code": "0701224000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Inabanga",
+      "aliases": [
+        "Inabanga",
+        "Inabanga"
+      ]
+    },
+    {
+      "name": "Jagna",
+      "code": "0701225000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Jagna",
+      "aliases": [
+        "Jagna",
+        "Jagna"
+      ]
+    },
+    {
+      "name": "Getafe",
+      "code": "0701226000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Getafe",
+      "aliases": [
+        "Getafe",
+        "Getafe"
+      ]
+    },
+    {
+      "name": "Lila",
+      "code": "0701227000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Lila",
+      "aliases": [
+        "Lila",
+        "Lila"
+      ]
+    },
+    {
+      "name": "Loay",
+      "code": "0701228000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Loay",
+      "aliases": [
+        "Loay",
+        "Loay"
+      ]
+    },
+    {
+      "name": "Loboc",
+      "code": "0701229000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Loboc",
+      "aliases": [
+        "Loboc",
+        "Loboc"
+      ]
+    },
+    {
+      "name": "Loon",
+      "code": "0701230000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Loon",
+      "aliases": [
+        "Loon",
+        "Loon"
+      ]
+    },
+    {
+      "name": "Mabini",
+      "code": "0701231000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Mabini",
+      "aliases": [
+        "Mabini",
+        "Mabini"
+      ]
+    },
+    {
+      "name": "Maribojoc",
+      "code": "0701232000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Maribojoc",
+      "aliases": [
+        "Maribojoc",
+        "Maribojoc"
+      ]
+    },
+    {
+      "name": "Panglao",
+      "code": "0701233000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Panglao",
+      "aliases": [
+        "Panglao",
+        "Panglao"
+      ]
+    },
+    {
+      "name": "Pilar",
+      "code": "0701234000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Pilar",
+      "aliases": [
+        "Pilar",
+        "Pilar"
+      ]
+    },
+    {
+      "name": "President Carlos P. Garcia",
+      "code": "0701235000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "President Carlos P. Garcia",
+      "aliases": [
+        "President Carlos P. Garcia",
+        "President Carlos P. Garcia"
+      ]
+    },
+    {
+      "name": "Sagbayan",
+      "code": "0701236000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Sagbayan",
+      "aliases": [
+        "Sagbayan",
+        "Sagbayan"
+      ]
+    },
+    {
+      "name": "San Isidro",
+      "code": "0701237000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "San Isidro",
+      "aliases": [
+        "San Isidro",
+        "San Isidro"
+      ]
+    },
+    {
+      "name": "San Miguel",
+      "code": "0701238000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "San Miguel",
+      "aliases": [
+        "San Miguel",
+        "San Miguel"
+      ]
+    },
+    {
+      "name": "Sevilla",
+      "code": "0701239000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Sevilla",
+      "aliases": [
+        "Sevilla",
+        "Sevilla"
+      ]
+    },
+    {
+      "name": "Sierra Bullones",
+      "code": "0701240000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Sierra Bullones",
+      "aliases": [
+        "Sierra Bullones",
+        "Sierra Bullones"
+      ]
+    },
+    {
+      "name": "Sikatuna",
+      "code": "0701241000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Sikatuna",
+      "aliases": [
+        "Sikatuna",
+        "Sikatuna"
+      ]
+    },
+    {
+      "name": "Talibon",
+      "code": "0701243000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Talibon",
+      "aliases": [
+        "Talibon",
+        "Talibon"
+      ]
+    },
+    {
+      "name": "Trinidad",
+      "code": "0701244000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Trinidad",
+      "aliases": [
+        "Trinidad",
+        "Trinidad"
+      ]
+    },
+    {
+      "name": "Tubigon",
+      "code": "0701245000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Tubigon",
+      "aliases": [
+        "Tubigon",
+        "Tubigon"
+      ]
+    },
+    {
+      "name": "Ubay",
+      "code": "0701246000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Ubay",
+      "aliases": [
+        "Ubay",
+        "Ubay"
+      ]
+    },
+    {
+      "name": "Valencia",
+      "code": "0701247000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Valencia",
+      "aliases": [
+        "Valencia",
+        "Valencia"
+      ]
+    },
+    {
+      "name": "Bien Unido",
+      "code": "0701248000",
+      "province": "BOHOL",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Bien Unido",
+      "aliases": [
+        "Bien Unido",
+        "Bien Unido"
+      ]
+    },
+    {
+      "name": "Alcantara",
+      "code": "0702201000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Alcantara",
+      "aliases": [
+        "Alcantara",
+        "Alcantara"
+      ]
+    },
+    {
+      "name": "Alcoy",
+      "code": "0702202000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Alcoy",
+      "aliases": [
+        "Alcoy",
+        "Alcoy"
+      ]
+    },
+    {
+      "name": "Alegria",
+      "code": "0702203000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Alegria",
+      "aliases": [
+        "Alegria",
+        "Alegria"
+      ]
+    },
+    {
+      "name": "Aloguinsan",
+      "code": "0702204000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Aloguinsan",
+      "aliases": [
+        "Aloguinsan",
+        "Aloguinsan"
+      ]
+    },
+    {
+      "name": "Argao",
+      "code": "0702205000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Argao",
+      "aliases": [
+        "Argao",
+        "Argao"
+      ]
+    },
+    {
+      "name": "Asturias",
+      "code": "0702206000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Asturias",
+      "aliases": [
+        "Asturias",
+        "Asturias"
+      ]
+    },
+    {
+      "name": "Badian",
+      "code": "0702207000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Badian",
+      "aliases": [
+        "Badian",
+        "Badian"
+      ]
+    },
+    {
+      "name": "Balamban",
+      "code": "0702208000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Balamban",
+      "aliases": [
+        "Balamban",
+        "Balamban"
+      ]
+    },
+    {
+      "name": "Bantayan",
+      "code": "0702209000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Bantayan",
+      "aliases": [
+        "Bantayan",
+        "Bantayan"
+      ]
+    },
+    {
+      "name": "Barili",
+      "code": "0702210000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Barili",
+      "aliases": [
+        "Barili",
+        "Barili"
+      ]
+    },
+    {
+      "name": "City of Bogo",
+      "code": "0702211000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "city",
+      "display": "Bogo City",
+      "aliases": [
+        "City of Bogo",
+        "Bogo"
+      ]
+    },
+    {
+      "name": "Boljoon",
+      "code": "0702212000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Boljoon",
+      "aliases": [
+        "Boljoon",
+        "Boljoon"
+      ]
+    },
+    {
+      "name": "Borbon",
+      "code": "0702213000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Borbon",
+      "aliases": [
+        "Borbon",
+        "Borbon"
+      ]
+    },
+    {
+      "name": "City of Carcar",
+      "code": "0702214000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "city",
+      "display": "Carcar City",
+      "aliases": [
+        "City of Carcar",
+        "Carcar"
+      ]
+    },
+    {
+      "name": "Carmen",
+      "code": "0702215000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Carmen",
+      "aliases": [
+        "Carmen",
+        "Carmen"
+      ]
+    },
+    {
+      "name": "Catmon",
+      "code": "0702216000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Catmon",
+      "aliases": [
+        "Catmon",
+        "Catmon"
+      ]
+    },
+    {
+      "name": "Compostela",
+      "code": "0702218000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Compostela",
+      "aliases": [
+        "Compostela",
+        "Compostela"
+      ]
+    },
+    {
+      "name": "Consolacion",
+      "code": "0702219000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Consolacion",
+      "aliases": [
+        "Consolacion",
+        "Consolacion"
+      ]
+    },
+    {
+      "name": "Cordova",
+      "code": "0702220000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Cordova",
+      "aliases": [
+        "Cordova",
+        "Cordova"
+      ]
+    },
+    {
+      "name": "Daanbantayan",
+      "code": "0702221000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Daanbantayan",
+      "aliases": [
+        "Daanbantayan",
+        "Daanbantayan"
+      ]
+    },
+    {
+      "name": "Dalaguete",
+      "code": "0702222000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Dalaguete",
+      "aliases": [
+        "Dalaguete",
+        "Dalaguete"
+      ]
+    },
+    {
+      "name": "Danao City",
+      "code": "0702223000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "city",
+      "display": "Danao City",
+      "aliases": [
+        "Danao City",
+        "Danao City"
+      ]
+    },
+    {
+      "name": "Dumanjug",
+      "code": "0702224000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Dumanjug",
+      "aliases": [
+        "Dumanjug",
+        "Dumanjug"
+      ]
+    },
+    {
+      "name": "Ginatilan",
+      "code": "0702225000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Ginatilan",
+      "aliases": [
+        "Ginatilan",
+        "Ginatilan"
+      ]
+    },
+    {
+      "name": "Liloan",
+      "code": "0702227000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Liloan",
+      "aliases": [
+        "Liloan",
+        "Liloan"
+      ]
+    },
+    {
+      "name": "Madridejos",
+      "code": "0702228000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Madridejos",
+      "aliases": [
+        "Madridejos",
+        "Madridejos"
+      ]
+    },
+    {
+      "name": "Malabuyoc",
+      "code": "0702229000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Malabuyoc",
+      "aliases": [
+        "Malabuyoc",
+        "Malabuyoc"
+      ]
+    },
+    {
+      "name": "Medellin",
+      "code": "0702231000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Medellin",
+      "aliases": [
+        "Medellin",
+        "Medellin"
+      ]
+    },
+    {
+      "name": "Minglanilla",
+      "code": "0702232000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Minglanilla",
+      "aliases": [
+        "Minglanilla",
+        "Minglanilla"
+      ]
+    },
+    {
+      "name": "Moalboal",
+      "code": "0702233000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Moalboal",
+      "aliases": [
+        "Moalboal",
+        "Moalboal"
+      ]
+    },
+    {
+      "name": "City of Naga",
+      "code": "0702234000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "city",
+      "display": "Naga City",
+      "aliases": [
+        "City of Naga",
+        "Naga"
+      ]
+    },
+    {
+      "name": "Oslob",
+      "code": "0702235000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Oslob",
+      "aliases": [
+        "Oslob",
+        "Oslob"
+      ]
+    },
+    {
+      "name": "Pilar",
+      "code": "0702236000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Pilar",
+      "aliases": [
+        "Pilar",
+        "Pilar"
+      ]
+    },
+    {
+      "name": "Pinamungajan",
+      "code": "0702237000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Pinamungajan",
+      "aliases": [
+        "Pinamungajan",
+        "Pinamungajan"
+      ]
+    },
+    {
+      "name": "Poro",
+      "code": "0702238000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Poro",
+      "aliases": [
+        "Poro",
+        "Poro"
+      ]
+    },
+    {
+      "name": "Ronda",
+      "code": "0702239000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Ronda",
+      "aliases": [
+        "Ronda",
+        "Ronda"
+      ]
+    },
+    {
+      "name": "Samboan",
+      "code": "0702240000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Samboan",
+      "aliases": [
+        "Samboan",
+        "Samboan"
+      ]
+    },
+    {
+      "name": "San Fernando",
+      "code": "0702241000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "San Fernando",
+      "aliases": [
+        "San Fernando",
+        "San Fernando"
+      ]
+    },
+    {
+      "name": "San Francisco",
+      "code": "0702242000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "San Francisco",
+      "aliases": [
+        "San Francisco",
+        "San Francisco"
+      ]
+    },
+    {
+      "name": "San Remigio",
+      "code": "0702243000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "San Remigio",
+      "aliases": [
+        "San Remigio",
+        "San Remigio"
+      ]
+    },
+    {
+      "name": "Santa Fe",
+      "code": "0702244000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Santa Fe",
+      "aliases": [
+        "Santa Fe",
+        "Santa Fe"
+      ]
+    },
+    {
+      "name": "Santander",
+      "code": "0702245000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Santander",
+      "aliases": [
+        "Santander",
+        "Santander"
+      ]
+    },
+    {
+      "name": "Sibonga",
+      "code": "0702246000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Sibonga",
+      "aliases": [
+        "Sibonga",
+        "Sibonga"
+      ]
+    },
+    {
+      "name": "Sogod",
+      "code": "0702247000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Sogod",
+      "aliases": [
+        "Sogod",
+        "Sogod"
+      ]
+    },
+    {
+      "name": "Tabogon",
+      "code": "0702248000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Tabogon",
+      "aliases": [
+        "Tabogon",
+        "Tabogon"
+      ]
+    },
+    {
+      "name": "Tabuelan",
+      "code": "0702249000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Tabuelan",
+      "aliases": [
+        "Tabuelan",
+        "Tabuelan"
+      ]
+    },
+    {
+      "name": "City of Talisay",
+      "code": "0702250000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "city",
+      "display": "Talisay City",
+      "aliases": [
+        "City of Talisay",
+        "Talisay"
+      ]
+    },
+    {
+      "name": "City of Toledo",
+      "code": "0702251000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "city",
+      "display": "Toledo City",
+      "aliases": [
+        "City of Toledo",
+        "Toledo"
+      ]
+    },
+    {
+      "name": "Tuburan",
+      "code": "0702252000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Tuburan",
+      "aliases": [
+        "Tuburan",
+        "Tuburan"
+      ]
+    },
+    {
+      "name": "Tudela",
+      "code": "0702253000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "municipality",
+      "display": "Tudela",
+      "aliases": [
+        "Tudela",
+        "Tudela"
+      ]
+    },
+    {
+      "name": "City of Cebu",
+      "code": "0730600000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "city",
+      "display": "Cebu City",
+      "aliases": [
+        "City of Cebu",
+        "Cebu"
+      ]
+    },
+    {
+      "name": "City of Lapu-Lapu",
+      "code": "0731100000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "city",
+      "display": "Lapu-Lapu City",
+      "aliases": [
+        "City of Lapu-Lapu",
+        "Lapu-Lapu"
+      ]
+    },
+    {
+      "name": "City of Mandaue",
+      "code": "0731300000",
+      "province": "CEBU",
+      "region": "REGION VII (CENTRAL VISAYAS)",
+      "level": "city",
+      "display": "Mandaue City",
+      "aliases": [
+        "City of Mandaue",
+        "Mandaue"
+      ]
+    }
+  ]
+}

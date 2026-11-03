@@ -1,0 +1,4 @@
+{
+  "_readme": "Manual establishment matches. Key = normalised legal respondent name (as it appears in the docket), value = ENVIS facility id (F00001). Add a line here when reports/legal-match-candidates.csv gives you a match you have verified. Run `npm run data:legal` afterwards.",
+  "aliases": {}
+}

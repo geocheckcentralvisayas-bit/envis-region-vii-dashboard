@@ -1,0 +1,28 @@
+# Credentials (never commit)
+CREDENTIALS.md
+
+# Build / deps
+node_modules/
+dist/
+logs/
+
+# Source spatial data (shapefiles) — provided separately, not published
+spatial-src/
+
+# Raw source data and pinned snapshots (large / internal)
+data/raw/
+data/legal/
+
+# Generated reports (review queues)
+reports/
+
+# Environment
+.env
+.env.local
+
+# Environment-specific npm config
+.npmrc
+
+# Tooling artifacts
+.specstory/
+assets/
