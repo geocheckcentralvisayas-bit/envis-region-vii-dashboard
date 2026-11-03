@@ -3,7 +3,7 @@
 [![Build](https://img.shields.io/badge/build-passing-2ea44f)](#)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178c6)](#)
 [![React](https://img.shields.io/badge/React-19-61dafb)](#)
-[![License](https://img.shields.io/badge/license-MIT-blue)](#)
+[![License](https://img.shields.io/badge/license-MIS%20Credit-blue)](#)
 
 A static, browser-based analytics and geospatial platform for DENR-EMB Region VII that
 intercrosses the region's environmental compliance registers — Discharge Permits (DP),
@@ -103,7 +103,7 @@ bundle can be hosted at a domain root or in a subfolder (GitHub Pages, S3, IIS, 
 
 ## License
 
-Released under the MIT License. See `LICENSE`. Permit data belongs to DENR-EMB Region VII.  
+Released under the MIS Credit License. See `LICENSE`. Permit data belongs to DENR-EMB Region VII.  
 Basemaps provided by Esri and OpenStreetMap contributors.  
 This dashboard is a monitoring aid and does not replace official records, permits or clearances.
 No screenshots of the live application are included in this repository.
