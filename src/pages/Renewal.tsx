@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { CalendarClock, CalendarX2, Download, FileWarning, MapPin, Search, TimerReset } from 'lucide-react';
 import clsx from 'clsx';
 import { requestExport } from '../lib/exportGate';
+import { getSession } from '../lib/auth';
 import { useDashboard, useFilteredPermits } from '../store/useDashboard';
 import { Chip, DataTable, Panel, SectionHeading, StatCard, type Column } from '../components/ui';
 import { MapButton } from '../components/MapButton';
@@ -211,9 +212,11 @@ export function RenewalPage() {
             <button type="button" className="btn" onClick={() => setPage('map')}>
               <MapPin size={13} /> Map affected sites
             </button>
-            <button type="button" className="btn btn-primary" onClick={() => requestExport(exportRows)}>
-              <Download size={13} /> Export {formatNumber(watchlist.length)}
-            </button>
+            {getSession()?.role !== 'rd' && (
+              <button type="button" className="btn btn-primary" onClick={() => requestExport(exportRows)}>
+                <Download size={13} /> Export {formatNumber(watchlist.length)}
+              </button>
+            )}
           </>
         }
       />

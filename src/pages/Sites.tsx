@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { Building2, Download, MapPin, Sparkles, Unlink2 } from 'lucide-react';
 import clsx from 'clsx';
 import { requestExport } from '../lib/exportGate';
+import { getSession } from '../lib/auth';
 import { useDashboard, useFilteredSites } from '../store/useDashboard';
 import { Chip, DataTable, Panel, SectionHeading, StatCard, type Column } from '../components/ui';
 import { MapButton } from '../components/MapButton';
@@ -159,9 +160,11 @@ export function SitesPage() {
             <button type="button" className="btn" onClick={() => setPage('map')}>
               <MapPin size={13} /> Map view
             </button>
-            <button type="button" className="btn btn-primary" onClick={() => requestExport(exportRows)}>
-              <Download size={13} /> Export {formatNumber(sites.length)}
-            </button>
+            {getSession()?.role !== 'rd' && (
+              <button type="button" className="btn btn-primary" onClick={() => requestExport(exportRows)}>
+                <Download size={13} /> Export {formatNumber(sites.length)}
+              </button>
+            )}
           </>
         }
       />

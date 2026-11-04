@@ -2,6 +2,7 @@
 import { Download, FlaskConical, MapPin, Recycle } from 'lucide-react';
 import clsx from 'clsx';
 import { requestExport } from '../lib/exportGate';
+import { getSession } from '../lib/auth';
 import { useDashboard, useFilteredHw } from '../store/useDashboard';
 import { Chip, DataTable, Panel, SectionHeading, StatCard, type Column } from '../components/ui';
 import { MapButton } from '../components/MapButton';
@@ -246,9 +247,11 @@ export function HazardousWastePage() {
             <button type="button" className="btn" onClick={() => setShowCodes((value) => !value)}>
               {showCodes ? 'Hide waste codes' : 'Show waste codes'}
             </button>
-            <button type="button" className="btn btn-primary" onClick={() => requestExport(exportRows)}>
-              <Download size={13} /> Export {formatNumber(hw.length)}
-            </button>
+            {getSession()?.role !== 'rd' && (
+              <button type="button" className="btn btn-primary" onClick={() => requestExport(exportRows)}>
+                <Download size={13} /> Export {formatNumber(hw.length)}
+              </button>
+            )}
           </>
         }
       />

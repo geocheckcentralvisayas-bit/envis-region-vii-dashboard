@@ -8,6 +8,7 @@ import { Chip, DataTable, EmptyState, Panel, SectionHeading, StatCard, type Colu
 import { MapButton } from '../components/MapButton';
 import { Chart, axisStyle, chartBase } from '../components/Chart';
 import { requestExport } from '../lib/exportGate';
+import { getSession } from '../lib/auth';
 import {
   LEGAL_COVERAGE_STYLE, LEGAL_MATCH_LABEL, LEGAL_PAYMENT_STYLE, LEGAL_STATUS_STYLE, REGISTER_META,
   downloadCsv, formatDate, formatNumber, formatPeso,
@@ -431,7 +432,7 @@ export function LegalPage() {
             <button type="button" className="btn" onClick={() => setPage('map')}>
               <MapPin size={13} /> Map
             </button>
-            {view !== 'pab' && (
+            {view !== 'pab' && getSession()?.role !== 'rd' && (
               <button type="button" className="btn btn-primary" onClick={exportCurrent}>
                 <Download size={13} /> Export {formatNumber(view === 'entities' ? scopedEntities.length : scopedCases.length)}
               </button>

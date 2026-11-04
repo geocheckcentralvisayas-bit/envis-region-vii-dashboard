@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { CheckSquare, Download, Eye, EyeOff, Layers3, MousePointer2, Square } from 'lucide-react';
 import { requestGeoJson } from '../lib/exportGate';
+import { getSession } from '../lib/auth';
 import clsx from 'clsx';
 import { useDashboard } from '../store/useDashboard';
 import { MapView } from '../components/MapView';
@@ -149,16 +150,18 @@ export function SpatialLayersPage() {
                       {on ? <Eye size={11} /> : <EyeOff size={11} />}
                       {on ? 'Hide' : 'Preview'}
                     </button>
-                    <button type="button" className="btn btn-xs btn-ghost" onClick={() => requestGeoJson(() => {
-                      const a = document.createElement("a");
-                      a.href = `${import.meta.env.BASE_URL || "./"}data/geojson/${layer.file}`;
-                      a.download = layer.file;
-                      document.body.appendChild(a);
-                      a.click();
-                      a.remove();
-                    })}>
-                      <Download size={11} /> GeoJSON
-                    </button>
+                    {getSession()?.role !== 'rd' && (
+                      <button type="button" className="btn btn-xs btn-ghost" onClick={() => requestGeoJson(() => {
+                        const a = document.createElement("a");
+                        a.href = `${import.meta.env.BASE_URL || "./"}data/geojson/${layer.file}`;
+                        a.download = layer.file;
+                        document.body.appendChild(a);
+                        a.click();
+                        a.remove();
+                      })}>
+                        <Download size={11} /> GeoJSON
+                      </button>
+                    )}
                   </div>
                 </article>
               );

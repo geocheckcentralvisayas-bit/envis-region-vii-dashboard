@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { Download, FileCheck2, MapPin } from 'lucide-react';
 import clsx from 'clsx';
 import { requestExport } from '../lib/exportGate';
+import { getSession } from '../lib/auth';
 import { useDashboard, useFilteredClearances } from '../store/useDashboard';
 import { Chip, DataTable, Panel, SectionHeading, StatCard, type Column } from '../components/ui';
 import { MapButton } from '../components/MapButton';
@@ -192,9 +193,11 @@ export function ClearancesPage() {
             <button type="button" className="btn" onClick={() => setPage('map')}>
               <MapPin size={13} /> Map view
             </button>
-            <button type="button" className="btn btn-primary" onClick={() => requestExport(exportRows)}>
-              <Download size={13} /> Export {formatNumber(visible.length)}
-            </button>
+            {getSession()?.role !== 'rd' && (
+              <button type="button" className="btn btn-primary" onClick={() => requestExport(exportRows)}>
+                <Download size={13} /> Export {formatNumber(visible.length)}
+              </button>
+            )}
           </>
         }
       />

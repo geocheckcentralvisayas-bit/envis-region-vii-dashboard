@@ -134,7 +134,7 @@ export function Layout({ children, session, onLogout }: { children: React.ReactN
             <div key={section.group} className="mb-3">
               <div className={clsx('px-2 pb-1.5 text-[8.5px] font-bold uppercase tracking-[0.19em] text-slate-600', collapsed && 'md:hidden')}>{section.group}</div>
               <div className="space-y-0.5">
-                {section.items.map((item) => {
+                {section.items.filter((item) => !(session?.role === 'rd' && item.id === 'reports')).map((item) => {
                   const Icon = item.icon;
                   const active = page === item.id;
                   return (

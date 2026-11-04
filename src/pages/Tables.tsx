@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { Download, Table2 } from 'lucide-react';
 import clsx from 'clsx';
 import { requestExport } from '../lib/exportGate';
+import { getSession } from '../lib/auth';
 import { useDashboard, useFilteredPermits, useFilteredSites, useFilteredHw, useFilteredClearances } from '../store/useDashboard';
 import { Chip, DataTable, Panel, SectionHeading, type Column } from '../components/ui';
 import { MapButton } from '../components/MapButton';
@@ -172,9 +173,11 @@ export function TablesPage() {
                 Show QA flags
               </label>
             )}
-            <button type="button" className="btn btn-primary" onClick={() => requestExport(exportFn)}>
-              <Download size={13} /> Export view
-            </button>
+            {getSession()?.role !== 'rd' && (
+              <button type="button" className="btn btn-primary" onClick={() => requestExport(exportFn)}>
+                <Download size={13} /> Export view
+              </button>
+            )}
           </>
         }
       />

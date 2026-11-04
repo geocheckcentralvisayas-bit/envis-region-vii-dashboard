@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { CalendarClock, CheckCircle2, Download, Droplets, FileWarning, MapPin } from 'lucide-react';
 import { requestExport } from '../lib/exportGate';
+import { getSession } from '../lib/auth';
 import { useDashboard, useFilteredPermits } from '../store/useDashboard';
 import { Chip, DataTable, MetricRow, Panel, SectionHeading, StatCard, type Column } from '../components/ui';
 import { MapButton } from '../components/MapButton';
@@ -200,9 +201,11 @@ export function PermitsPage({ type }: { type: PermitType }) {
             <button type="button" className="btn" onClick={() => setPage('map')}>
               <MapPin size={13} /> Map
             </button>
+{getSession()?.role !== 'rd' && (
             <button type="button" className="btn btn-primary" onClick={() => requestExport(exportRows)}>
               <Download size={13} /> Export {formatNumber(permits.length)}
             </button>
+          )}
           </>
         }
       />

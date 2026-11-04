@@ -57,12 +57,19 @@ export default function App() {
   const progress = useDashboard((state) => state.progress);
   const error = useDashboard((state) => state.error);
   const page = useDashboard((state) => state.page);
+const setPage = useDashboard((state) => state.setPage);
+  const setSessionStore = useDashboard((state) => state.setSession);
   const [session, setSession] = useState<Session | null>(() => getSession());
+
   const [gateOpen, setGateOpen] = useState(false);
   const [exportUser, setExportUser] = useState('');
   const [exportPass, setExportPass] = useState('');
   const [exportError, setExportError] = useState('');
   const [exportBusy, setExportBusy] = useState(false);
+
+useEffect(() => {
+  setSessionStore(session);
+}, [session, setSessionStore]);
 
   useEffect(() => {
     return subscribeGate((state) => setGateOpen(state.open));
@@ -87,6 +94,12 @@ export default function App() {
   useEffect(() => {
     load();
   }, [load]);
+
+  useEffect(() => {
+    if (session?.role === 'rd' && page === 'reports') {
+      setPage('overview');
+    }
+  }, [session, page, setPage]);
 
   useEffect(() => {
     const onHashChange = () => {

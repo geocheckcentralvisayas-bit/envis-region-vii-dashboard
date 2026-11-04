@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { useMemo } from 'react';
 import type { Clearance, Facility, HwRegistration, LayerManifest, LegalData, Meta, PageId, Permit, QualityData, Site, SiteGap } from '../types';
+import type { Session } from '../lib/auth';
 
 export interface Filters {
   year: number | 'all';
@@ -49,6 +50,7 @@ interface DashboardState {
   selectedSiteId: string | null;
   focus: MapFocus | null;
   legalFocus: { entityId: string; nonce: number } | null;
+  session: Session | null;
   load: () => Promise<void>;
   setPage: (page: PageId) => void;
   setFilters: (patch: Partial<Filters>) => void;
@@ -57,6 +59,7 @@ interface DashboardState {
   selectSite: (id: string | null) => void;
   openMapAt: (target: FocusTarget) => void;
   openLegalEntity: (entityId: string) => void;
+  setSession: (session: Session | null) => void;
 }
 
 const DEFAULT_FILTERS: Filters = {
@@ -117,6 +120,7 @@ export const useDashboard = create<DashboardState>((set, get) => ({
   selectedSiteId: null,
   focus: null,
   legalFocus: null,
+  session: null,
 
   load: async () => {
     if (get().loading || get().data) return;
@@ -186,6 +190,8 @@ export const useDashboard = create<DashboardState>((set, get) => ({
     }));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   },
+
+  setSession: (session) => set({ session }),
 }));
 
 export function matchesSearch(haystack: Array<string | number | null | undefined>, search: string): boolean {
