@@ -55,9 +55,16 @@ export function getSession(): Session | null {
     const raw = localStorage.getItem(SESSION_KEY);
     if (!raw) return null;
     const session = JSON.parse(raw) as Session;
-    if (!session || !session.at || Date.now() - session.at > SESSION_TTL_MS) {
+    if (!session || !session.at) {
       localStorage.removeItem(SESSION_KEY);
       return null;
+    }
+    // Regional Director sessions never expire.
+    if (session.role !== 'rd') {
+      if (Date.now() - session.at > SESSION_TTL_MS) {
+        localStorage.removeItem(SESSION_KEY);
+        return null;
+      }
     }
     return session;
   } catch {
