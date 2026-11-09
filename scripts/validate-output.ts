@@ -1,0 +1,114 @@
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
+import { z } from 'zod';
+import { DatasetSchema, PCOAnalysisSchema, PCORecordSchema } from './schemas.ts';
+
+const OUT_DIR = 'public/data';
+
+const FILES = [
+  'permits.json',
+  'sites.json',
+  'meta.json',
+  'quality.json',
+  'hw.json',
+  'clearances.json',
+  'facilities.json',
+  'geojson/layers.json',
+  'legal.json',
+  'pco-database.json',
+  'pco-analysis.json',
+];
+
+async function validateFile(file: string, schema: any) {
+  const filePath = path.join(OUT_DIR, file);
+  try {
+    const content = await readFile(filePath, 'utf8');
+    const data = JSON.parse(content);
+    const result = schema.safeParse(data);
+    if (!result.success) {
+      console.error(`\n❌ ${file} validation failed:`);
+      for (const issue of result.error.issues) {
+        console.error(`  ${issue.path.join('.')}: ${issue.message}`);
+      }
+      return false;
+    }
+    console.log(`✅ ${file} valid`);
+    return true;
+  } catch (error) {
+    console.error(`\n❌ ${file} error: ${error.message}`);
+    return false;
+  }
+}
+
+async function main() {
+  console.log('Validating output JSON files...\n');
+
+  const schemas = {
+    'permits.json': DatasetSchema.shape.permits,
+    'sites.json': DatasetSchema.shape.sites,
+    'meta.json': DatasetSchema.shape.meta,
+    'quality.json': DatasetSchema.shape.quality,
+    'hw.json': DatasetSchema.shape.hw,
+    'clearances.json': DatasetSchema.shape.clearances,
+    'facilities.json': DatasetSchema.shape.facilities,
+    'geojson/layers.json': DatasetSchema.shape.layers,
+    'legal.json': DatasetSchema.shape.legal,
+    'pco-database.json': z.object({
+      generatedAt: z.string(),
+      sourceFile: z.string(),
+      recordCount: z.number().int(),
+      records: z.array(PCORecordSchema),
+    }),
+    'pco-analysis.json': PCOAnalysisSchema,
+  };
+
+  let allValid = true;
+  for (const file of FILES) {
+    const schema = schemas[file];
+    if (!schema) {
+      console.log(`⚠️  ${file}: no schema defined`);
+      continue;
+    }
+    const valid = await validateFile(file, schema);
+    if (!valid) allValid = false;
+  }
+
+  // Also validate the combined dataset if all individual files are valid
+  if (allValid) {
+    console.log('\nValidating combined dataset structure...');
+    try {
+      const dataset = {
+        permits: JSON.parse(await readFile(path.join(OUT_DIR, 'permits.json'), 'utf8')),
+        sites: JSON.parse(await readFile(path.join(OUT_DIR, 'sites.json'), 'utf8')),
+        meta: JSON.parse(await readFile(path.join(OUT_DIR, 'meta.json'), 'utf8')),
+        quality: JSON.parse(await readFile(path.join(OUT_DIR, 'quality.json'), 'utf8')),
+        hw: JSON.parse(await readFile(path.join(OUT_DIR, 'hw.json'), 'utf8')),
+        clearances: JSON.parse(await readFile(path.join(OUT_DIR, 'clearances.json'), 'utf8')),
+        facilities: JSON.parse(await readFile(path.join(OUT_DIR, 'facilities.json'), 'utf8')),
+        layers: JSON.parse(await readFile(path.join(OUT_DIR, 'geojson/layers.json'), 'utf8')),
+        legal: JSON.parse(await readFile(path.join(OUT_DIR, 'legal.json'), 'utf8')),
+      };
+      const result = DatasetSchema.safeParse(dataset);
+      if (!result.success) {
+        console.error('❌ Combined dataset validation failed:');
+        for (const issue of result.error.issues) {
+          console.error(`  ${issue.path.join('.')}: ${issue.message}`);
+        }
+        allValid = false;
+      } else {
+        console.log('✅ Combined dataset valid');
+      }
+    } catch (error) {
+      console.error(`❌ Combined dataset error: ${error.message}`);
+      allValid = false;
+    }
+  }
+
+  console.log(allValid ? '\n✅ All validations passed' : '\n❌ Some validations failed');
+  process.exit(allValid ? 0 : 1);
+}
+
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

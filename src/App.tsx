@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense, lazy } from 'react';
 import { AlertTriangle, RefreshCw } from 'lucide-react';
 import { useDashboard } from './store/useDashboard';
 import { Layout } from './components/Layout';
@@ -7,25 +7,27 @@ import { SiteDrawer } from './components/SiteDrawer';
 import { LoginGate } from './components/LoginGate';
 import { subscribeGate, resolveGate, cancelGate, tryGateLogin, getPendingKind } from './lib/exportGate';
 import { getSession, logout, type Session } from './lib/auth';
-import { OverviewPage } from './pages/Overview';
-import { SitesPage } from './pages/Sites';
-import { PermitsPage } from './pages/Permits';
-import { RenewalPage } from './pages/Renewal';
-import { MapPage } from './pages/MapPage';
-import { SpatialLayersPage } from './pages/SpatialLayers';
-import { ScreeningPage } from './pages/Screening';
-import { QualityPage } from './pages/Quality';
-import { TablesPage } from './pages/Tables';
-import { ReportsPage } from './pages/Reports';
-import { AboutPage } from './pages/About';
-import { HazardousWastePage } from './pages/HazardousWaste';
-import { ClearancesPage } from './pages/Clearances';
-import { LegalPage } from './pages/Legal';
 import type { PageId } from './types';
+
+const OverviewPage = lazy(() => import('./pages/Overview').then((m) => ({ default: m.OverviewPage })));
+const SitesPage = lazy(() => import('./pages/Sites').then((m) => ({ default: m.SitesPage })));
+const PermitsPage = lazy(() => import('./pages/Permits').then((m) => ({ default: m.PermitsPage })));
+const RenewalPage = lazy(() => import('./pages/Renewal').then((m) => ({ default: m.RenewalPage })));
+const MapPage = lazy(() => import('./pages/MapPage').then((m) => ({ default: m.MapPage })));
+const SpatialLayersPage = lazy(() => import('./pages/SpatialLayers').then((m) => ({ default: m.SpatialLayersPage })));
+const ScreeningPage = lazy(() => import('./pages/Screening').then((m) => ({ default: m.ScreeningPage })));
+const QualityPage = lazy(() => import('./pages/Quality').then((m) => ({ default: m.QualityPage })));
+const TablesPage = lazy(() => import('./pages/Tables').then((m) => ({ default: m.TablesPage })));
+const ReportsPage = lazy(() => import('./pages/Reports').then((m) => ({ default: m.ReportsPage })));
+const AboutPage = lazy(() => import('./pages/About').then((m) => ({ default: m.AboutPage })));
+const HazardousWastePage = lazy(() => import('./pages/HazardousWaste').then((m) => ({ default: m.HazardousWastePage })));
+const ClearancesPage = lazy(() => import('./pages/Clearances').then((m) => ({ default: m.ClearancesPage })));
+const LegalPage = lazy(() => import('./pages/Legal').then((m) => ({ default: m.LegalPage })));
+const PCOCornerPage = lazy(() => import('./pages/PCOCorner').then((m) => ({ default: m.PCOCorner })));
 
 const PAGE_IDS: PageId[] = [
   'overview', 'sites', 'dp', 'pto', 'renewal', 'map',
-  'spatial', 'screening', 'quality', 'tables', 'reports', 'about', 'hw', 'clearances', 'legal',
+  'spatial', 'screening', 'quality', 'tables', 'reports', 'about', 'hw', 'clearances', 'legal', 'pco-corner',
 ];
 
 function renderPage(page: PageId) {
@@ -44,6 +46,7 @@ function renderPage(page: PageId) {
     case 'hw': return <HazardousWastePage />;
     case 'clearances': return <ClearancesPage />;
     case 'legal': return <LegalPage />;
+    case 'pco-corner': return <PCOCornerPage />;
     case 'overview':
     default:
       return <OverviewPage />;
@@ -51,13 +54,12 @@ function renderPage(page: PageId) {
 }
 
 export default function App() {
-  const load = useDashboard((state) => state.load);
   const data = useDashboard((state) => state.data);
   const loading = useDashboard((state) => state.loading);
   const progress = useDashboard((state) => state.progress);
   const error = useDashboard((state) => state.error);
   const page = useDashboard((state) => state.page);
-const setPage = useDashboard((state) => state.setPage);
+  const setPage = useDashboard((state) => state.setPage);
   const setSessionStore = useDashboard((state) => state.setSession);
   const [session, setSession] = useState<Session | null>(() => getSession());
 
@@ -92,8 +94,9 @@ useEffect(() => {
   };
 
   useEffect(() => {
+    const load = useDashboard.getState().load;
     load();
-  }, [load]);
+  }, []);
 
   useEffect(() => {
     if (session?.role === 'rd' && page === 'reports') {
@@ -189,10 +192,34 @@ useEffect(() => {
     );
   }
 
-  return (
+  const PageLoading = () => (
+  <div className="app-shell grid-noise grid min-h-screen place-items-center px-6">
+    <div className="relative z-10 w-full max-w-sm text-center">
+      <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-600 text-ink-950 shadow-glow">
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 2C8 7 5 10.5 5 14a7 7 0 0 0 14 0c0-3.5-3-7-7-12Z" />
+          <path d="M9 14c0 1.7 1.3 3 3 3" />
+        </svg>
+      </div>
+      <div className="mt-4 flex items-center justify-center gap-2">
+        <span className="text-[19px] font-extrabold tracking-tight text-slate-50">ENVIS</span>
+        <span className="rounded bg-emerald-400/15 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-emerald-300">Region VII</span>
+      </div>
+      <p className="mt-1 text-[10px] uppercase tracking-[0.18em] text-slate-600">DENR-EMB Central Visayas</p>
+      <div className="mt-6 h-1 w-full overflow-hidden rounded-full bg-white/[0.06]">
+        <div className="h-full w-1/3 animate-shimmer rounded-full bg-gradient-to-r from-emerald-500/20 via-emerald-300 to-emerald-500/20" style={{ backgroundSize: '400px 100%' }} />
+      </div>
+      <p className="mt-2 text-[11px] text-slate-500">Loading page…</p>
+    </div>
+  </div>
+);
+
+return (
     <>
       <Layout session={session} onLogout={() => setSession(null)}>
-        <ErrorBoundary resetKey={page}>{renderPage(page)}</ErrorBoundary>
+        <Suspense fallback={<PageLoading />}>
+          <ErrorBoundary resetKey={page}>{renderPage(page)}</ErrorBoundary>
+        </Suspense>
       </Layout>
       <SiteDrawer />
       {gateOpen && (

@@ -456,6 +456,40 @@ html.light .bg-white\/\[0\.08\], html.light .bg-white\/\[0\.1\] { background: rg
 html.light .border-white\/20 { border-color: rgba(15,23,42,0.12) !important; }
 html.light .bg-emerald-400\/20 { background: rgba(16,185,129,0.16) !important; }
 html.light .bg-rose-400\/20 { background: rgba(244,63,94,0.16) !important; }
+
+/* Light theme: fix select dropdown arrow */
+html.light .select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2.5'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 0.7rem center !important;
+}
+
+/* Light theme: sidebar group labels */
+html.light .text-slate-600 { color: #475569 !important; }
+
+/* Light theme: header filter bar text */
+html.light .text-slate-700 { color: #334155 !important; }
+html.light .text-slate-800 { color: #1e293b !important; }
+html.light .text-slate-900 { color: #0f172a !important; }
+
+/* Light theme: PCO Corner tabs */
+html.light .border-slate-300 { border-color: #cbd5e1 !important; }
+html.light .hover\:border-slate-300:hover { border-color: #cbd5e1 !important; }
+html.light .hover\:text-slate-700:hover { color: #334155 !important; }
+
+/* Light theme: button ghosts and borders */
+html.light .btn-ghost { background: transparent; color: #475569; }
+html.light .btn-ghost:hover { background: rgba(15,23,42,0.06); color: #0f172a; }
+html.light .border-white\/\[0\.05\], html.light .border-white\/\[0\.055\] { border-color: rgba(15,23,42,0.08) !important; }
+
+/* Light theme: sidebar nav icons */
+html.light .nav-icon { color: #475569 !important; }
+html.light .sidebar-link:hover .nav-icon { color: #0f172a !important; }
+html.light .sidebar-link.active .nav-icon { color: #059669 !important; }
+
+/* Light theme: sidebar group labels */
+html.light .text-slate-600.uppercase { color: #475569 !important; }
+
 .card, .btn, .input, .select { transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease; }
 table tbody tr { transition: background-color 0.15s ease; }
 table tbody tr:hover { background: rgba(16,185,129,0.06); }

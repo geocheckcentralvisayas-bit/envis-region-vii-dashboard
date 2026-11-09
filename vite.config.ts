@@ -9,5 +9,18 @@ export default defineConfig({
     open: false,
     watch: { ignored: ['**/data/raw/**', '**/dist/**'] },
   },
-  build: { outDir: 'dist', chunkSizeWarningLimit: 1600 },
+  build: {
+    outDir: 'dist',
+    chunkSizeWarningLimit: 1600,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom'],
+          'vendor-charts': ['echarts', 'echarts-for-react'],
+          'vendor-map': ['leaflet', 'leaflet.markercluster'],
+          'vendor-ui': ['lucide-react', 'clsx', 'zustand'],
+        },
+      },
+    },
+  },
 });

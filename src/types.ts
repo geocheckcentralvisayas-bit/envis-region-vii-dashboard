@@ -544,4 +544,138 @@ export type PageId =
   | 'about'
   | 'hw'
   | 'clearances'
-  | 'legal';
+  | 'legal'
+  | 'pco-corner';
+
+export type Role = '[redacted]' | 'rd' | 'emed' | 'cpd' | 'mis' | 'viewer' | 'gis';
+
+export interface Session {
+  username: string;
+  role: Role;
+  displayName: string;
+  division: string;
+  at: number;
+}
+
+// PCO Types
+export interface PCORecord {
+  id: number;
+  evaluator: string;
+  pco: string;
+  type: 'New' | 'Renewal';
+  status: string;
+  establishment: string;
+  address: string;
+  natureOfBusiness: string;
+  category: string;
+  telephoneNo: string | number | null;
+  managingHead: string;
+  dateCreated: string | null;
+  dateApproved: string | null;
+  remarks?: string;
+}
+
+export interface PCOCompanySummary {
+  pco: string;
+  evaluator: string;
+  totalRecords: number;
+  newCount: number;
+  renewalCount: number;
+  companies: number;
+  establishments: {
+    establishment: string;
+    address: string;
+    natureOfBusiness: string;
+    category: string;
+    type: 'New' | 'Renewal';
+    dateApproved: string | null;
+  }[];
+  municipalities: string[];
+  industries: string[];
+}
+
+export interface PCOPermitCrossRef {
+  pco: string;
+  company: string;
+  establishment: string;
+  permitType: 'DP' | 'PTO';
+  permitNo: string;
+  permitStatus: string;
+  permitExpiry: string | null;
+  hwRegistrations: {
+    hwGrNo: string;
+    hwStatus: string;
+    hwExpiry: string | null;
+  }[];
+  clearances: {
+    number: string;
+    type: string;
+    status: string;
+  }[];
+  matchConfidence: 'high' | 'medium' | 'low';
+}
+
+export interface PCOAnalysis {
+  generatedAt: string;
+  referenceDate: string;
+  totals: {
+    pcoRecords: number;
+    uniquePCOs: number;
+    uniqueEvaluators: number;
+    uniqueEstablishments: number;
+    newAccreditations: number;
+    renewals: number;
+    categoryA: number;
+    categoryB: number;
+  };
+  byPCO: PCOCompanySummary[];
+  crossReferences: PCOPermitCrossRef[];
+  unmatchedPCOs: {
+    pco: string;
+    establishment: string;
+    reason: string;
+  }[];
+  expiringSoon: {
+    pco: string;
+    establishment: string;
+    type: 'permit' | 'hw' | 'pco-accreditation';
+    expiryDate: string;
+    daysUntilExpiry: number;
+  }[];
+}
+
+export interface Dataset {
+  permits: Permit[];
+  sites: Site[];
+  meta: Meta;
+  quality: QualityData;
+  layers: LayerManifest;
+  hw: HwRegistration[];
+  clearances: Clearance[];
+  facilities: Facility[];
+  legal: LegalData;
+}
+
+export interface Filters {
+  year: number | 'all';
+  province: string | 'all';
+  lifecycle: string | 'all';
+  scope: 'in' | 'all' | 'out';
+  type: 'all' | 'DP' | 'PTO';
+  search: string;
+}
+
+export interface MapFocus {
+  lat: number;
+  lon: number;
+  label: string;
+  siteId: string | null;
+  nonce: number;
+}
+
+export interface FocusTarget {
+  lat: number | null | undefined;
+  lon: number | null | undefined;
+  label: string;
+  siteId?: string | null;
+}

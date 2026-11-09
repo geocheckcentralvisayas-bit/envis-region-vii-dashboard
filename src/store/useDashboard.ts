@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { useMemo } from 'react';
-import type { Clearance, Facility, HwRegistration, LayerManifest, LegalData, Meta, PageId, Permit, QualityData, Site, SiteGap } from '../types';
+import type { Clearance, Facility, HwRegistration, LayerManifest, LegalData, Meta, PageId, PCOAnalysis, PCORecord, Permit, QualityData, Site, SiteGap } from '../types';
 import type { Session } from '../lib/auth';
 
 export interface Filters {
@@ -41,6 +41,8 @@ export interface FocusTarget {
 
 interface DashboardState {
   data: Dataset | null;
+  pcoRecords: PCORecord[];
+  pcoAnalysis: PCOAnalysis | null;
   loading: boolean;
   progress: string;
   error: string | null;
@@ -111,6 +113,8 @@ const EMPTY_LEGAL: LegalData = {
 
 export const useDashboard = create<DashboardState>((set, get) => ({
   data: null,
+  pcoRecords: [],
+  pcoAnalysis: null,
   loading: false,
   progress: '',
   error: null,
@@ -140,6 +144,16 @@ export const useDashboard = create<DashboardState>((set, get) => ({
         fetchOptionalJson<LegalData>('legal.json', EMPTY_LEGAL),
       ]);
       set({ data: { meta, permits, sites, quality, layers, hw, clearances, facilities, legal }, loading: false, progress: 'Ready' });
+      // Fetch PCO data separately
+      try {
+        const [pcoRecords, pcoAnalysis] = await Promise.all([
+          fetchOptionalJson<{ records: PCORecord[] }>('pco-database.json', { records: [] }),
+          fetchOptionalJson<PCOAnalysis | null>('pco-analysis.json', null),
+        ]);
+        set({ pcoRecords: pcoRecords?.records ?? [], pcoAnalysis });
+      } catch {
+        // PCO data is optional; ignore errors
+      }
     } catch (error) {
       set({
         loading: false,

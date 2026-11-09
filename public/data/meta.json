@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-11-03T00:22:35.070Z",
-  "referenceDate": "2026-11-03",
+  "generatedAt": "2026-11-09T07:40:58.698Z",
+  "referenceDate": "2026-11-09",
   "sources": {
     "fetchedAt": "2026-11-03T00:21:34.883Z",
     "workbooks": {
@@ -258,9 +258,9 @@
     "coordinatesApproximate": 299,
     "coordinatesUnresolved": 0,
     "screened": 8915,
-    "active": 2583,
-    "expiring": 281,
-    "expired": 3382,
+    "active": 2549,
+    "expiring": 298,
+    "expired": 3399,
     "unknownExpiry": 453,
     "crossMatchedSites": 827,
     "riskSites": 799,
@@ -1063,11 +1063,11 @@
   "lifecycles": [
     {
       "name": "Expired",
-      "count": 3382
+      "count": 3399
     },
     {
       "name": "Active",
-      "count": 2583
+      "count": 2549
     },
     {
       "name": "Unknown",
@@ -1075,7 +1075,7 @@
     },
     {
       "name": "Expiring",
-      "count": 281
+      "count": 298
     }
   ],
   "qa": [

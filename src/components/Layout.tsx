@@ -54,6 +54,10 @@ const NAV: { group: string; items: { id: PageId; label: string; icon: typeof Lay
     group: 'Enforcement',
     items: [{ id: 'legal', label: 'NOV & Legal Cases', icon: Gavel }],
   },
+  {
+    group: 'Compliance Officers',
+    items: [{ id: 'pco-corner', label: 'PCO Corner', icon: ShieldAlert }],
+  },
 ];
 
 const PAGE_META: Record<PageId, { title: string; subtitle: string }> = {
@@ -72,6 +76,7 @@ const PAGE_META: Record<PageId, { title: string; subtitle: string }> = {
   hw: { title: 'Hazardous waste register', subtitle: 'Hazardous-waste generators, waste streams and compliance status' },
   clearances: { title: 'ECC & CNC clearances', subtitle: 'Environmental compliance and non-coverage certificates cross-referenced with DP and PTO' },
   legal: { title: 'NOV & legal cases', subtitle: 'Notices of violation, PAB cases, ERF payments and complaints intercrossed with DP, PTO and hazardous-waste establishments' },
+  'pco-corner': { title: 'PCO Corner', subtitle: 'Pollution Control Officers cross-referenced with permits, hazardous waste, and clearances' },
 };
 
 export function Layout({ children, session, onLogout }: { children: React.ReactNode; session?: Session | null; onLogout?: () => void }) {
