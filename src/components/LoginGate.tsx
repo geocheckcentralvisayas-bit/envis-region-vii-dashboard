@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Eye, EyeOff, Lock, ShieldCheck, User } from 'lucide-react';
 import { login, type Session } from '../lib/auth';
 
-export function LoginGate({ onLogin }: { onLogin: (session: Session) => void }) {
+export function LoginGate({ onLogin, notice }: { onLogin: (session: Session) => void; notice?: string | null }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -77,6 +77,7 @@ export function LoginGate({ onLogin }: { onLogin: (session: Session) => void }) 
             </div>
           </div>
           {error && <div className="rounded-lg border border-rose-400/30 bg-rose-400/10 px-3 py-2 text-[11.5px] text-rose-200">{error}</div>}
+          {notice && <div className="rounded-lg border border-emerald-400/30 bg-emerald-400/10 px-3 py-2 text-[11.5px] text-emerald-200">{notice}</div>}
           <button type="submit" disabled={busy} className="btn btn-primary h-10 w-full justify-center">
             <ShieldCheck size={14} /> {busy ? 'Signing in…' : 'Sign in'}
           </button>

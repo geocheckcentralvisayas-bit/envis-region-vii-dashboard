@@ -329,6 +329,48 @@ export function deleteAccount(username: string): void {
   logActivity('account-delete', `${actor.username} deleted account ${removed.username}`, actor.username, actor.role);
 }
 
+export function encodeAccountForSharing(account: StoredAccount): string {
+  const payload = {
+    username: account.username,
+    passwordHash: account.passwordHash,
+    displayName: account.displayName,
+    division: account.division,
+    role: account.role,
+  };
+  return btoa(encodeURIComponent(JSON.stringify(payload)));
+}
+
+export function importSharedAccount(encoded: string): StoredAccount | null {
+  let payload: unknown;
+  try {
+    payload = JSON.parse(decodeURIComponent(atob(encoded)));
+  } catch {
+    return null;
+  }
+  if (!payload || typeof payload !== 'object') return null;
+  const candidate = payload as Partial<StoredAccount>;
+  if (typeof candidate.username !== 'string' || !candidate.username.trim()) return null;
+  if (typeof candidate.passwordHash !== 'string' || !candidate.passwordHash) return null;
+  if (!ROLES.includes(candidate.role as Role)) return null;
+  const accounts = getAccounts();
+  const username = candidate.username.trim();
+  const existingIndex = findAccount(accounts, username);
+  if (existingIndex >= 0) return accounts[existingIndex];
+  const account: StoredAccount = {
+    username,
+    role: candidate.role as Role,
+    displayName: typeof candidate.displayName === 'string' && candidate.displayName.trim() ? candidate.displayName.trim() : username,
+    division: typeof candidate.division === 'string' && candidate.division.trim() ? candidate.division.trim() : '—',
+    passwordHash: candidate.passwordHash,
+    active: true,
+    createdAt: Date.now(),
+    updatedAt: Date.now(),
+  };
+  saveAccounts([...accounts, account]);
+  logActivity('account-add', `Account ${account.username} imported via share link`, 'share-link', 'unknown');
+  return account;
+}
+
 export function exportAccountsJson(): string {
   return JSON.stringify({ version: 1, exportedAt: new Date().toISOString(), accounts: getAccounts() }, null, 2);
 }

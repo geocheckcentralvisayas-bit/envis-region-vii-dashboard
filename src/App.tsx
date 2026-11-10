@@ -6,7 +6,7 @@ import { ErrorBoundary } from './components/ErrorBoundary';
 import { SiteDrawer } from './components/SiteDrawer';
 import { LoginGate } from './components/LoginGate';
 import { subscribeGate, resolveGate, cancelGate, tryGateLogin, getPendingKind } from './lib/exportGate';
-import { getSession, logout, type Session } from './lib/auth';
+import { getSession, importSharedAccount, logout, type Session } from './lib/auth';
 import type { PageId } from './types';
 
 const OverviewPage = lazy(() => import('./pages/Overview').then((m) => ({ default: m.OverviewPage })));
@@ -66,6 +66,17 @@ export default function App() {
   const setPage = useDashboard((state) => state.setPage);
   const setSessionStore = useDashboard((state) => state.setSession);
   const [session, setSession] = useState<Session | null>(() => getSession());
+  const [importNotice] = useState<string | null>(() => {
+    const params = new URLSearchParams(window.location.search);
+    const encoded = params.get('import');
+    if (!encoded) return null;
+    const account = importSharedAccount(encoded);
+    const url = new URL(window.location.href);
+    url.search = '';
+    window.history.replaceState({}, '', url.toString());
+    if (account) return `Account "${account.username}" imported. You can now sign in with the password the admin shared.`;
+    return 'The import link was invalid or expired.';
+  });
 
   const [gateOpen, setGateOpen] = useState(false);
   const [exportUser, setExportUser] = useState('');
@@ -147,7 +158,7 @@ useEffect(() => {
   }, [data]);
 
   if (!session) {
-    return <LoginGate onLogin={setSession} />;
+    return <LoginGate onLogin={setSession} notice={importNotice} />;
   }
 
   if (error && !data) {

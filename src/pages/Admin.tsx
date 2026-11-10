@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import {
-  AlertTriangle, Download, Eye, EyeOff, KeyRound, Pencil, Plus, RefreshCw, Search, ShieldCheck, Trash2, Upload, UserPlus, X,
+  AlertTriangle, Download, Eye, EyeOff, KeyRound, Pencil, Plus, RefreshCw, Search, Share2, ShieldCheck, Trash2, Upload, UserPlus, X,
 } from 'lucide-react';
 import clsx from 'clsx';
 import {
-  ROLES, addAccount, canManageAccounts, clearActivity, deleteAccount, exportAccountsJson, getAccounts, getActivity, getSession,
+  ROLES, addAccount, canManageAccounts, clearActivity, deleteAccount, encodeAccountForSharing, exportAccountsJson, getAccounts, getActivity, getSession,
   importAccountsJson, setAccountActive, setAccountPassword, updateAccount,
   type ActivityEntry, type ActivityType, type Role, type StoredAccount,
 } from '../lib/auth';
@@ -226,6 +226,16 @@ export function AdminPage() {
     }
   };
 
+  const handleShare = async (account: StoredAccount) => {
+    const link = `${window.location.origin}${window.location.pathname}?import=${encodeAccountForSharing(account)}`;
+    try {
+      await navigator.clipboard.writeText(link);
+      flash(`Share link for ${account.username} copied to the clipboard. Send it to the user along with their password.`);
+    } catch {
+      window.prompt('Copy this share link and send it to the user:', link);
+    }
+  };
+
   const handleExportAccounts = () => {
     requestExport(() => {
       const blob = new Blob([exportAccountsJson()], { type: 'application/json' });
@@ -343,6 +353,9 @@ export function AdminPage() {
       header: '',
       render: (row) => (
         <div className="flex items-center gap-1">
+          <button type="button" title="Share account" onClick={() => handleShare(row)} className="rounded-md p-1.5 text-slate-500 hover:bg-white/5 hover:text-sky-300">
+            <Share2 size={13} />
+          </button>
           <button type="button" title="Edit account" onClick={() => openEdit(row)} className="rounded-md p-1.5 text-slate-500 hover:bg-white/5 hover:text-slate-200">
             <Pencil size={13} />
           </button>
