@@ -328,3 +328,76 @@ export function deleteAccount(username: string): void {
   saveAccounts(accounts);
   logActivity('account-delete', `${actor.username} deleted account ${removed.username}`, actor.username, actor.role);
 }
+
+export function exportAccountsJson(): string {
+  return JSON.stringify({ version: 1, exportedAt: new Date().toISOString(), accounts: getAccounts() }, null, 2);
+}
+
+export function importAccountsJson(json: string): { added: number; updated: number; skipped: number } {
+  const actor = requireMis();
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(json);
+  } catch {
+    throw new Error('The file is not valid JSON.');
+  }
+  const list: unknown = Array.isArray(parsed) ? parsed : (parsed as { accounts?: unknown })?.accounts;
+  if (!Array.isArray(list)) throw new Error('The file does not contain an accounts list.');
+  const accounts = getAccounts();
+  let added = 0;
+  let updated = 0;
+  let skipped = 0;
+  for (const entry of list) {
+    if (!entry || typeof entry !== 'object') {
+      skipped += 1;
+      continue;
+    }
+    const candidate = entry as Partial<StoredAccount>;
+    if (typeof candidate.username !== 'string' || !candidate.username.trim()) {
+      skipped += 1;
+      continue;
+    }
+    if (typeof candidate.passwordHash !== 'string' || !candidate.passwordHash) {
+      skipped += 1;
+      continue;
+    }
+    if (!ROLES.includes(candidate.role as Role)) {
+      skipped += 1;
+      continue;
+    }
+    const username = candidate.username.trim();
+    const role = candidate.role as Role;
+    const displayName = typeof candidate.displayName === 'string' && candidate.displayName.trim() ? candidate.displayName.trim() : username;
+    const division = typeof candidate.division === 'string' && candidate.division.trim() ? candidate.division.trim() : '—';
+    const active = candidate.active !== false;
+    const index = findAccount(accounts, username);
+    if (index < 0) {
+      accounts.push({
+        username,
+        role,
+        displayName,
+        division,
+        passwordHash: candidate.passwordHash,
+        active,
+        createdAt: typeof candidate.createdAt === 'number' ? candidate.createdAt : Date.now(),
+        updatedAt: Date.now(),
+      });
+      added += 1;
+    } else {
+      accounts[index] = {
+        ...accounts[index],
+        username,
+        role,
+        displayName,
+        division,
+        passwordHash: candidate.passwordHash,
+        active,
+        updatedAt: Date.now(),
+      };
+      updated += 1;
+    }
+  }
+  saveAccounts(accounts);
+  logActivity('account-update', `${actor.username} imported accounts (${added} added, ${updated} updated, ${skipped} skipped)`, actor.username, actor.role);
+  return { added, updated, skipped };
+}

@@ -1,11 +1,11 @@
-import { useEffect, useMemo, useState, type FormEvent, type ReactNode } from 'react';
+import { useEffect, useMemo, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import {
-  AlertTriangle, Download, KeyRound, Pencil, Plus, RefreshCw, Search, ShieldCheck, Trash2, UserPlus, X,
+  AlertTriangle, Download, Eye, EyeOff, KeyRound, Pencil, Plus, RefreshCw, Search, ShieldCheck, Trash2, Upload, UserPlus, X,
 } from 'lucide-react';
 import clsx from 'clsx';
 import {
-  ROLES, addAccount, canManageAccounts, clearActivity, deleteAccount, getAccounts, getActivity, getSession,
-  setAccountActive, setAccountPassword, updateAccount,
+  ROLES, addAccount, canManageAccounts, clearActivity, deleteAccount, exportAccountsJson, getAccounts, getActivity, getSession,
+  importAccountsJson, setAccountActive, setAccountPassword, updateAccount,
   type ActivityEntry, type ActivityType, type Role, type StoredAccount,
 } from '../lib/auth';
 import { requestExport } from '../lib/exportGate';
@@ -70,9 +70,35 @@ function Field({ label, children }: { label: string; children: ReactNode }) {
   );
 }
 
+function PasswordField({ label, value, onChange }: { label: string; value: string; onChange: (value: string) => void }) {
+  const [show, setShow] = useState(false);
+  return (
+    <Field label={label}>
+      <div className="relative">
+        <input
+          type={show ? 'text' : 'password'}
+          className="input h-9 w-full pr-9"
+          value={value}
+          onChange={(event) => onChange(event.target.value)}
+          required
+        />
+        <button
+          type="button"
+          onClick={() => setShow((current) => !current)}
+          title={show ? 'Hide password' : 'Show password'}
+          className="absolute right-1.5 top-1/2 -translate-y-1/2 rounded-md p-1.5 text-slate-500 hover:bg-white/5 hover:text-slate-300"
+        >
+          {show ? <EyeOff size={13} /> : <Eye size={13} />}
+        </button>
+      </div>
+    </Field>
+  );
+}
+
 export function AdminPage() {
   const session = getSession();
   const [tab, setTab] = useState<'accounts' | 'activity'>('accounts');
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [accounts, setAccounts] = useState<StoredAccount[]>(() => getAccounts());
   const [activity, setActivity] = useState<ActivityEntry[]>(() => getActivity());
   const [notice, setNotice] = useState('');
@@ -197,6 +223,38 @@ export function AdminPage() {
       flash('Account deleted.');
     } catch (err) {
       fail(err);
+    }
+  };
+
+  const handleExportAccounts = () => {
+    requestExport(() => {
+      const blob = new Blob([exportAccountsJson()], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `envis-accounts-${new Date().toISOString().slice(0, 10)}.json`;
+      link.click();
+      URL.revokeObjectURL(url);
+    });
+  };
+
+  const handleImportAccounts = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    setBusy(true);
+    setError('');
+    setNotice('');
+    try {
+      const text = await file.text();
+      const result = importAccountsJson(text);
+      refreshAccounts();
+      setActivity(getActivity());
+      flash(`Imported accounts: ${result.added} added, ${result.updated} updated, ${result.skipped} skipped.`);
+    } catch (err) {
+      fail(err);
+    } finally {
+      setBusy(false);
+      if (fileInputRef.current) fileInputRef.current.value = '';
     }
   };
 
@@ -361,9 +419,17 @@ export function AdminPage() {
               <RefreshCw size={13} /> Refresh
             </button>
             {tab === 'accounts' ? (
-              <button type="button" className="btn btn-primary" onClick={() => { setShowAdd(true); setError(''); setNotice(''); }}>
-                <Plus size={13} /> Add account
-              </button>
+              <>
+                <button type="button" className="btn" onClick={handleExportAccounts}>
+                  <Download size={13} /> Export accounts
+                </button>
+                <button type="button" className="btn" onClick={() => fileInputRef.current?.click()}>
+                  <Upload size={13} /> Import accounts
+                </button>
+                <button type="button" className="btn btn-primary" onClick={() => { setShowAdd(true); setError(''); setNotice(''); }}>
+                  <Plus size={13} /> Add account
+                </button>
+              </>
             ) : (
               <>
                 <button type="button" className="btn" onClick={handleClearActivity}>
@@ -432,6 +498,10 @@ export function AdminPage() {
               empty={<div className="py-12 text-center text-[12px] text-slate-500">No accounts yet.</div>}
             />
           </Panel>
+
+          <div className="rounded-lg border border-white/[0.06] bg-white/[0.015] px-3 py-2 text-[10.5px] leading-relaxed text-slate-500">
+            Accounts and activity are stored in this browser's local storage, so they are specific to this device. To make an account available on another device, an MIS admin can <span className="font-medium text-slate-400">Export accounts</span> here and <span className="font-medium text-slate-400">Import accounts</span> it on the other device. For accounts that must be available to everyone automatically, add them to <span className="font-mono text-[10px] text-slate-400">src/lib/auth.ts</span> and rebuild the dashboard. A shared backend is required for automatic cross-device sync.
+          </div>
         </>
       )}
 
@@ -483,6 +553,8 @@ export function AdminPage() {
         </>
       )}
 
+      <input ref={fileInputRef} type="file" accept="application/json" className="hidden" onChange={handleImportAccounts} />
+
       {showAdd && (
         <Modal title="Add account" onClose={() => setShowAdd(false)}>
           <form onSubmit={handleAdd} className="space-y-3">
@@ -501,12 +573,8 @@ export function AdminPage() {
               </select>
             </Field>
             <div className="grid grid-cols-2 gap-3">
-              <Field label="Password">
-                <input type="password" className="input h-9 w-full" value={addForm.password} onChange={(e) => setAddForm({ ...addForm, password: e.target.value })} required />
-              </Field>
-              <Field label="Confirm">
-                <input type="password" className="input h-9 w-full" value={addForm.confirm} onChange={(e) => setAddForm({ ...addForm, confirm: e.target.value })} required />
-              </Field>
+              <PasswordField label="Password" value={addForm.password} onChange={(value) => setAddForm({ ...addForm, password: value })} />
+              <PasswordField label="Confirm" value={addForm.confirm} onChange={(value) => setAddForm({ ...addForm, confirm: value })} />
             </div>
             <div className="flex justify-end gap-2 pt-1">
               <button type="button" className="btn h-9" onClick={() => setShowAdd(false)}>Cancel</button>
@@ -545,12 +613,8 @@ export function AdminPage() {
         <Modal title={`Reset password — ${passwordFor.username}`} onClose={() => setPasswordFor(null)}>
           <form onSubmit={handlePassword} className="space-y-3">
             <div className="grid grid-cols-2 gap-3">
-              <Field label="New password">
-                <input type="password" className="input h-9 w-full" value={pwForm.password} onChange={(e) => setPwForm({ ...pwForm, password: e.target.value })} required />
-              </Field>
-              <Field label="Confirm">
-                <input type="password" className="input h-9 w-full" value={pwForm.confirm} onChange={(e) => setPwForm({ ...pwForm, confirm: e.target.value })} required />
-              </Field>
+              <PasswordField label="New password" value={pwForm.password} onChange={(value) => setPwForm({ ...pwForm, password: value })} />
+              <PasswordField label="Confirm" value={pwForm.confirm} onChange={(value) => setPwForm({ ...pwForm, confirm: value })} />
             </div>
             <div className="flex justify-end gap-2 pt-1">
               <button type="button" className="btn h-9" onClick={() => setPasswordFor(null)}>Cancel</button>

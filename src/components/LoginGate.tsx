@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { Lock, ShieldCheck, User } from 'lucide-react';
+import { Eye, EyeOff, Lock, ShieldCheck, User } from 'lucide-react';
 import { login, type Session } from '../lib/auth';
 
 export function LoginGate({ onLogin }: { onLogin: (session: Session) => void }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
 
@@ -57,14 +58,22 @@ export function LoginGate({ onLogin }: { onLogin: (session: Session) => void }) 
             <div className="relative">
               <Lock size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
               <input
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 autoComplete="current-password"
                 required
-                className="input h-10 w-full pl-9"
+                className="input h-10 w-full px-9"
                 placeholder="Enter your password"
               />
+              <button
+                type="button"
+                onClick={() => setShowPassword((value) => !value)}
+                title={showPassword ? 'Hide password' : 'Show password'}
+                className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-1.5 text-slate-500 hover:bg-white/5 hover:text-slate-300"
+              >
+                {showPassword ? <EyeOff size={14} /> : <Eye size={14} />}
+              </button>
             </div>
           </div>
           {error && <div className="rounded-lg border border-rose-400/30 bg-rose-400/10 px-3 py-2 text-[11.5px] text-rose-200">{error}</div>}
