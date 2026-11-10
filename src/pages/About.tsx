@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import {
   BookOpen, Building2, CalendarRange, Database, ExternalLink, FileSpreadsheet, Gavel, GitBranch,
-  Globe2, Info, Layers3, MapPin, ShieldAlert, TriangleAlert, Workflow,
+  Globe2, Info, Layers3, MapPin, ShieldAlert, ShieldCheck, TriangleAlert, Workflow,
 } from 'lucide-react';
 import { useDashboard } from '../store/useDashboard';
 import { Chip, Panel, SectionHeading } from '../components/ui';
@@ -64,6 +64,14 @@ export function AboutPage() {
             <li className="flex gap-2"><FileSpreadsheet size={13} className="mt-0.5 shrink-0 text-emerald-400/80" /><span><b className="text-slate-300">Registers:</b> DP 2019–2026 and PTO 2020–2026, compiled from the year tabs rather than the pre-cleaned sheets.</span></li>
             <li className="flex gap-2"><Database size={13} className="mt-0.5 shrink-0 text-emerald-400/80" /><span><b className="text-slate-300">Included:</b> hazardous-waste generator registrations and ECC / CNC clearance references are intercrossed with DP and PTO at establishment level.</span></li>
             <li className="flex gap-2"><FileSpreadsheet size={13} className="mt-0.5 shrink-0 text-emerald-400/80" /><span><b className="text-slate-300">EIA ultralist:</b> ECC OL, ECC Manual, CAT C and CNC OL records are consolidated for Cebu and Bohol only; Negros Oriental and Siquijor rows are excluded before matching.</span></li>
+          </ul>
+        </Panel>
+
+        <Panel title="Access & administration" subtitle="Roles and the MIS admin panel">
+          <ul className="space-y-2 text-[11.5px] leading-relaxed text-slate-400">
+            <li className="flex gap-2"><ShieldCheck size={13} className="mt-0.5 shrink-0 text-emerald-400/80" /><span><b className="text-slate-300">Roles:</b> [redacted] and MIS can export CSV/JSON; GIS can download GeoJSON; the Regional Director has full visibility but no export controls.</span></li>
+            <li className="flex gap-2"><ShieldCheck size={13} className="mt-0.5 shrink-0 text-emerald-400/80" /><span><b className="text-slate-300">MIS admin panel:</b> the [redacted] account can add, edit, deactivate and delete accounts, reset passwords, and review sign-in, export and account-change activity from the Accounts & Activity page.</span></li>
+            <li className="flex gap-2"><ShieldAlert size={13} className="mt-0.5 shrink-0 text-amber-400/80" /><span><b className="text-slate-300">Browser-local data:</b> managed accounts and the activity log are stored in the browser's local storage, so they are specific to that device. A shared backend is required to sync users and activity across devices.</span></li>
           </ul>
         </Panel>
 

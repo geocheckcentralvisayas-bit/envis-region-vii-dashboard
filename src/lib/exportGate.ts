@@ -1,4 +1,4 @@
-import { login, canExport, canDownloadGeoJson } from './auth';
+import { login, canExport, canDownloadGeoJson, logActivity } from './auth';
 
 export type GateKind = 'export' | 'geojson';
 
@@ -48,5 +48,11 @@ export async function tryGateLogin(username: string, password: string): Promise<
   const kind = getPendingKind();
   if (kind === 'export' && !canExport(session)) return false;
   if (kind === 'geojson' && !canDownloadGeoJson(session)) return false;
+  const page = window.location.hash.replace(/^#\//, '') || 'overview';
+  if (kind === 'geojson') {
+    logActivity('geojson', `Downloaded GeoJSON from ${page}`, session.username, session.role);
+  } else {
+    logActivity('export', `Exported CSV from ${page}`, session.username, session.role);
+  }
   return true;
 }

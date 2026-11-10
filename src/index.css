@@ -91,7 +91,7 @@ body {
   }
 
   .sidebar-link {
-    @apply flex items-center gap-2.5 rounded-xl px-3 py-2 text-[13px] font-medium text-slate-400 transition;
+    @apply flex items-center gap-2.5 rounded-xl px-3 py-1.5 text-[13px] font-medium text-slate-400 transition;
   }
   .sidebar-link:hover {
     @apply bg-white/[0.045] text-slate-100;

@@ -23,12 +23,13 @@ const AboutPage = lazy(() => import('./pages/About').then((m) => ({ default: m.A
 const HazardousWastePage = lazy(() => import('./pages/HazardousWaste').then((m) => ({ default: m.HazardousWastePage })));
 const ClearancesPage = lazy(() => import('./pages/Clearances').then((m) => ({ default: m.ClearancesPage })));
 const EccUltralistPage = lazy(() => import('./pages/EccUltralist').then((m) => ({ default: m.EccUltralistPage })));
+const AdminPage = lazy(() => import('./pages/Admin').then((m) => ({ default: m.AdminPage })));
 const LegalPage = lazy(() => import('./pages/Legal').then((m) => ({ default: m.LegalPage })));
 const PCOCornerPage = lazy(() => import('./pages/PCOCorner').then((m) => ({ default: m.PCOCorner })));
 
 const PAGE_IDS: PageId[] = [
   'overview', 'sites', 'dp', 'pto', 'renewal', 'map',
-  'spatial', 'screening', 'quality', 'tables', 'reports', 'about', 'hw', 'clearances', 'ecc-ultralist', 'legal', 'pco-corner',
+  'spatial', 'screening', 'quality', 'tables', 'reports', 'about', 'hw', 'clearances', 'ecc-ultralist', 'admin', 'legal', 'pco-corner',
 ];
 
 function renderPage(page: PageId) {
@@ -47,6 +48,7 @@ function renderPage(page: PageId) {
     case 'hw': return <HazardousWastePage />;
     case 'clearances': return <ClearancesPage />;
     case 'ecc-ultralist': return <EccUltralistPage />;
+    case 'admin': return <AdminPage />;
     case 'legal': return <LegalPage />;
     case 'pco-corner': return <PCOCornerPage />;
     case 'overview':
@@ -102,6 +104,9 @@ useEffect(() => {
 
   useEffect(() => {
     if (session?.role === 'rd' && page === 'reports') {
+      setPage('overview');
+    }
+    if (session && session.role !== 'mis' && page === 'admin') {
       setPage('overview');
     }
   }, [session, page, setPage]);

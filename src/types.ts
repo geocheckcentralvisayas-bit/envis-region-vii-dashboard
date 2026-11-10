@@ -631,6 +631,7 @@ export type PageId =
   | 'hw'
   | 'clearances'
   | 'ecc-ultralist'
+  | 'admin'
   | 'legal'
   | 'pco-corner';
 

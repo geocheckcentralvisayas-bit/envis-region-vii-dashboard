@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import {
   Building2, CalendarClock, ChevronRight, ClipboardCheck, Database, Droplets, FileDown,
   FileCheck2, FlaskConical, Gavel, Info, LayoutDashboard, Layers3, ListChecks, Map as MapIcon, Menu, PanelLeftClose,
-  Search, ShieldAlert, Table2, X, ExternalLink, Radio, Sun, Moon,
+  Search, ShieldAlert, ShieldCheck, Table2, X, ExternalLink, Radio, Sun, Moon,
 } from 'lucide-react';
 import clsx from 'clsx';
 import { useDashboard, useFilteredPermits, useFilteredSites } from '../store/useDashboard';
@@ -59,6 +59,10 @@ const NAV: { group: string; items: { id: PageId; label: string; icon: typeof Lay
     group: 'Compliance Officers',
     items: [{ id: 'pco-corner', label: 'PCO Corner', icon: ShieldAlert }],
   },
+  {
+    group: 'Administration',
+    items: [{ id: 'admin', label: 'Accounts & Activity', icon: ShieldCheck }],
+  },
 ];
 
 const PAGE_META: Record<PageId, { title: string; subtitle: string }> = {
@@ -77,6 +81,7 @@ const PAGE_META: Record<PageId, { title: string; subtitle: string }> = {
   hw: { title: 'Hazardous waste register', subtitle: 'Hazardous-waste generators, waste streams and compliance status' },
   clearances: { title: 'ECC & CNC clearances', subtitle: 'Environmental compliance and non-coverage certificates cross-referenced with DP and PTO' },
   'ecc-ultralist': { title: 'ECC & CNC ultralist', subtitle: 'Approved EIA clearances for Cebu and Bohol intercrossed with DP, PTO and hazardous waste' },
+  admin: { title: 'Accounts & activity', subtitle: 'MIS account management and sign-in / export activity log' },
   legal: { title: 'NOV & legal cases', subtitle: 'Notices of violation, PAB cases, ERF payments and complaints intercrossed with DP, PTO and hazardous-waste establishments' },
   'pco-corner': { title: 'PCO Corner', subtitle: 'Pollution Control Officers cross-referenced with permits, hazardous waste, and clearances' },
 };
@@ -97,6 +102,11 @@ export function Layout({ children, session, onLogout }: { children: React.ReactN
     document.documentElement.classList.toggle('light', theme === 'light');
     localStorage.setItem('envis.theme', theme);
   }, [theme]);
+
+  useEffect(() => {
+    const active = document.querySelector('nav button.active');
+    active?.scrollIntoView({ block: 'nearest' });
+  }, [page]);
   const pageMeta = PAGE_META[page] ?? PAGE_META.overview;
 
   const navigate = (id: PageId) => {
@@ -136,12 +146,12 @@ export function Layout({ children, session, onLogout }: { children: React.ReactN
           </button>
         </div>
 
-        <nav className="scroll-thin flex-1 overflow-y-auto px-2.5 py-3">
+        <nav className="scroll-thin flex-1 overflow-y-auto px-2.5 py-2">
           {NAV.map((section) => (
-            <div key={section.group} className="mb-3">
-              <div className={clsx('px-2 pb-1.5 text-[8.5px] font-bold uppercase tracking-[0.19em] text-slate-600', collapsed && 'md:hidden')}>{section.group}</div>
+            <div key={section.group} className="mb-2">
+              <div className={clsx('px-2 pb-1 text-[8.5px] font-bold uppercase tracking-[0.19em] text-slate-600', collapsed && 'md:hidden')}>{section.group}</div>
               <div className="space-y-0.5">
-                {section.items.filter((item) => !(session?.role === 'rd' && item.id === 'reports')).map((item) => {
+                {section.items.filter((item) => !(session?.role === 'rd' && item.id === 'reports') && !(item.id === 'admin' && session?.role !== 'mis')).map((item) => {
                   const Icon = item.icon;
                   const active = page === item.id;
                   return (

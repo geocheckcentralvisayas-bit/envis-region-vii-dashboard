@@ -92,13 +92,25 @@ bundle can be hosted at a domain root or in a subfolder (GitHub Pages, S3, IIS, 
 ## Security
 
 - Login-gated exports restricted to authorised roles.
-- No API keys, tokens or passwords in source; account provisioning is handled off-repo.
-- CSV/JSON exports and GeoJSON downloads are gated behind role-based login; accounts are supplied
-  at build time via the `VITE_ACCOUNTS` environment variable (see `.env.example`). No credentials
-  are committed to the repository.
+- Accounts are defined in `src/lib/auth.ts` and stored as SHA-256 password hashes. The MIS
+  account can add, edit, deactivate and reset accounts from the in-app admin panel.
+- CSV/JSON exports and GeoJSON downloads are gated behind role-based login.
 - Error boundary renders a generic message — no stack traces reach end users.
 - CSV export hardened against formula injection.
 - No server-side surface: static files only.
+
+### MIS admin panel
+
+The `[redacted]` account has an **Accounts & Activity** page (sidebar → Administration):
+
+- **Accounts** — add accounts, change usernames / display names / divisions / roles, reset
+  passwords, activate / deactivate and delete accounts.
+- **Activity** — sign-ins, failed sign-ins, sign-outs, CSV exports, GeoJSON downloads and
+  account changes, with search, filters and a CSV export of the log.
+
+Account and activity data is stored in the browser's `localStorage`, so it is specific to
+the device and browser where it was recorded. A shared backend is required to sync users
+and activity across devices.
 
 ## Limitations
 
