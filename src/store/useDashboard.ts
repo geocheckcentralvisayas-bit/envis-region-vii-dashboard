@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { useMemo } from 'react';
-import type { Clearance, Facility, HwRegistration, LayerManifest, LegalData, Meta, PageId, PCOAnalysis, PCORecord, Permit, QualityData, Site, SiteGap } from '../types';
+import type { Clearance, EccUltraData, EccUltraRecord, Facility, HwRegistration, LayerManifest, LegalData, Meta, PageId, PCOAnalysis, PCORecord, Permit, QualityData, Site, SiteGap } from '../types';
 import type { Session } from '../lib/auth';
 
 export interface Filters {
@@ -43,6 +43,9 @@ interface DashboardState {
   data: Dataset | null;
   pcoRecords: PCORecord[];
   pcoAnalysis: PCOAnalysis | null;
+  eccUltralist: EccUltraData | null;
+  eccUltralistLoading: boolean;
+  eccUltralistError: string | null;
   loading: boolean;
   progress: string;
   error: string | null;
@@ -62,6 +65,7 @@ interface DashboardState {
   openMapAt: (target: FocusTarget) => void;
   openLegalEntity: (entityId: string) => void;
   setSession: (session: Session | null) => void;
+  loadEccUltralist: () => Promise<void>;
 }
 
 const DEFAULT_FILTERS: Filters = {
@@ -115,6 +119,9 @@ export const useDashboard = create<DashboardState>((set, get) => ({
   data: null,
   pcoRecords: [],
   pcoAnalysis: null,
+  eccUltralist: null,
+  eccUltralistLoading: false,
+  eccUltralistError: null,
   loading: false,
   progress: '',
   error: null,
@@ -206,6 +213,31 @@ export const useDashboard = create<DashboardState>((set, get) => ({
   },
 
   setSession: (session) => set({ session }),
+
+  loadEccUltralist: async () => {
+    if (get().eccUltralist || get().eccUltralistLoading) return;
+    set({ eccUltralistLoading: true, eccUltralistError: null });
+    try {
+      const raw = await fetchJson<{
+        fields: string[];
+        records: unknown[][];
+      } & Omit<EccUltraData, 'records' | 'fields'>>('ecc-ultralist.json');
+      const fields = raw.fields ?? [];
+      const records = raw.records.map((row) => {
+        const record: Record<string, unknown> = {};
+        fields.forEach((field, index) => {
+          record[field] = row[index];
+        });
+        return record as unknown as EccUltraRecord;
+      });
+      set({ eccUltralist: { ...raw, fields, records }, eccUltralistLoading: false });
+    } catch (error) {
+      set({
+        eccUltralistLoading: false,
+        eccUltralistError: error instanceof Error ? error.message : 'Could not load the ECC / CNC ultralist.',
+      });
+    }
+  },
 }));
 
 export function matchesSearch(haystack: Array<string | number | null | undefined>, search: string): boolean {

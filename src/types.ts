@@ -529,6 +529,92 @@ export interface LegalData {
   candidateCount: number;
 }
 
+export type EccUltraKind = 'ECC' | 'CNC';
+export type EccUltraMatchMethod = 'number' | 'exact' | 'alias' | 'none';
+
+export interface EccUltraRecord {
+  id: string;
+  kind: EccUltraKind;
+  number: string;
+  project: string;
+  proponent: string;
+  address: string;
+  barangay: string;
+  municipality: string;
+  province: string;
+  region: string;
+  issued: string | null;
+  year: number | null;
+  status: string;
+  applicationType: string;
+  projectType: string;
+  sizeAmount: string;
+  sizeUnit: string;
+  landArea: string;
+  lat: number | null;
+  lon: number | null;
+  coordSource: string;
+  withinPa: string;
+  government: string;
+  amendment: string;
+  plotted: string;
+  remarks: string;
+  iis: string;
+  sources: string[];
+  matchMethod: EccUltraMatchMethod;
+  matched: boolean;
+  siteIds: string[];
+  siteCount: number;
+  permitNos: string[];
+  hwNos: string[];
+  dpCount: number;
+  ptoCount: number;
+  hwCount: number;
+  rowCount: number;
+}
+
+export interface EccUltraSourceStat {
+  key: string;
+  sheet: string;
+  fetchedRows: number;
+  keptRows: number;
+  excludedNegros: number;
+  excludedSiquijor: number;
+  excludedOther: number;
+  excludedBlank: number;
+}
+
+export interface EccUltraData {
+  generatedAt: string;
+  referenceDate: string;
+  sourceUrl: string;
+  scopeLabel: string;
+  sources: EccUltraSourceStat[];
+  totals: {
+    records: number;
+    ecc: number;
+    cnc: number;
+    cebu: number;
+    bohol: number;
+    matched: number;
+    unmatched: number;
+    linkedDp: number;
+    linkedPto: number;
+    linkedHw: number;
+    linkedSites: number;
+    active: number;
+  };
+  matchQuality: { number: number; exact: number; alias: number; none: number };
+  byYear: { year: number; ecc: number; cnc: number }[];
+  byMunicipality: { municipality: string; province: string; count: number }[];
+  byProjectType: CountItem[];
+  byStatus: CountItem[];
+  bySource: CountItem[];
+  fields?: string[];
+  records: EccUltraRecord[];
+  notes: string[];
+}
+
 export type PageId =
   | 'overview'
   | 'sites'
@@ -544,6 +630,7 @@ export type PageId =
   | 'about'
   | 'hw'
   | 'clearances'
+  | 'ecc-ultralist'
   | 'legal'
   | 'pco-corner';
 

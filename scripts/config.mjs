@@ -17,6 +17,12 @@ export const WORKBOOKS = {
     id: '1nJR7PM7qlp4TUYT3jXLogIusjz0_qCa_',
     url: 'https://docs.google.com/spreadsheets/d/1nJR7PM7qlp4TUYT3jXLogIusjz0_qCa_',
   },
+  D: {
+    key: 'D',
+    label: 'ECC / CNC Ultralist (EIA)',
+    id: '1ZqjOvAMwFtf3sCEys50yycL2HttfroQk2dlto8mEIvI',
+    url: 'https://docs.google.com/spreadsheets/d/1ZqjOvAMwFtf3sCEys50yycL2HttfroQk2dlto8mEIvI',
+  },
 };
 
 /** Year tabs that feed the dashboard dataset. */
@@ -47,6 +53,18 @@ export const SUPPORT_TABS = [
   { key: 'SITE_MASTER', workbook: 'B', gid: '1873126092', sheet: 'DP_PTO_SITE_MASTER_2020_2021' },
   { key: 'UNIFIED_LOCATION', workbook: 'B', gid: '1681635506', sheet: 'UNIFIED_LOCATION_2020_2021' },
   { key: 'PTO_SUMMARY', workbook: 'A', gid: '82943060', sheet: 'SUMMARY' },
+];
+
+/**
+ * Approved ECC / CNC ultralist tabs (workbook D).
+ * The dashboard scope is limited to Cebu and Bohol; the build step drops
+ * Negros Oriental and Siquijor rows from these sheets.
+ */
+export const ECC_TABS = [
+  { key: 'ECC_OL', workbook: 'D', sheet: 'ECC OL (2015-Present)', type: 'ECC' },
+  { key: 'ECC_MANUAL', workbook: 'D', sheet: 'ECC Manual', type: 'ECC' },
+  { key: 'CAT_C', workbook: 'D', sheet: 'CAT C', type: 'CNC' },
+  { key: 'CNC_OL', workbook: 'D', sheet: 'CNC OL (2017-Present)', type: 'CNC' },
 ];
 
 /** Hazardous-waste generator register (workbook C). */

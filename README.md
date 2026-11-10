@@ -21,6 +21,9 @@ pipeline.
 - **Geospatial intelligence** — clustered Leaflet map, key-less basemaps, on-demand spatial
   overlays (flood, landslide, protected areas, watersheds, land cover/classification) with
   zoom-to-layer and a transparent additive risk index (0–10).
+- **ECC / CNC Ultralist** — approved EIA clearances consolidated from the ECC OL,
+  ECC Manual, CAT C and CNC OL tabs, limited to Cebu and Bohol and intercrossed with DP,
+  PTO and hazardous-waste records.
 - **Legal docket module** — NOV, PAB, ERF and complaint records matched to establishments
   by exact and reviewed names only; paid/pending and closed/open status per case; PAB
   coverage and yearly collections reported without exposing amounts on individual records.
@@ -72,6 +75,7 @@ so `npm run dev` works on a fresh clone.
 npm run data:fetch     # source registers -> raw CSV
 npm run data:spatial   # spatial sources -> GeoJSON
 npm run data:build     # raw CSV -> compiled JSON
+npm run data:ecc       # ECC / CNC ultralist -> ecc-ultralist.json
 npm run data:legal     # legal snapshot -> legal.json
 npm run data:all       # run all of the above in order
 ```

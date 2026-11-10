@@ -1,6 +1,6 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { HW_TABS, PERMIT_TABS, SUPPORT_TABS, WORKBOOKS, RAW_DIR } from './config.mjs';
+import { ECC_TABS, HW_TABS, PERMIT_TABS, SUPPORT_TABS, WORKBOOKS, RAW_DIR } from './config.mjs';
 import { csvToObjects } from './lib/csv.mjs';
 
 const RETRIES = 4;
@@ -39,7 +39,7 @@ function csvUrl(workbookId, tab) {
 
 async function main() {
   await mkdir(RAW_DIR, { recursive: true });
-  const tabs = [...PERMIT_TABS, ...SUPPORT_TABS, ...HW_TABS];
+  const tabs = [...PERMIT_TABS, ...SUPPORT_TABS, ...HW_TABS, ...ECC_TABS];
   const manifest = { fetchedAt: new Date().toISOString(), workbooks: {}, tabs: [] };
   for (const wb of Object.values(WORKBOOKS)) {
     manifest.workbooks[wb.key] = { id: wb.id, label: wb.label, url: wb.url };

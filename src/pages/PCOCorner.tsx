@@ -2,6 +2,8 @@ import { useMemo, useState } from 'react';
 import { useDashboard } from '../store/useDashboard';
 import { Panel, StatCard, DataTable, Chip, SectionHeading } from '../components/ui';
 import { Search, Filter, Download, AlertTriangle, UserCheck, Building2, Calendar, MapPin, FileText, ChevronDown } from 'lucide-react';
+import { requestExport } from '../lib/exportGate';
+import { getSession } from '../lib/auth';
 import type { PCOAnalysis, PCOCompanySummary } from '../types';
 
 export function PCOCorner() {
@@ -304,14 +306,16 @@ export function PCOCorner() {
             Cross-reference analysis of Pollution Control Officers with permits, hazardous waste registrations, and clearances
           </p>
         </div>
-        <button
-          type="button"
-          onClick={exportCSV}
-          className="btn btn-secondary gap-2 flex items-center"
-        >
-          <Download className="h-4 w-4" />
-          Export CSV
-        </button>
+        {getSession()?.role !== 'rd' && (
+          <button
+            type="button"
+            onClick={() => requestExport(exportCSV)}
+            className="btn btn-secondary gap-2 flex items-center"
+          >
+            <Download className="h-4 w-4" />
+            Export CSV
+          </button>
+        )}
       </div>
 
       {/* Summary Cards */}

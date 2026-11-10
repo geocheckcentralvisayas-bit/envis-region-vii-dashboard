@@ -63,6 +63,7 @@ export function AboutPage() {
             <li className="flex gap-2"><Globe2 size={13} className="mt-0.5 shrink-0 text-emerald-400/80" /><span><b className="text-slate-300">In scope:</b> Cebu and Bohol, per the 2026 PSGC definition of Region VII. Negros Oriental and Siquijor records are retained but marked out of scope.</span></li>
             <li className="flex gap-2"><FileSpreadsheet size={13} className="mt-0.5 shrink-0 text-emerald-400/80" /><span><b className="text-slate-300">Registers:</b> DP 2019–2026 and PTO 2020–2026, compiled from the year tabs rather than the pre-cleaned sheets.</span></li>
             <li className="flex gap-2"><Database size={13} className="mt-0.5 shrink-0 text-emerald-400/80" /><span><b className="text-slate-300">Included:</b> hazardous-waste generator registrations and ECC / CNC clearance references are intercrossed with DP and PTO at establishment level.</span></li>
+            <li className="flex gap-2"><FileSpreadsheet size={13} className="mt-0.5 shrink-0 text-emerald-400/80" /><span><b className="text-slate-300">EIA ultralist:</b> ECC OL, ECC Manual, CAT C and CNC OL records are consolidated for Cebu and Bohol only; Negros Oriental and Siquijor rows are excluded before matching.</span></li>
           </ul>
         </Panel>
 
