@@ -64,7 +64,7 @@ export function PermitsPage({ type }: { type: PermitType }) {
   const lguRows = useMemo(() => {
     const counts = new Map<string, number>();
     for (const permit of permits) counts.set(permit.municipality || 'Unmatched', (counts.get(permit.municipality || 'Unmatched') ?? 0) + 1);
-    return [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 7);
+    return [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
   }, [permits]);
 
   const columns: Column<Permit>[] = [
@@ -104,7 +104,13 @@ export function PermitsPage({ type }: { type: PermitType }) {
         </div>
       ),
     },
-    { key: 'sourceStatus', header: 'Filing', sortValue: (row) => row.sourceStatus, render: (row) => <span className="whitespace-nowrap text-[10.5px] text-slate-500">{row.sourceStatus}</span> },
+    { key: 'sourceStatus', header: 'Type / Domestic Waste', sortValue: (row) => row.sourceStatus, render: (row) => <span className="whitespace-nowrap text-[10.5px] text-slate-500">{row.sourceStatus}</span> },
+    {
+      key: 'wastewater',
+      header: 'Waste water',
+      sortValue: (row) => row.wastewater,
+      render: (row) => <span className="block max-w-[170px] truncate text-[10.5px] text-slate-400" title={row.wastewater}>{row.wastewater || '—'}</span>,
+    },
     {
       key: 'industry',
       header: 'Industry',
@@ -257,8 +263,8 @@ export function PermitsPage({ type }: { type: PermitType }) {
             ))}
           </div>
         </Panel>
-        <Panel title="Top LGUs" subtitle="City / municipality concentration">
-          <div className="space-y-2.5">
+        <Panel title="Top LGUs" subtitle={`All ${formatNumber(lguRows.length)} cities / municipalities · scroll to view more`}>
+          <div className="scroll-thin max-h-[360px] space-y-2.5 overflow-y-auto pr-1">
             {lguRows.map(([municipality, count]) => (
               <MetricRow key={municipality} label={municipality} value={count} max={Math.max(1, lguRows[0]?.[1] ?? 1)} tone="bg-violet-400" />
             ))}

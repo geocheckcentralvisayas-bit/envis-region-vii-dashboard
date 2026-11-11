@@ -119,6 +119,7 @@ export interface Clearance {
   number: string;
   type: ClearanceType;
   company: string;
+  project?: string;
   municipality: string;
   province: string;
   barangay: string;
@@ -133,6 +134,7 @@ export interface Clearance {
   appNo: string;
   hwGrNo: string;
   siteId: string | null;
+  siteIds?: string[];
   sources: string[];
   permitRefs: string[];
   hwCodes: string[];
@@ -304,6 +306,7 @@ export interface Meta {
   hwWasteCodes?: CountItem[];
   hwIndustries?: CountItem[];
   clearanceSources?: CountItem[];
+  clearanceByLgu?: { municipality: string; province: string; count: number }[];
 }
 
 export interface QualityData {

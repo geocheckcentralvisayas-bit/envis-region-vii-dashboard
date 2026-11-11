@@ -46,6 +46,8 @@ interface DashboardState {
   eccUltralist: EccUltraData | null;
   eccUltralistLoading: boolean;
   eccUltralistError: string | null;
+  clearancesLoading: boolean;
+  clearancesError: string | null;
   loading: boolean;
   progress: string;
   error: string | null;
@@ -66,6 +68,7 @@ interface DashboardState {
   openLegalEntity: (entityId: string) => void;
   setSession: (session: Session | null) => void;
   loadEccUltralist: () => Promise<void>;
+  loadClearances: () => Promise<void>;
 }
 
 const DEFAULT_FILTERS: Filters = {
@@ -122,6 +125,8 @@ export const useDashboard = create<DashboardState>((set, get) => ({
   eccUltralist: null,
   eccUltralistLoading: false,
   eccUltralistError: null,
+  clearancesLoading: false,
+  clearancesError: null,
   loading: false,
   progress: '',
   error: null,
@@ -142,15 +147,14 @@ export const useDashboard = create<DashboardState>((set, get) => ({
       const permits = await fetchJson<Permit[]>('permits.json');
       set({ progress: 'Cross-matching establishments…' });
       const sites = await fetchJson<Site[]>('sites.json');
-      const [quality, layers, hw, clearances, facilities, legal] = await Promise.all([
+      const [quality, layers, hw, facilities, legal] = await Promise.all([
         fetchJson<QualityData>('quality.json'),
         fetchJson<LayerManifest>('geojson/layers.json'),
         fetchJson<HwRegistration[]>('hw.json'),
-        fetchJson<Clearance[]>('clearances.json'),
         fetchJson<Facility[]>('facilities.json'),
         fetchOptionalJson<LegalData>('legal.json', EMPTY_LEGAL),
       ]);
-      set({ data: { meta, permits, sites, quality, layers, hw, clearances, facilities, legal }, loading: false, progress: 'Ready' });
+      set({ data: { meta, permits, sites, quality, layers, hw, clearances: [], facilities, legal }, loading: false, progress: 'Ready' });
       // Fetch PCO data separately
       try {
         const [pcoRecords, pcoAnalysis] = await Promise.all([
@@ -238,6 +242,24 @@ export const useDashboard = create<DashboardState>((set, get) => ({
       });
     }
   },
+
+  loadClearances: async () => {
+    const state = get();
+    if (!state.data || state.data.clearances.length || state.clearancesLoading) return;
+    set({ clearancesLoading: true, clearancesError: null });
+    try {
+      const clearances = await fetchJson<Clearance[]>('clearances.json');
+      set((current) => ({
+        data: current.data ? { ...current.data, clearances } : current.data,
+        clearancesLoading: false,
+      }));
+    } catch (error) {
+      set({
+        clearancesLoading: false,
+        clearancesError: error instanceof Error ? error.message : 'Could not load the ECC / CNC clearances.',
+      });
+    }
+  },
 }));
 
 export function matchesSearch(haystack: Array<string | number | null | undefined>, search: string): boolean {
@@ -318,7 +340,7 @@ export function filterClearances(clearances: Clearance[], filters: Filters): Cle
     if (filters.scope === 'in' && clearance.scope !== 'in') return false;
     if (filters.scope === 'out' && clearance.scope === 'in') return false;
     return matchesSearch(
-      [clearance.number, clearance.type, clearance.company, clearance.municipality, clearance.province, clearance.hwGrNo, clearance.permitRefs.join(' '), clearance.sources.join(' ')],
+      [clearance.number, clearance.type, clearance.company, clearance.project, clearance.municipality, clearance.province, clearance.barangay, clearance.hwGrNo, clearance.permitRefs.join(' '), clearance.sources.join(' '), clearance.hwCodes.join(' ')],
       filters.search,
     );
   });

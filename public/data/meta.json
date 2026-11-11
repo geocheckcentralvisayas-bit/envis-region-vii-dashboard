@@ -242,13 +242,13 @@
     "hwExpired": 68,
     "hwUnknown": 2570,
     "matchedHw": 1456,
-    "clearanceSites": 2931,
-    "clearances": 3727,
+    "clearanceSites": 2560,
+    "clearances": 21844,
     "facilities": 4721,
-    "multiRegisterFacilities": 2918,
-    "eccClearances": 1732,
-    "cncClearances": 1464,
-    "ambiguousClearances": 531,
+    "multiRegisterFacilities": 2952,
+    "eccClearances": 7726,
+    "cncClearances": 14118,
+    "ambiguousClearances": 0,
     "inScope": 6699,
     "outOfScope": 0,
     "unknownScope": 0,
@@ -1258,32 +1258,24 @@
   ],
   "clearanceSources": [
     {
-      "name": "PTO register",
-      "count": 1423
+      "name": "CNC OL (2017-Present)+ECC / CNC Ultralist",
+      "count": 13760
     },
     {
-      "name": "DP register",
-      "count": 947
+      "name": "ECC Manual+ECC / CNC Ultralist",
+      "count": 5305
     },
     {
-      "name": "DP register+PTO register",
-      "count": 474
+      "name": "ECC OL (2015-Present)+ECC / CNC Ultralist",
+      "count": 2415
     },
     {
-      "name": "HW register",
-      "count": 359
+      "name": "CAT C+ECC / CNC Ultralist",
+      "count": 357
     },
     {
-      "name": "HW register+DP register+PTO register",
-      "count": 199
-    },
-    {
-      "name": "HW register+PTO register",
-      "count": 175
-    },
-    {
-      "name": "HW register+DP register",
-      "count": 150
+      "name": "ECC OL (2015-Present)+ECC Manual+ECC / CNC Ultralist",
+      "count": 7
     }
   ],
   "audit": {
@@ -2895,11 +2887,84 @@
   "notes": [
     "Permit records are normalised from the DENR-EMB Region VII Google Sheets registers (DP 2019–2026, PTO 2020–2026).",
     "Hazardous-waste generator registrations come from the DENR-EMB Region VII hazardous-waste register (workbook C, ALL DATA), normalised to one registration per application number with de-duplicated waste codes.",
-    "ECC and CNC references are extracted from both the DP/PTO register (ECC/CNC no. column) and the hazardous-waste register (Permit / Permit No. columns), de-duplicated by clearance number.",
+    "ECC and CNC clearances come from the ECC / CNC Ultralist (ECC OL 2015–Present, ECC Manual, CAT C and CNC OL 2017–Present), limited to Cebu and Bohol. Each clearance is intercrossed with DP, PTO and hazardous-waste records by exact reference number first, then by normalised establishment name within the same province; no fuzzy matching is used.",
     "Sites are cross-matched on normalised establishment name + municipality/city; fuzzy matches require ≥88% token similarity within the same LGU, with branch-marker, parenthetical and location guards.",
     "Lifecycle status is derived from the expiry date against the reference date; source status (New/Renewal/TPO/Amendment) is preserved separately.",
     "In-scope provinces follow the 2026 PSGC Region VII definition: Cebu and Bohol. Negros Oriental and Siquijor records are excluded from in-scope and from the map.",
     "Spatial results are point-in-polygon screens against the supplied DENR hazard, protected-area, watershed and land-cover layers.",
-    "Register coordinates are validated against the DENR Region VII provincial land polygons. Points in the sea, on another island or more than 40 km from their declared city/municipality are re-homed to the barangay / city / municipality centroid derived from the company address and flagged as corrected or approximate."
+    "Register coordinates are validated against the DENR Region VII provincial land polygons. Points in the sea, on another island or more than 40 km from their declared city/municipality are re-homed to the barangay / city / municipality centroid derived from the company address and flagged as corrected or approximate.",
+    "ECC and CNC clearances come from the ECC / CNC Ultralist (ECC OL 2015–Present, ECC Manual, CAT C and CNC OL 2017–Present), limited to Cebu and Bohol. Each clearance is intercrossed with DP, PTO and hazardous-waste records by exact reference number first, then by normalised establishment name within the same province; no fuzzy matching is used.",
+    "ECC and CNC clearances come from the ECC / CNC Ultralist (ECC OL 2015–Present, ECC Manual, CAT C and CNC OL 2017–Present), limited to Cebu and Bohol. Each clearance is intercrossed with DP, PTO and hazardous-waste records by exact reference number first, then by normalised establishment name within the same province; no fuzzy matching is used."
+  ],
+  "eccUltralist": {
+    "generatedAt": "2026-11-11T01:33:59.292Z",
+    "referenceDate": "2026-11-11",
+    "records": 21844,
+    "ecc": 7726,
+    "cnc": 14118,
+    "matched": 21842,
+    "linkedSites": 2560
+  },
+  "clearanceByLgu": [
+    {
+      "municipality": "Liloan",
+      "province": "Cebu",
+      "count": 383
+    },
+    {
+      "municipality": "Minglanilla",
+      "province": "Cebu",
+      "count": 411
+    },
+    {
+      "municipality": "Dauis",
+      "province": "Bohol",
+      "count": 431
+    },
+    {
+      "municipality": "Naga City",
+      "province": "Cebu",
+      "count": 455
+    },
+    {
+      "municipality": "Toledo City",
+      "province": "Cebu",
+      "count": 483
+    },
+    {
+      "municipality": "Talisay City",
+      "province": "Cebu",
+      "count": 554
+    },
+    {
+      "municipality": "Tagbilaran City",
+      "province": "Bohol",
+      "count": 585
+    },
+    {
+      "municipality": "Consolacion",
+      "province": "Cebu",
+      "count": 599
+    },
+    {
+      "municipality": "Panglao",
+      "province": "Bohol",
+      "count": 1233
+    },
+    {
+      "municipality": "Lapu-Lapu City",
+      "province": "Cebu",
+      "count": 1548
+    },
+    {
+      "municipality": "Mandaue City",
+      "province": "Cebu",
+      "count": 1617
+    },
+    {
+      "municipality": "Cebu City",
+      "province": "Cebu",
+      "count": 2665
+    }
   ]
 }

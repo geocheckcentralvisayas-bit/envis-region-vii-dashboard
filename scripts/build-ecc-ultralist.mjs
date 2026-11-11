@@ -14,6 +14,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { ECC_TABS, OUT_DIR, RAW_DIR, WORKBOOKS } from './config.mjs';
+import { applyEccUltralist } from './apply-ecc-ultralist.mjs';
 import { csvToObjects } from './lib/csv.mjs';
 import { parseDate, todayIso, yearOf } from './lib/dates.mjs';
 import {
@@ -857,6 +858,10 @@ async function main() {
     `${totals.linkedHw.toLocaleString()} with HW · ${totals.linkedSites.toLocaleString()} establishments`,
   );
   console.log(`  ecc-ultralist.json ${(bytes / 1024 / 1024).toFixed(2)} MB`);
+
+  // The ultralist is the authoritative ECC/CNC register: rebase the clearance
+  // index, clearance-site counters and map facility totals on it.
+  await applyEccUltralist();
 }
 
 main().catch((error) => {

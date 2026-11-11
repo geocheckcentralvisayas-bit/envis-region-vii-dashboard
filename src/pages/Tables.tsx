@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Download, Table2 } from 'lucide-react';
 import clsx from 'clsx';
 import { requestExport } from '../lib/exportGate';
@@ -28,8 +28,15 @@ export function TablesPage() {
   const hw = useFilteredHw();
   const clearances = useFilteredClearances();
   const selectSite = useDashboard((state) => state.selectSite);
+  const clearancesLoading = useDashboard((state) => state.clearancesLoading);
+  const clearancesError = useDashboard((state) => state.clearancesError);
+  const loadClearances = useDashboard((state) => state.loadClearances);
   const [tab, setTab] = useState<TabId>('permits');
   const [showFlags, setShowFlags] = useState(true);
+
+  useEffect(() => {
+    if (tab === 'clearances') void loadClearances();
+  }, [tab, loadClearances]);
 
   const auditRows = data?.quality.audit ?? [];
   const auditColumns: Column<(typeof auditRows)[number]>[] = [
@@ -247,7 +254,15 @@ export function TablesPage() {
             pageSize={50}
             maxHeight="max-h-[640px]"
             initialSort={{ key: 'number', direction: 'asc' }}
-            empty={<div className="py-12 text-center text-[12px] text-slate-500">No clearances match the current filters.</div>}
+            empty={
+              <div className="py-12 text-center text-[12px] text-slate-500">
+                {clearancesLoading
+                  ? 'Loading the ECC / CNC ultralist…'
+                  : clearancesError
+                    ? `Clearances could not be loaded: ${clearancesError}`
+                    : 'No clearances match the current filters.'}
+              </div>
+            }
           />
         )}
         {tab === 'audit' && (

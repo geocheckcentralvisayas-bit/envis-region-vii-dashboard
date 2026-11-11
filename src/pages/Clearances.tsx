@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Download, FileCheck2, MapPin } from 'lucide-react';
 import clsx from 'clsx';
 import { requestExport } from '../lib/exportGate';
@@ -22,8 +22,15 @@ const KIND_FILTERS: { id: 'all' | ClearanceType; label: string }[] = [
 export function ClearancesPage() {
   const data = useDashboard((state) => state.data);
   const clearances = useFilteredClearances();
+  const clearancesLoading = useDashboard((state) => state.clearancesLoading);
+  const clearancesError = useDashboard((state) => state.clearancesError);
+  const loadClearances = useDashboard((state) => state.loadClearances);
   const setPage = useDashboard((state) => state.setPage);
   const [kind, setKind] = useState<'all' | ClearanceType>('all');
+
+  useEffect(() => {
+    void loadClearances();
+  }, [loadClearances]);
 
   const visible = useMemo(
     () => (kind === 'all' ? clearances : clearances.filter((clearance) => clearance.type === kind)),
@@ -34,12 +41,19 @@ export function ClearancesPage() {
     const ecc = clearances.filter((clearance) => clearance.type === 'ECC').length;
     const cnc = clearances.filter((clearance) => clearance.type === 'CNC').length;
     const ambiguous = clearances.filter((clearance) => clearance.type === 'ECC/CNC').length;
-    const linkedSites = new Set(clearances.map((clearance) => clearance.siteId).filter(Boolean)).size;
+    const linkedSites = new Set(
+      clearances.flatMap((clearance) => (clearance.siteIds?.length ? clearance.siteIds : clearance.siteId ? [clearance.siteId] : [])),
+    ).size;
     const linkedPermits = clearances.filter((clearance) => clearance.permitRefs.length).length;
-    const linkedHw = clearances.filter((clearance) => clearance.hwGrNo).length;
+    const linkedHw = clearances.filter((clearance) => clearance.hwGrNo || clearance.hwCodes.length).length;
     const active = clearances.filter((clearance) => clearance.lifecycle === 'Active' || clearance.lifecycle === 'Expiring').length;
     return { ecc, cnc, ambiguous, linkedSites, linkedPermits, linkedHw, active };
   }, [clearances]);
+
+  const kindFilters = useMemo(
+    () => (stats.ambiguous > 0 ? KIND_FILTERS : KIND_FILTERS.filter((entry) => entry.id !== 'ECC/CNC')),
+    [stats.ambiguous],
+  );
 
   const lguSeries = useMemo(() => {
     const counts = new Map<string, number>();
@@ -182,12 +196,33 @@ export function ClearancesPage() {
 
   if (!data) return null;
 
+  if (clearancesLoading && !clearances.length) {
+    return (
+      <div className="flex min-h-[50vh] items-center justify-center">
+        <div className="text-center">
+          <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-emerald-500 border-t-transparent" />
+          <p className="mt-3 text-[11.5px] text-slate-500">Loading the ECC / CNC ultralist…</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (clearancesError && !clearances.length) {
+    return (
+      <div className="card p-6 text-center">
+        <p className="text-[13px] font-semibold text-slate-200">Clearances could not be loaded</p>
+        <p className="mt-1 text-[11.5px] text-slate-500">{clearancesError}</p>
+        <button type="button" className="btn btn-primary mt-4" onClick={() => void loadClearances()}>Try again</button>
+      </div>
+    );
+  }
+
   return (
     <div className="animate-fade-up space-y-5">
       <SectionHeading
         eyebrow="Compliance register"
         title="ECC and CNC clearances"
-        description="Environmental Compliance Certificates and Certificates of Non-Coverage cross-referenced against discharge permits, permits to operate and hazardous-waste registrations."
+        description="Environmental Compliance Certificates and Certificates of Non-Coverage from the ECC / CNC Ultralist, intercrossed with discharge permits, permits to operate and hazardous-waste registrations."
         action={
           <>
             <button type="button" className="btn" onClick={() => setPage('map')}>
@@ -205,13 +240,13 @@ export function ClearancesPage() {
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
         <StatCard label="ECC clearances" value={formatNumber(stats.ecc)} hint="Environmental Compliance Certificates" icon={<FileCheck2 size={17} />} accent="emerald" onClick={() => setKind('ECC')} />
         <StatCard label="CNC clearances" value={formatNumber(stats.cnc)} hint="Certificates of Non-Coverage" icon={<FileCheck2 size={17} />} accent="sky" onClick={() => setKind('CNC')} />
-        <StatCard label="Unspecified" value={formatNumber(stats.ambiguous)} hint="Legacy references without prefix" icon={<FileCheck2 size={17} />} accent="slate" onClick={() => setKind('ECC/CNC')} />
-        <StatCard label="Linked to sites" value={formatNumber(stats.linkedSites)} hint={`${formatNumber(stats.linkedPermits)} with DP / PTO permit references`} icon={<FileCheck2 size={17} />} accent="violet" />
-        <StatCard label="HW-linked" value={formatNumber(stats.linkedHw)} hint={`${formatNumber(stats.active)} active or expiring`} icon={<FileCheck2 size={17} />} accent="amber" />
+        <StatCard label="DP / PTO-linked" value={formatNumber(stats.linkedPermits)} hint="Clearances with a linked permit reference" icon={<FileCheck2 size={17} />} accent="violet" />
+        <StatCard label="Linked to sites" value={formatNumber(stats.linkedSites)} hint="Establishments matched to the ultralist" icon={<FileCheck2 size={17} />} accent="violet" />
+        <StatCard label="HW-linked" value={formatNumber(stats.linkedHw)} hint={`${formatNumber(stats.active)} issued or active`} icon={<FileCheck2 size={17} />} accent="amber" />
       </div>
 
       <div className="flex flex-wrap gap-1.5">
-        {KIND_FILTERS.map((entry) => (
+        {kindFilters.map((entry) => (
           <button
             key={entry.id}
             type="button"

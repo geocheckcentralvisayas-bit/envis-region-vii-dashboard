@@ -3,7 +3,7 @@ import {
   Activity, ArrowRight, Building2, CalendarClock, Droplets, FileCheck2, FileWarning, FlaskConical, Layers3,
   MapPin, ShieldAlert, Sparkles, TrendingUp,
 } from 'lucide-react';
-import { useDashboard, useFilteredPermits, useFilteredSites, useFilteredHw, useFilteredClearances } from '../store/useDashboard';
+import { useDashboard, useFilteredPermits, useFilteredSites, useFilteredHw } from '../store/useDashboard';
 import { DataTable, Chip, MetricRow, Panel, ProgressBar, SectionHeading, StatCard } from '../components/ui';
 import { Chart, axisStyle, chartBase } from '../components/Chart';
 import { MapView } from '../components/MapView';
@@ -21,7 +21,6 @@ export function OverviewPage() {
   const permits = useFilteredPermits();
   const sites = useFilteredSites();
   const hw = useFilteredHw();
-  const clearances = useFilteredClearances();
 
   const stats = useMemo(() => {
     const active = permits.filter((permit) => permit.lifecycle === 'Active').length;
@@ -198,14 +197,10 @@ export function OverviewPage() {
     return [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 10).reverse();
   }, [hw]);
 
-  const clearanceLgus = useMemo(() => {
-    const counts = new Map<string, number>();
-    for (const clearance of clearances) {
-      if (!clearance.municipality) continue;
-      counts.set(clearance.municipality, (counts.get(clearance.municipality) ?? 0) + 1);
-    }
-    return [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 10).reverse();
-  }, [clearances]);
+  const clearanceLgus = useMemo(
+    () => (data?.meta.clearanceByLgu ?? []).map((entry) => [entry.municipality, entry.count] as [string, number]),
+    [data],
+  );
 
   if (!data) return null;
 

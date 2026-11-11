@@ -18,9 +18,11 @@ export function SiteDrawer() {
   const hwRegs = data.hw
     .filter((registration) => registration.siteId === site.id)
     .sort((a, b) => (b.issued ?? '').localeCompare(a.issued ?? ''));
-  const siteClearances = data.clearances
-    .filter((clearance) => clearance.siteId === site.id)
-    .sort((a, b) => a.type.localeCompare(b.type) || a.number.localeCompare(b.number));
+  const siteClearances = [
+    ...(site.eccNos ?? []).map((number) => ({ id: `ECC-${number}`, type: 'ECC' as const, number })),
+    ...(site.cncNos ?? []).map((number) => ({ id: `CNC-${number}`, type: 'CNC' as const, number })),
+    ...(site.ambiguousNos ?? []).map((number) => ({ id: `ECC/CNC-${number}`, type: 'ECC/CNC' as const, number })),
+  ].sort((a, b) => a.type.localeCompare(b.type) || a.number.localeCompare(b.number));
   const gap = GAP_META[site.gap];
 
   return (

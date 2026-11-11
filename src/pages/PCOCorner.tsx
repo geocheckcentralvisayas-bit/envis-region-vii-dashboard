@@ -29,6 +29,29 @@ export function PCOCorner() {
 
   const { byPCO, crossReferences, unmatchedPCOs, expiringSoon, totals } = pcoAnalysis;
 
+  const pcoRecordByEstablishment = useMemo(() => {
+    const map = new Map<string, { address: string; natureOfBusiness: string }>();
+    for (const record of pcoRecords) {
+      const key = record.establishment?.trim().toLowerCase();
+      if (!key) continue;
+      const current = map.get(key) ?? { address: '', natureOfBusiness: '' };
+      if (!current.address && record.address) current.address = record.address;
+      if (!current.natureOfBusiness && record.natureOfBusiness) current.natureOfBusiness = record.natureOfBusiness;
+      map.set(key, current);
+    }
+    return map;
+  }, [pcoRecords]);
+
+  const uniqueEstablishments = (pco: PCOCompanySummary) => {
+    const seen = new Set<string>();
+    return pco.establishments.filter((entry) => {
+      const key = `${entry.establishment}|${entry.address}`.trim().toLowerCase();
+      if (!entry.establishment || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  };
+
   // Summary Cards
   const summaryCards = [
     { label: 'Total PCO Records', value: totals.pcoRecords.toLocaleString(), icon: FileText, accent: 'sky' as const },
@@ -159,6 +182,38 @@ export function PCOCorner() {
       header: 'Evaluator',
       render: (pco: PCOCompanySummary) => pco.evaluator,
       sortValue: (pco: PCOCompanySummary) => pco.evaluator,
+    },
+    {
+      key: 'establishments',
+      header: 'Establishment / address',
+      render: (pco: PCOCompanySummary) => {
+        const list = uniqueEstablishments(pco);
+        if (!list.length) return <span className="text-slate-600">—</span>;
+        return (
+          <div className="scroll-thin max-h-[92px] min-w-[220px] max-w-[320px] space-y-1.5 overflow-y-auto pr-1">
+            {list.map((entry, index) => (
+              <div key={`${entry.establishment}-${index}`}>
+                <div className="truncate text-[11px] font-medium text-slate-200" title={entry.establishment}>{entry.establishment || '—'}</div>
+                <div className="truncate text-[9.5px] text-slate-500" title={entry.address}>{entry.address || 'No address on file'}</div>
+              </div>
+            ))}
+          </div>
+        );
+      },
+    },
+    {
+      key: 'nature',
+      header: 'Nature of business',
+      render: (pco: PCOCompanySummary) => (
+        pco.industries.length ? (
+          <div className="flex max-w-[220px] flex-wrap gap-1">
+            {pco.industries.slice(0, 6).map((industry) => (
+              <span key={industry} className="rounded border border-white/[0.07] bg-white/[0.02] px-1.5 py-0.5 text-[9px] text-slate-400">{industry}</span>
+            ))}
+            {pco.industries.length > 6 && <span className="text-[9px] text-slate-600">+{pco.industries.length - 6}</span>}
+          </div>
+        ) : <span className="text-slate-600">—</span>
+      ),
     },
     {
       key: 'totalRecords',
@@ -454,6 +509,14 @@ export function PCOCorner() {
             columns={[
               { key: 'pco', header: 'PCO', render: (u) => u.pco },
               { key: 'establishment', header: 'Establishment', render: (u) => u.establishment },
+              { key: 'address', header: 'Address', render: (u) => {
+                const detail = pcoRecordByEstablishment.get(u.establishment?.trim().toLowerCase() ?? '');
+                return <span className="block max-w-[260px] truncate text-[10.5px] text-slate-500" title={detail?.address}>{detail?.address || '—'}</span>;
+              } },
+              { key: 'nature', header: 'Nature of business', render: (u) => {
+                const detail = pcoRecordByEstablishment.get(u.establishment?.trim().toLowerCase() ?? '');
+                return <span className="block max-w-[220px] truncate text-[10.5px] text-slate-500" title={detail?.natureOfBusiness}>{detail?.natureOfBusiness || '—'}</span>;
+              } },
               { key: 'reason', header: 'Reason', render: (u) => <span className="text-amber-700">{u.reason}</span> },
             ]}
             rowKey={(u) => `${u.pco}-${u.establishment}`}
