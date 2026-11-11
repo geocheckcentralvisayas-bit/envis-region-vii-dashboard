@@ -423,6 +423,7 @@ html.light .btn-primary { background: #10b981; color: #ffffff; border-color: #10
 html.light .leaflet-container { background: #e2e8f0; }
 
 html.light .text-emerald-200, html.light .text-emerald-300 { color: #047857 !important; }
+html.light .text-emerald-100, html.light .text-emerald-100\/70 { color: #065f46 !important; }
 html.light .text-sky-300 { color: #0369a1 !important; }
 html.light .text-amber-300 { color: #b45309 !important; }
 html.light .text-rose-300 { color: #be123c !important; }

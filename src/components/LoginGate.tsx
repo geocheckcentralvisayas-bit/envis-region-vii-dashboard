@@ -82,7 +82,7 @@ export function LoginGate({ onLogin, notice }: { onLogin: (session: Session) => 
             <ShieldCheck size={14} /> {busy ? 'Signing in…' : 'Sign in'}
           </button>
           <p className="text-center text-[10px] text-slate-600">Authorized DENR-EMB Region VII personnel only.</p>
-          <p className="text-center text-[9.5px] text-slate-700">No self-service password reset: contact MIS ([redacted]) to reset an account.</p>
+          <p className="text-center text-[9.5px] text-slate-700">No self-service password reset: contact the MIS unit to reset an account.</p>
         </form>
       </div>
     </div>

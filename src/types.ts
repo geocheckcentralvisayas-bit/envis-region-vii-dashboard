@@ -638,7 +638,7 @@ export type PageId =
   | 'legal'
   | 'pco-corner';
 
-export type Role = '[redacted]' | 'rd' | 'emed' | 'cpd' | 'mis' | 'viewer' | 'gis';
+export type Role = 'extraction' | 'rd' | 'emed' | 'cpd' | 'mis' | 'viewer' | 'gis';
 
 export interface Session {
   username: string;

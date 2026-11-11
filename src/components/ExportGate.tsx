@@ -61,7 +61,7 @@ export function ExportGateProvider({ children }: { children: React.ReactNode }) 
         <div className="fixed inset-0 z-[1000] grid place-items-center bg-black/60 backdrop-blur-sm">
           <div className="card w-full max-w-sm p-6">
             <h2 className="text-[15px] font-bold text-slate-50">Exporter login required</h2>
-            <p className="mt-1 text-[11px] text-slate-500">Only the [redacted] account can export data.</p>
+            <p className="mt-1 text-[11px] text-slate-500">Only the data extraction account can export data.</p>
             <form onSubmit={submit} className="mt-4 space-y-3">
               <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" autoComplete="username" required className="input h-9 w-full" />
               <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" autoComplete="current-password" required className="input h-9 w-full" />

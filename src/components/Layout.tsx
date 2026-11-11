@@ -10,6 +10,7 @@ import type { PageId } from '../types';
 import { logout } from '../lib/auth';
 import type { Session } from '../lib/auth';
 import { formatDateTime } from '../lib/format';
+import { APP_VERSION, EMB_R7_URL, VERSION_LABEL } from '../lib/version';
 
 const NAV: { group: string; items: { id: PageId; label: string; icon: typeof LayoutDashboard; badge?: string }[] }[] = [
   { group: 'Monitor', items: [{ id: 'overview', label: 'Overview', icon: LayoutDashboard }] },
@@ -61,7 +62,10 @@ const NAV: { group: string; items: { id: PageId; label: string; icon: typeof Lay
   },
   {
     group: 'Administration',
-    items: [{ id: 'admin', label: 'Accounts & Activity', icon: ShieldCheck }],
+    items: [
+      { id: 'admin', label: 'Accounts & Activity', icon: ShieldCheck },
+      { id: 'about', label: 'About & License', icon: Info },
+    ],
   },
 ];
 
@@ -77,7 +81,7 @@ const PAGE_META: Record<PageId, { title: string; subtitle: string }> = {
   quality: { title: 'Data quality', subtitle: 'Normalisation, duplicate handling and review queues' },
   tables: { title: 'Data tables', subtitle: 'Browse the complete normalised registers' },
   reports: { title: 'Reports & export', subtitle: 'Generate filtered datasets and summary reports' },
-  about: { title: 'About & sources', subtitle: 'Methodology, provenance and limitations' },
+  about: { title: 'About & license', subtitle: 'Methodology, credits, DENR directory and version history' },
   hw: { title: 'Hazardous waste register', subtitle: 'Hazardous-waste generators, waste streams and compliance status' },
   clearances: { title: 'ECC & CNC clearances', subtitle: 'Environmental compliance and non-coverage certificates cross-referenced with DP and PTO' },
   'ecc-ultralist': { title: 'ECC & CNC ultralist', subtitle: 'Approved EIA clearances for Cebu and Bohol intercrossed with DP, PTO and hazardous waste' },
@@ -199,8 +203,16 @@ export function Layout({ children, session, onLogout }: { children: React.ReactN
             </div>
           )}
           <div className={clsx('mt-2 flex items-center justify-between px-1 text-[9px] text-slate-600', collapsed && 'md:justify-center')}>
-            <span className={clsx(collapsed && 'md:hidden')}>Build 1.0 · Authorized</span>
-            <a href="https://emb.gov.ph" target="_blank" rel="noreferrer" className="hover:text-slate-400" title="DENR-EMB">
+            <a
+              href={EMB_R7_URL}
+              target="_blank"
+              rel="noreferrer"
+              className={clsx('hover:text-slate-400', collapsed && 'md:hidden')}
+              title="DENR-EMB Region VII"
+            >
+              Build {APP_VERSION} · Authorized
+            </a>
+            <a href={EMB_R7_URL} target="_blank" rel="noreferrer" className="hover:text-slate-400" title="DENR-EMB Region VII">
               <ExternalLink size={11} />
             </a>
           </div>
@@ -291,8 +303,13 @@ export function Layout({ children, session, onLogout }: { children: React.ReactN
 
         <footer className="no-print border-t border-white/[0.05] px-5 py-3 text-[9.5px] text-slate-600">
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <span>ENVIS Region VII · Environmental permits monitoring · Public read-only dashboard</span>
-            <span>Sources: DENR-EMB Region VII DP and PTO registers · PSGC 2026 · DENR spatial layers</span>
+            <span>
+              ENVIS Region VII · Environmental permits monitoring · {VERSION_LABEL} · © 2026 Kent Agbayani (K3nt-Bytes)
+            </span>
+            <span>
+              Sources: DENR-EMB Region VII registers · PSGC 2026 · DENR spatial layers ·{' '}
+              <a href={EMB_R7_URL} target="_blank" rel="noreferrer" className="hover:text-slate-400">r7.emb.gov.ph</a>
+            </span>
           </div>
         </footer>
       </div>

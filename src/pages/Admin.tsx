@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import {
-  AlertTriangle, Download, Eye, EyeOff, KeyRound, Pencil, Plus, RefreshCw, Search, Share2, ShieldCheck, Trash2, Upload, UserPlus, X,
+  AlertTriangle, Download, Eye, EyeOff, KeyRound, Pencil, Plus, RefreshCw, Search, ShieldCheck, Trash2, Upload, UserPlus, X,
 } from 'lucide-react';
 import clsx from 'clsx';
 import {
-  ROLES, addAccount, canManageAccounts, clearActivity, deleteAccount, encodeAccountForSharing, exportAccountsJson, getAccounts, getActivity, getSession,
+  ROLES, addAccount, canManageAccounts, clearActivity, deleteAccount, exportAccountsJson, getAccounts, getActivity, getSession,
   importAccountsJson, setAccountActive, setAccountPassword, updateAccount,
   type ActivityEntry, type ActivityType, type Role, type StoredAccount,
 } from '../lib/auth';
@@ -157,7 +157,7 @@ export function AdminPage() {
 
   const openEdit = (account: StoredAccount) => {
     setEditing(account);
-    setEditForm({ username: account.username, displayName: account.displayName, division: account.division, role: account.role });
+    setEditForm({ username: account.builtin ? '' : account.username, displayName: account.displayName, division: account.division, role: account.role });
     setError('');
     setNotice('');
   };
@@ -167,7 +167,10 @@ export function AdminPage() {
     if (!editing) return;
     setBusy(true);
     try {
-      await updateAccount(editing.username, editForm);
+      await updateAccount(editing.username, {
+        ...editForm,
+        username: editForm.username.trim() ? editForm.username : undefined,
+      });
       refreshAccounts();
       setEditing(null);
       flash('Account updated.');
@@ -197,7 +200,7 @@ export function AdminPage() {
       await setAccountPassword(passwordFor.username, pwForm.password);
       refreshAccounts();
       setPasswordFor(null);
-      flash(`Password updated for ${passwordFor.username}.`);
+      flash(`Password updated for ${passwordFor.displayName}.`);
     } catch (err) {
       fail(err);
     } finally {
@@ -209,30 +212,20 @@ export function AdminPage() {
     try {
       setAccountActive(account.username, !account.active);
       refreshAccounts();
-      flash(`${account.username} ${account.active ? 'deactivated' : 'activated'}.`);
+      flash(`${account.displayName} ${account.active ? 'deactivated' : 'activated'}.`);
     } catch (err) {
       fail(err);
     }
   };
 
   const handleDelete = (account: StoredAccount) => {
-    if (!window.confirm(`Delete account "${account.username}"? This cannot be undone.`)) return;
+    if (!window.confirm(`Delete account "${account.displayName}"? This cannot be undone.`)) return;
     try {
       deleteAccount(account.username);
       refreshAccounts();
       flash('Account deleted.');
     } catch (err) {
       fail(err);
-    }
-  };
-
-  const handleShare = async (account: StoredAccount) => {
-    const link = `${window.location.origin}${window.location.pathname}?import=${encodeAccountForSharing(account)}`;
-    try {
-      await navigator.clipboard.writeText(link);
-      flash(`Share link for ${account.username} copied to the clipboard. Send it to the user along with their password.`);
-    } catch {
-      window.prompt('Copy this share link and send it to the user:', link);
     }
   };
 
@@ -300,7 +293,7 @@ export function AdminPage() {
     total: accounts.length,
     active: accounts.filter((account) => account.active).length,
     mis: accounts.filter((account) => account.role === 'mis').length,
-    exporters: accounts.filter((account) => account.role === '[redacted]' || account.role === 'mis').length,
+    exporters: accounts.filter((account) => account.role === 'extraction' || account.role === 'mis').length,
   }), [accounts]);
 
   const activityStats = useMemo(() => ({
@@ -314,9 +307,13 @@ export function AdminPage() {
   const accountColumns: Column<StoredAccount>[] = [
     {
       key: 'username',
-      header: 'Username',
-      sortValue: (row) => row.username,
-      render: (row) => <span className="font-mono text-[11px] text-slate-200">{row.username}</span>,
+      header: 'Login',
+      sortValue: (row) => (row.builtin ? row.displayName : row.username),
+      render: (row) => (
+        <span className={clsx('font-mono text-[10.5px]', row.builtin ? 'text-slate-500' : 'text-slate-200')}>
+          {row.builtin ? 'protected key' : row.username}
+        </span>
+      ),
     },
     {
       key: 'displayName',
@@ -353,9 +350,6 @@ export function AdminPage() {
       header: '',
       render: (row) => (
         <div className="flex items-center gap-1">
-          <button type="button" title="Share account" onClick={() => handleShare(row)} className="rounded-md p-1.5 text-slate-500 hover:bg-white/5 hover:text-sky-300">
-            <Share2 size={13} />
-          </button>
           <button type="button" title="Edit account" onClick={() => openEdit(row)} className="rounded-md p-1.5 text-slate-500 hover:bg-white/5 hover:text-slate-200">
             <Pencil size={13} />
           </button>
@@ -373,6 +367,14 @@ export function AdminPage() {
     },
   ];
 
+  const accountLabel = (username: string) => {
+    const match = accounts.find((account) => account.username === username);
+    if (match) return match.displayName;
+    if (username === 'unknown') return 'unknown';
+    if (username === 'system') return 'system';
+    return 'protected account';
+  };
+
   const activityColumns: Column<ActivityEntry>[] = [
     {
       key: 'at',
@@ -389,8 +391,8 @@ export function AdminPage() {
     {
       key: 'username',
       header: 'Account',
-      sortValue: (row) => row.username,
-      render: (row) => <span className="font-mono text-[10.5px] text-slate-300">{row.username}</span>,
+      sortValue: (row) => accountLabel(row.username),
+      render: (row) => <span className="text-[10.5px] text-slate-300">{accountLabel(row.username)}</span>,
     },
     {
       key: 'role',
@@ -494,12 +496,12 @@ export function AdminPage() {
             <StatCard label="Accounts" value={formatNumber(stats.total)} hint="Registered in this browser" icon={<UserPlus size={17} />} accent="emerald" />
             <StatCard label="Active" value={formatNumber(stats.active)} hint={`${formatNumber(stats.total - stats.active)} inactive`} icon={<ShieldCheck size={17} />} accent="sky" />
             <StatCard label="MIS accounts" value={formatNumber(stats.mis)} hint="Can manage this panel" icon={<ShieldCheck size={17} />} accent="violet" />
-            <StatCard label="Exporters" value={formatNumber(stats.exporters)} hint="[redacted] + MIS roles" icon={<Download size={17} />} accent="amber" />
+            <StatCard label="Exporters" value={formatNumber(stats.exporters)} hint="Data extraction + MIS roles" icon={<Download size={17} />} accent="amber" />
           </div>
 
           <Panel
             title="Dashboard accounts"
-            subtitle="Changes apply to this browser. Passwords are stored as SHA-256 hashes."
+            subtitle="Changes apply to this browser. Passwords are stored as salted PBKDF2-SHA256 hashes."
             bodyClassName="p-3"
           >
             <DataTable<StoredAccount>
@@ -513,7 +515,7 @@ export function AdminPage() {
           </Panel>
 
           <div className="rounded-lg border border-white/[0.06] bg-white/[0.015] px-3 py-2 text-[10.5px] leading-relaxed text-slate-500">
-            Accounts and activity are stored in this browser's local storage, so they are specific to this device. To make an account available on another device, an MIS admin can <span className="font-medium text-slate-400">Export accounts</span> here and <span className="font-medium text-slate-400">Import accounts</span> it on the other device. For accounts that must be available to everyone automatically, add them to <span className="font-mono text-[10px] text-slate-400">src/lib/auth.ts</span> and rebuild the dashboard. A shared backend is required for automatic cross-device sync.
+            Accounts and activity are stored in this browser's local storage, so they are specific to this device. To make an account available on another device, an MIS admin can <span className="font-medium text-slate-400">Export accounts</span> here and <span className="font-medium text-slate-400">Import accounts</span> it on the other device. Built-in accounts use protected keys and cannot be renamed from this panel; reset their password or deactivate them instead. A shared backend is required for automatic cross-device sync.
           </div>
         </>
       )}
@@ -598,11 +600,19 @@ export function AdminPage() {
       )}
 
       {editing && (
-        <Modal title={`Edit ${editing.username}`} onClose={() => setEditing(null)}>
+        <Modal title={`Edit ${editing.displayName}`} onClose={() => setEditing(null)}>
           <form onSubmit={handleSaveEdit} className="space-y-3">
-            <Field label="Username">
-              <input className="input h-9 w-full" value={editForm.username} onChange={(e) => setEditForm({ ...editForm, username: e.target.value })} required />
-            </Field>
+            {editing.builtin ? (
+              <div className="rounded-lg border border-white/[0.06] bg-white/[0.02] px-3 py-2 text-[10.5px] leading-relaxed text-slate-500">
+                This is a built-in account. Its login name is stored as a protected key, not as readable text.
+                Use <span className="font-medium text-slate-400">Reset password</span> or deactivate it from the
+                account list. Display name, division and role can still be changed.
+              </div>
+            ) : (
+              <Field label="Username">
+                <input className="input h-9 w-full" value={editForm.username} onChange={(e) => setEditForm({ ...editForm, username: e.target.value })} required />
+              </Field>
+            )}
             <Field label="Display name">
               <input className="input h-9 w-full" value={editForm.displayName} onChange={(e) => setEditForm({ ...editForm, displayName: e.target.value })} />
             </Field>
@@ -623,7 +633,7 @@ export function AdminPage() {
       )}
 
       {passwordFor && (
-        <Modal title={`Reset password — ${passwordFor.username}`} onClose={() => setPasswordFor(null)}>
+        <Modal title={`Reset password — ${passwordFor.displayName}`} onClose={() => setPasswordFor(null)}>
           <form onSubmit={handlePassword} className="space-y-3">
             <div className="grid grid-cols-2 gap-3">
               <PasswordField label="New password" value={pwForm.password} onChange={(value) => setPwForm({ ...pwForm, password: value })} />

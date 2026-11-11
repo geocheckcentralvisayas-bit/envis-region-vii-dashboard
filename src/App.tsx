@@ -6,7 +6,7 @@ import { ErrorBoundary } from './components/ErrorBoundary';
 import { SiteDrawer } from './components/SiteDrawer';
 import { LoginGate } from './components/LoginGate';
 import { subscribeGate, resolveGate, cancelGate, tryGateLogin, getPendingKind } from './lib/exportGate';
-import { getSession, importSharedAccount, logout, type Session } from './lib/auth';
+import { getSession, logout, type Session } from './lib/auth';
 import type { PageId } from './types';
 
 const OverviewPage = lazy(() => import('./pages/Overview').then((m) => ({ default: m.OverviewPage })));
@@ -66,17 +66,6 @@ export default function App() {
   const setPage = useDashboard((state) => state.setPage);
   const setSessionStore = useDashboard((state) => state.setSession);
   const [session, setSession] = useState<Session | null>(() => getSession());
-  const [importNotice] = useState<string | null>(() => {
-    const params = new URLSearchParams(window.location.search);
-    const encoded = params.get('import');
-    if (!encoded) return null;
-    const account = importSharedAccount(encoded);
-    const url = new URL(window.location.href);
-    url.search = '';
-    window.history.replaceState({}, '', url.toString());
-    if (account) return `Account "${account.username}" imported. You can now sign in with the password the admin shared.`;
-    return 'The import link was invalid or expired.';
-  });
 
   const [gateOpen, setGateOpen] = useState(false);
   const [exportUser, setExportUser] = useState('');
@@ -158,7 +147,7 @@ useEffect(() => {
   }, [data]);
 
   if (!session) {
-    return <LoginGate onLogin={setSession} notice={importNotice} />;
+    return <LoginGate onLogin={setSession} />;
   }
 
   if (error && !data) {
@@ -244,7 +233,7 @@ return (
         <div className="fixed inset-0 z-[1000] grid place-items-center bg-black/60 backdrop-blur-sm">
           <div className="card w-full max-w-sm p-6">
             <h2 className="text-[15px] font-bold text-slate-50">{gateOpen && getPendingKind() === "geojson" ? "GIS login required" : "Exporter login required"}</h2>
-            <p className="mt-1 text-[11px] text-slate-500">{gateOpen && getPendingKind() === "geojson" ? "Only the GIS account can download GeoJSON layers." : "Only the [redacted] account can export data."}</p>
+            <p className="mt-1 text-[11px] text-slate-500">{gateOpen && getPendingKind() === "geojson" ? "Only the GIS account can download GeoJSON layers." : "Only the data extraction account can export data."}</p>
             <form onSubmit={handleExportLogin} className="mt-4 space-y-3">
               <input type="text" value={exportUser} onChange={(e) => setExportUser(e.target.value)} placeholder="Username" autoComplete="username" required className="input h-9 w-full" />
               <input type="password" value={exportPass} onChange={(e) => setExportPass(e.target.value)} placeholder="Password" autoComplete="current-password" required className="input h-9 w-full" />
