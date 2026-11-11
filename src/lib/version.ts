@@ -12,7 +12,7 @@ export const BUILT_AT = __APP_BUILT_AT__;
 
 export const VERSION_LABEL = BUILD_NUMBER ? `v${APP_VERSION} · build ${BUILD_NUMBER}` : `v${APP_VERSION} · dev`;
 
-export const REPO_URL = 'https://github.com/geocheckcentralvisayas-bit/envis-dashboard-region-vii';
+export const REPO_URL = 'https://github.com/geocheckcentralvisayas-bit/envis-region-vii';
 export const RELEASES_URL = `${REPO_URL}/releases`;
 export const ACTIONS_URL = `${REPO_URL}/actions`;
 export const LICENSE_URL = `${REPO_URL}/blob/main/LICENSE`;

@@ -359,7 +359,7 @@ export function AboutPage() {
                 </a>
                 <a href={REPO_URL} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-slate-300 hover:text-emerald-200">
                   <Github size={12} className="shrink-0 text-emerald-400/80" />
-                  <span className="truncate">geocheckcentralvisayas-bit/envis-dashboard-region-vii</span>
+                  <span className="truncate">geocheckcentralvisayas-bit/envis-region-vii</span>
                 </a>
                 <a href={EMB_R7_URL} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-slate-300 hover:text-emerald-200">
                   <ExternalLink size={12} className="shrink-0 text-emerald-400/80" />

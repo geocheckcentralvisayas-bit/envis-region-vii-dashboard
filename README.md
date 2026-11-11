@@ -214,7 +214,7 @@ Actions runs and releases.
 
 **Kent Agbayani (K3nt-Bytes)** — developer and maintainer  
 Email: [Liquidkentagbayani@proton.me](mailto:Liquidkentagbayani@proton.me)  
-Repository: [geocheckcentralvisayas-bit/envis-dashboard-region-vii](https://github.com/geocheckcentralvisayas-bit/envis-dashboard-region-vii)
+Repository: [geocheckcentralvisayas-bit/envis-region-vii](https://github.com/geocheckcentralvisayas-bit/envis-region-vii)
 
 ## License
 
