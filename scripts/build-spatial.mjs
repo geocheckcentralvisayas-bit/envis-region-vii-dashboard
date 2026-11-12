@@ -1,7 +1,8 @@
-import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';
+import { access, mkdir, readFile, stat, writeFile } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { createRequire } from 'node:module';
 import path from 'node:path';
+import { constants } from 'node:fs';
 
 const require = createRequire(import.meta.url);
 const mapshaperBin = require.resolve('mapshaper/bin/mapshaper');
@@ -91,6 +92,18 @@ export const LAYERS = [
     description: '2025 land cover map for the province of Cebu.',
   },
   {
+    id: 'land_cover_bohol',
+    name: 'Land Cover 2025 (Bohol)',
+    group: 'Land',
+    src: 'Land_Cover_2025_Bohol.geojson',
+    out: 'land_cover_bohol.geojson',
+    dissolve: 'LCM_CLASS',
+    fields: ['LCM_CLASS'],
+    simplify: '2.5%',
+    style: { kind: 'classified', field: 'LCM_CLASS' },
+    description: '2025 land cover map for the province of Bohol.',
+  },
+  {
     id: 'land_classification',
     name: 'Land Classification',
     group: 'Land',
@@ -101,6 +114,28 @@ export const LAYERS = [
     simplify: '5%',
     style: { kind: 'classified', field: 'CLASSIFIC_' },
     description: 'Forestland / alienable and disposable land classification.',
+  },
+  {
+    id: 'river_networks',
+    name: 'River Networks',
+    group: 'Environment',
+    src: 'Rivers_Networks.geojson',
+    out: 'river_networks.geojson',
+    simplify: '4%',
+    style: { kind: 'outline', color: '#38bdf8', weight: 1.1, fillOpacity: 0 },
+    description: 'River and stream network overlay (Region VII).',
+  },
+  {
+    id: 'river_networks_buffered',
+    name: 'River Networks (Buffered)',
+    group: 'Environment',
+    src: 'river_networks_buffered_lc2025.geojson',
+    out: 'river_networks_buffered.geojson',
+    dissolve: 'zone',
+    fields: ['zone'],
+    simplify: '2%',
+    style: { kind: 'classified', field: 'zone' },
+    description: 'River network riparian buffers derived from Land Cover 2025 (Cebu & Bohol): 3 m in urban (Built-up), 20 m in agricultural (Annual/Perennial Crop), 40 m in forest (Open/Closed/Mangrove Forest).',
   },
 ];
 
@@ -131,11 +166,29 @@ const CLASS_META = {
     'Open Forest': { label: 'Open Forest', color: '#15803d' },
     'Closed Forest': { label: 'Closed Forest', color: '#14532d' },
   },
+  land_cover_bohol: {
+    'Annual Crop': { label: 'Annual Crop', color: '#eab308' },
+    'Perennial Crop': { label: 'Perennial Crop', color: '#a3e635' },
+    'Built-up': { label: 'Built-up', color: '#f87171' },
+    'Brush/Shrubs': { label: 'Brush / Shrubs', color: '#84cc16' },
+    'Mangrove Forest': { label: 'Mangrove Forest', color: '#059669' },
+    Grassland: { label: 'Grassland', color: '#d9f99d' },
+    'Open/Barren': { label: 'Open / Barren', color: '#d6d3d1' },
+    Fishpond: { label: 'Fishpond', color: '#67e8f9' },
+    'Inland Water': { label: 'Inland Water', color: '#38bdf8' },
+    'Open Forest': { label: 'Open Forest', color: '#15803d' },
+    'Closed Forest': { label: 'Closed Forest', color: '#14532d' },
+  },
   land_classification: {
     Forestland: { label: 'Forestland', color: '#16a34a' },
     'A&D': { label: 'Alienable & Disposable', color: '#f59e0b' },
     Nipas: { label: 'NIPAS', color: '#22c55e' },
     'Unclassified PF': { label: 'Unclassified Public Forest', color: '#94a3b8' },
+  },
+  river_networks_buffered: {
+    urban: { label: 'Urban · 3 m', color: '#f97316' },
+    agricultural: { label: 'Agricultural · 20 m', color: '#84cc16' },
+    forest: { label: 'Forest · 40 m', color: '#16a34a' },
   },
 };
 
@@ -166,6 +219,12 @@ async function main() {
   for (const layer of LAYERS) {
     const src = path.join(SRC, layer.src);
     const out = path.join(OUT, layer.out);
+    try {
+      await access(src, constants.R_OK);
+    } catch {
+      console.warn(`  • ${layer.name} … skipped (missing ${src})`);
+      continue;
+    }
     const args = ['-i', src];
     if (layer.dissolve) args.push('-dissolve', layer.dissolve);
     if (layer.simplify) args.push('-simplify', layer.simplify, 'keep-shapes');

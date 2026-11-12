@@ -10,7 +10,7 @@ import { formatBytes, formatNumber } from '../lib/format';
 import type { SpatialLayer } from '../types';
 
 const HAZARD_LAYERS = ['flooding', 'landslide'];
-const ENV_LAYERS = ['protected_areas', 'watersheds'];
+const ENV_LAYERS = ['protected_areas', 'watersheds', 'river_networks', 'river_networks_buffered'];
 const ADMIN_LAYERS = ['provincial_boundary', 'districts'];
 
 export function SpatialLayersPage() {

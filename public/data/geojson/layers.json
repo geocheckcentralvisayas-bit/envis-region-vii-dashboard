@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-27T03:31:09.280Z",
-  "totalBytes": 12482579,
+  "generatedAt": "2026-11-12T07:22:39.076Z",
+  "totalBytes": 19840767,
   "layers": [
     {
       "id": "provincial_boundary",
@@ -313,6 +313,90 @@
       }
     },
     {
+      "id": "land_cover_bohol",
+      "name": "Land Cover 2025 (Bohol)",
+      "group": "Land",
+      "dissolve": "LCM_CLASS",
+      "fields": [
+        "LCM_CLASS"
+      ],
+      "simplify": "2.5%",
+      "style": {
+        "kind": "classified",
+        "field": "LCM_CLASS"
+      },
+      "description": "2025 land cover map for the province of Bohol.",
+      "file": "land_cover_bohol.geojson",
+      "geometry": "MultiPolygon",
+      "count": 11,
+      "sizeBytes": 2032007,
+      "bbox": [
+        123.68068,
+        9.48597,
+        124.61675,
+        10.28694
+      ],
+      "classes": [
+        "Annual Crop",
+        "Brush/Shrubs",
+        "Built-up",
+        "Closed Forest",
+        "Fishpond",
+        "Grassland",
+        "Inland Water",
+        "Mangrove Forest",
+        "Open Forest",
+        "Open/Barren",
+        "Perennial Crop"
+      ],
+      "classMeta": {
+        "Annual Crop": {
+          "label": "Annual Crop",
+          "color": "#eab308"
+        },
+        "Perennial Crop": {
+          "label": "Perennial Crop",
+          "color": "#a3e635"
+        },
+        "Built-up": {
+          "label": "Built-up",
+          "color": "#f87171"
+        },
+        "Brush/Shrubs": {
+          "label": "Brush / Shrubs",
+          "color": "#84cc16"
+        },
+        "Mangrove Forest": {
+          "label": "Mangrove Forest",
+          "color": "#059669"
+        },
+        "Grassland": {
+          "label": "Grassland",
+          "color": "#d9f99d"
+        },
+        "Open/Barren": {
+          "label": "Open / Barren",
+          "color": "#d6d3d1"
+        },
+        "Fishpond": {
+          "label": "Fishpond",
+          "color": "#67e8f9"
+        },
+        "Inland Water": {
+          "label": "Inland Water",
+          "color": "#38bdf8"
+        },
+        "Open Forest": {
+          "label": "Open Forest",
+          "color": "#15803d"
+        },
+        "Closed Forest": {
+          "label": "Closed Forest",
+          "color": "#14532d"
+        }
+      }
+    },
+    {
       "id": "land_classification",
       "name": "Land Classification",
       "group": "Land",
@@ -358,6 +442,75 @@
         "Unclassified PF": {
           "label": "Unclassified Public Forest",
           "color": "#94a3b8"
+        }
+      }
+    },
+    {
+      "id": "river_networks",
+      "name": "River Networks",
+      "group": "Environment",
+      "simplify": "4%",
+      "style": {
+        "kind": "outline",
+        "color": "#38bdf8",
+        "weight": 1.1,
+        "fillOpacity": 0
+      },
+      "description": "River and stream network overlay (Region VII).",
+      "file": "river_networks.geojson",
+      "geometry": "LineString",
+      "count": 8750,
+      "sizeBytes": 2722359,
+      "bbox": [
+        123.29527,
+        9.41524,
+        124.59447,
+        11.2836
+      ],
+      "classes": [],
+      "classMeta": null
+    },
+    {
+      "id": "river_networks_buffered",
+      "name": "River Networks (Buffered)",
+      "group": "Environment",
+      "dissolve": "zone",
+      "fields": [
+        "zone"
+      ],
+      "simplify": "2%",
+      "style": {
+        "kind": "classified",
+        "field": "zone"
+      },
+      "description": "River network riparian buffers derived from Land Cover 2025 (Cebu & Bohol): 3 m in urban (Built-up), 20 m in agricultural (Annual/Perennial Crop), 40 m in forest (Open/Closed/Mangrove Forest).",
+      "file": "river_networks_buffered.geojson",
+      "geometry": "MultiPolygon",
+      "count": 3,
+      "sizeBytes": 2603822,
+      "bbox": [
+        123.29746,
+        9.42222,
+        124.59439,
+        11.27182
+      ],
+      "classes": [
+        "agricultural",
+        "forest",
+        "urban"
+      ],
+      "classMeta": {
+        "urban": {
+          "label": "Urban · 3 m",
+          "color": "#f97316"
+        },
+        "agricultural": {
+          "label": "Agricultural · 20 m",
+          "color": "#84cc16"
+        },
+        "forest": {
+          "label": "Forest · 40 m",
+          "color": "#16a34a"
         }
       }
     }
