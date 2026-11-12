@@ -26,8 +26,46 @@ const DEVELOPER = {
   name: 'Kent Agbayani',
   alias: 'K3nt-Bytes',
   email: 'Liquidkentagbayani@proton.me',
-  role: 'Developer & maintainer',
+  role: 'GIS Specialist · Project Manager · Developer & Maintainer',
 };
+
+const PROJECT_TEAM = [
+  {
+    name: 'Atty. Edward T. Ang',
+    role: 'Regional Director',
+    detail: 'Office of the Regional Director, DENR-EMB Region VII',
+  },
+  {
+    name: 'Kent Agbayani',
+    role: 'GIS Specialist · Project Manager · Developer & Maintainer',
+    detail: 'K3nt-Bytes · Liquidkentagbayani@proton.me',
+  },
+  {
+    name: 'Stepen Roie Lee',
+    role: 'MIS Chief · Planning Chief · Overall PISMU Chief',
+    detail: 'Management Information System / Planning / PISMU',
+  },
+  {
+    name: 'Jumar Doublas',
+    role: 'Web Checker · Lead IT',
+    detail: 'Item: Environmental Specialist II',
+  },
+  {
+    name: 'Akira Lyod Fajardo',
+    role: 'GIS Specialist · Data Encoder of ECC and CNC',
+    detail: 'Environmental clearance data (ECC & CNC)',
+  },
+  {
+    name: 'Engr. Alfred Calumba',
+    role: 'Data Manager, Air & Water Permitting Section',
+    detail: 'Discharge permits and permits to operate',
+  },
+  {
+    name: 'Jason Tecson',
+    role: 'Data Manager for Hazardous Waste',
+    detail: 'Hazardous waste registrations and records',
+  },
+];
 
 export function AboutPage() {
   const data = useDashboard((state) => state.data);
@@ -402,6 +440,18 @@ export function AboutPage() {
               </div>
             </Panel>
           </div>
+
+          <Panel title="Project team & credits" subtitle="Leadership, management and data stewardship" action={<User size={14} className="text-slate-500" />}>
+            <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+              {PROJECT_TEAM.map((member) => (
+                <div key={member.name} className="rounded-lg border border-white/[0.06] bg-white/[0.02] p-3">
+                  <div className="text-[12px] font-semibold text-slate-100">{member.name}</div>
+                  <div className="mt-0.5 text-[10.5px] font-medium text-emerald-300/90">{member.role}</div>
+                  {member.detail ? <div className="mt-1 text-[10px] leading-relaxed text-slate-500">{member.detail}</div> : null}
+                </div>
+              ))}
+            </div>
+          </Panel>
 
           <div className="grid gap-3 lg:grid-cols-2">
             <Panel title="Data attribution" subtitle="Who owns the records">
